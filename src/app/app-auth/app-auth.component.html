@@ -1,0 +1,62 @@
+<div id="AuthWrapper">
+
+
+    <body   class=" text-center h-100" >
+
+
+      <div *ngIf="auth.user$ | async as user; else NoUser">
+        
+        <div class="container-fluid text-center">
+          <h1 class="display-4 text-center"> Hello {{user.email }}</h1>
+          <a (click)="auth.signOut()"> Log out </a>
+        </div>
+      
+        
+       </div>
+      
+       
+      <ng-template #NoUser>
+      
+
+        
+        <div class="form-signin  my-auto">
+          <img src="../../assets/tempLogo.png" class="img-fluid mt-2"  width="50%"/>
+  
+          <h3> <a (click)="showSignin()" class="tabActive1" style="cursor: pointer;"> Sign in </a> | <a (click)="showReg()" class="tabActive2" style="cursor: pointer;" > Register </a> </h3>
+  
+      
+           <!-- Sign in -->
+          
+          <div id="signIn" [hidden]="isHiddenSignIn" >
+           
+            <form [formGroup]="loginFormGroup" class="form-signin">
+              <input type="email" formControlName="email" class="form-control" placeholder="Email address" required autofocus>
+              <input type="password" formControlName="password" class="form-control" placeholder="Password" required autofocus>
+              <button class="btn btn-lg btn-primary btn-block" (click)="loginUser(loginFormGroup.value)">Sign in</button>
+            </form>
+          
+              <p class="mt-5 mb-3 text-muted">&copy; The UQS 2020</p>
+             </div>
+
+
+
+
+             <div id="Register" [hidden]="isHiddenRegister" >
+               <!-- Register -->   
+           <p> Disabled :P </p>
+          
+            <p class="mt-5 mb-3 text-muted">&copy; The UQS 2020</p>
+      </div>
+    </div>
+
+  
+      
+
+
+      </ng-template>
+
+     
+     </body>
+</div>
+
+

@@ -1,0 +1,72 @@
+<!-- * * * * * * * * * USAP  * * * * * * * * * -->
+
+<html>
+
+ <body>
+
+            <div id="auth-wrapper">
+
+          
+              <mat-drawer-container class="auth-wrapper">
+
+                <mat-drawer mode="side" opened>
+  
+                <img  class="authVector" src="../../assets/logo.svg"  />
+
+                 <div class="side-auth-text">
+                 <strong> <p class="head"> THEUQS </p> </strong> 
+                 <p class="small">
+                   Our mission is to make the "long waiting" in the past. UQS will notify your customers when its time to come.
+                </p>
+                 </div>
+                
+
+
+                </mat-drawer>
+
+                <mat-drawer-content>
+                     
+                  <div class="main-aut-header">
+
+                   <h3> Login </h3> 
+
+                   <p> No account yet? <a href="/register">Register</a> here.</p>
+                    <br/> 
+
+                    <form [formGroup]="loginEmailForm" class="loginForm">
+
+                          <mat-form-field class="example-full-width" >
+                              <input matInput placeholder="Email" type="email" formControlName="email" required>
+                          </mat-form-field>
+
+                          <br />
+
+                          <mat-form-field class="example-full-width" >
+                            <input matInput placeholder="Password" type="password" formControlName="password" required>
+                        </mat-form-field>
+                          
+                        <br />   
+
+                        <div class="buttonCenter">
+                          <button mat-flat-button  class="loginButton" color="primary" (click)="tryLoginService(loginEmailForm.value)" > Login </button>
+                        </div>   
+
+                     </form>
+                     <br />
+
+                   
+          
+                  </div>
+                  
+                </mat-drawer-content>
+
+              </mat-drawer-container>
+
+
+          </div>
+  
+ </body>
+
+</html>
+
+

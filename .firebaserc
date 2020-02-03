@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "theuqs-52673",
+    "staging": "theuqs-52673"
+  },
+  "targets": {
+    "theuqs-52673": {
+      "hosting": {
+        "master": [
+          "theuqs"
+        ]
+      }
+    }
+  }
+}

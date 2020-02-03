@@ -1,0 +1,39 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { ServiceService } from '../services/service.service';
+import * as firebase from 'firebase/app';
+
+@Component({
+  selector: 'app-servicedashboard',
+  templateUrl: './servicedashboard.component.html',
+  styleUrls: ['./servicedashboard.component.scss']
+})
+export class ServicedashboardComponent implements OnInit {
+
+  constructor(
+    public service: ServiceService,
+    private _formBuilder: FormBuilder,
+    private readonly afs: AngularFirestore,
+    private afStorage: AngularFireStorage,
+  ) { }
+
+  ngOnInit() {
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        console.log("1");
+      } else {
+        console.log("0");
+      }
+    });
+
+  }
+
+   serviceSignOut() {
+     // call the function to sign out the service
+    this.service.serviceSignOut();
+  }
+
+}

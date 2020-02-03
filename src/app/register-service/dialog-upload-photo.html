@@ -1,0 +1,11 @@
+<div mat-dialog-content style="text-align: center; height: 100%;">
+    <div  *ngIf=" service.service$ | async as service " > 
+       
+        
+     <form [formGroup]="uploadPhotoForm" style="height: 100%; position: relative; top: 30px;">
+        <input type="file" (change)="uploadPhoto($event)" accept=".png,.jpg" />
+       
+        </form>
+  
+     </div>
+</div>
