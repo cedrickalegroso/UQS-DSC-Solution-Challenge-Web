@@ -106,6 +106,16 @@ export class ServiceService {
     return this.router.navigate(['/']);
   }
 
+  async addcity(){
+    let name1 = "LA"
+    let location1 = "USA"
+
+    await this.afs.doc('cities/LA').set({
+      name: name1,
+      location: location1
+    })
+  }
+
   // update service details
   async updateServiceDetails(value) {
     // get the user 
