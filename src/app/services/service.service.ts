@@ -35,6 +35,14 @@ export class ServiceService {
     this.service$ = this.afAuth.authState.pipe(
       switchMap( user => {
         if (user) {
+
+          this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
+            return ref
+                  .where('serviceUid', '==', user.uid)
+         });
+         this.tickets = this.TicketsCollection.valueChanges();
+
+
           return this.afs.doc<Service>(`services/${user.uid}`).valueChanges()
         } else {
           return of(null);
@@ -42,34 +50,6 @@ export class ServiceService {
       })
     );
 
-    // global var
-    
-    let ServiceUid = firebase.auth().currentUser; // gets the uid of ther service
-
-
-
-    // Retreive Tickets for this Service
-
-    /* @gaille find a way nga mag sakto ni as of now wala ga gwa sa servicedashboard ang 
-    tickets. ang point sang code nga ni is find the tickets where same sa serviceUid para 
-    mag gwa lng sa ila nga dashboard ang tickets nga para sa ila 
-
-    let user = firebase.auth().currentUser <- this codes returns an object so meaning damo pana sya sulod
-    so if kuhaon mo uid sang user the code is user.uid
-   */
-        this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
-          return ref
-                .where('serviceUid', '==', ServiceUid)
-       });
-       this.tickets = this.TicketsCollection.valueChanges();
-       
-
-  
-      
-   
- 
-
-  
    
 
   }
