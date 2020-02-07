@@ -24,7 +24,7 @@ export class ServicedashboardComponent implements OnInit {
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        console.log("1");
+        console.log(user.uid);
       } else {
         console.log("0");
       }

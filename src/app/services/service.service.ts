@@ -54,7 +54,7 @@ export class ServiceService {
       
     this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
        return ref
-             .where('serviceUid', '==', ServiceUid.uid)
+             .where('serviceUid', '==', '')
     });
     this.tickets = this.TicketsCollection.valueChanges();
  
@@ -88,15 +88,6 @@ export class ServiceService {
      return this.router.navigate(['/service/dashboard']);
   }
 
-  async addcity() {
-    let name1= "New york";
-    let location1 = "USA";
-
-    await this.afs.doc('cities/test').set({
-      name: name1,
-      location: location1
-    });
-  }
 
   // service sign out
   async serviceSignOut(){
@@ -106,15 +97,6 @@ export class ServiceService {
     return this.router.navigate(['/']);
   }
 
-  async addcity(){
-    let name1 = "LA"
-    let location1 = "USA"
-
-    await this.afs.doc('cities/LA').set({
-      name: name1,
-      location: location1
-    })
-  }
 
   // update service details
   async updateServiceDetails(value) {
