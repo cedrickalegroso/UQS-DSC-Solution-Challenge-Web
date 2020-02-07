@@ -88,16 +88,6 @@ export class ServiceService {
      return this.router.navigate(['/service/dashboard']);
   }
 
-  async addcity() {
-    let name1= "New york";
-    let location1 = "USA";
-
-    await this.afs.doc('cities/test').set({
-      name: name1,
-      location: location1
-    });
-  }
-
   // service sign out
   async serviceSignOut(){
     // sign out the service
