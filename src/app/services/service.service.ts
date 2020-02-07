@@ -50,13 +50,21 @@ export class ServiceService {
 
     // Retreive Tickets for this Service
     
-   const ticketsQuery = 
-      
-    this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
-       return ref
-             .where('serviceUid', '==', '')
+    //test only
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+       console.log(user.uid)
+        this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
+          return ref
+                .where('serviceUid', '==', user.uid)
+       });
+       this.tickets = this.TicketsCollection.valueChanges();
+      } else {
+        console.log("0");
+      }
     });
-    this.tickets = this.TicketsCollection.valueChanges();
+      
+   
  
 
   

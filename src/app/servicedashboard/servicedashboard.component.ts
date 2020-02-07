@@ -22,14 +22,7 @@ export class ServicedashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log(user.uid);
-      } else {
-        console.log("0");
-      }
-    });
-
+   
   
 
   }
