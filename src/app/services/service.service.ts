@@ -88,7 +88,6 @@ export class ServiceService {
      return this.router.navigate(['/service/dashboard']);
   }
 
-
   // service sign out
   async serviceSignOut(){
     // sign out the service
