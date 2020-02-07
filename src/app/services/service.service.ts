@@ -44,15 +44,20 @@ export class ServiceService {
 
     // global var
     
-    const ServiceUid = firebase.auth().currentUser; // gets the uid of ther service
+    let ServiceUid = firebase.auth().currentUser; // gets the uid of ther service
+
    // const ticketsRef = 
 
     // Retreive Tickets for this Service
     
-   // const ticketsQuery = this.TicketsCollection.where('serviceUID', '==', ServiceUid );
+   const ticketsQuery = 
       
-    this.TicketsCollection = afs.collection<Ticket>('tickets');
+    this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
+       return ref
+             .where('serviceUid', '==', ServiceUid.uid)
+    });
     this.tickets = this.TicketsCollection.valueChanges();
+ 
 
   
    
@@ -81,6 +86,16 @@ export class ServiceService {
    async loginService(value) {
      await this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password) 
      return this.router.navigate(['/service/dashboard']);
+  }
+
+  async addcity() {
+    let name1= "New york";
+    let location1 = "USA";
+
+    await this.afs.doc('cities/test').set({
+      name: name1,
+      location: location1
+    });
   }
 
   // service sign out
@@ -163,6 +178,9 @@ export class ServiceService {
         }
 
    
+
+        // 
+
 }
 
 
