@@ -59,7 +59,7 @@ export class ServiceService {
    */
         this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
           return ref
-                .where('serviceUid', '==', ServiceUid.uid)
+                .where('serviceUid', '==', ServiceUid)
        });
        this.tickets = this.TicketsCollection.valueChanges();
        
