@@ -46,23 +46,25 @@ export class ServiceService {
     
     let ServiceUid = firebase.auth().currentUser; // gets the uid of ther service
 
-   // const ticketsRef = 
+
 
     // Retreive Tickets for this Service
-    
-    //test only
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-       console.log(user.uid)
+
+    /* @gaille find a way nga mag sakto ni as of now wala ga gwa sa servicedashboard ang 
+    tickets. ang point sang code nga ni is find the tickets where same sa serviceUid para 
+    mag gwa lng sa ila nga dashboard ang tickets nga para sa ila 
+
+    let user = firebase.auth().currentUser <- this codes returns an object so meaning damo pana sya sulod
+    so if kuhaon mo uid sang user the code is user.uid
+   */
         this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
           return ref
-                .where('serviceUid', '==', user.uid)
+                .where('serviceUid', '==', ServiceUid.uid)
        });
        this.tickets = this.TicketsCollection.valueChanges();
-      } else {
-        console.log("0");
-      }
-    });
+       
+
+  
       
    
  
