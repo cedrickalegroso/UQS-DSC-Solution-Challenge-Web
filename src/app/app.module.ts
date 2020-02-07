@@ -32,6 +32,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { LoginServiceComponent } from './login-service/login-service.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { ServicequeueComponent } from './servicequeue/servicequeue.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     DialogUploadPhoto,
     LoginServiceComponent,
     ServicedashboardComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    ServicequeueComponent
   ],
   imports: [
     BrowserModule,

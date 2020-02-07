@@ -4,6 +4,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ServiceService } from '../services/service.service';
 import * as firebase from 'firebase/app';
+import { Ticket } from '../services/ticket.model';
 
 @Component({
   selector: 'app-servicedashboard',
@@ -29,6 +30,13 @@ export class ServicedashboardComponent implements OnInit {
       }
     });
 
+  
+
+  }
+  
+  // test only
+  testtickets(){
+   this.service.testTickets();
   }
 
    serviceSignOut() {

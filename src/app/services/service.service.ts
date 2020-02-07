@@ -3,13 +3,15 @@ import { Router } from '@angular/router';
 
 import { auth } from 'firebase/app';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Service } from './service.model';
+import { Ticket } from './ticket.model';
 import * as firebase from 'firebase/app';
 import { async } from '@angular/core/testing';
+import { resolve } from 'url';
 
 
 
@@ -19,11 +21,17 @@ import { async } from '@angular/core/testing';
 export class ServiceService {
   service$: Observable<Service>;
 
+  tickets$: Observable<Ticket>;
+  private TicketsCollection: AngularFirestoreCollection<Ticket>;
+  tickets: Observable<Ticket[]>;
+
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
   ) {
+
+
     this.service$ = this.afAuth.authState.pipe(
       switchMap( user => {
         if (user) {
@@ -33,7 +41,31 @@ export class ServiceService {
         }
       })
     );
+
+    // global var
+    
+    const ServiceUid = firebase.auth().currentUser; // gets the uid of ther service
+   // const ticketsRef = 
+
+    // Retreive Tickets for this Service
+    
+   // const ticketsQuery = this.TicketsCollection.where('serviceUID', '==', ServiceUid );
+      
+    this.TicketsCollection = afs.collection<Ticket>('tickets');
+    this.tickets = this.TicketsCollection.valueChanges();
+
+  
+   
+
   }
+
+  testTickets() {
+    if (this.tickets != null) {
+      console.log(this.tickets);
+    } else {
+     console.log('err?');
+    }
+   }
 
   // create service and add it to database
   async serviceRegisterthroughEmail(value) {
@@ -58,8 +90,6 @@ export class ServiceService {
     // redirect to homepage
     return this.router.navigate(['/']);
   }
-
-
 
   // update service details
   async updateServiceDetails(value) {
@@ -131,6 +161,8 @@ export class ServiceService {
             });    
           });      
         }
+
+   
 }
 
 

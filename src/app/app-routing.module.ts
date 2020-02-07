@@ -7,6 +7,7 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { from } from 'rxjs';
 import { LoginServiceComponent } from './login-service/login-service.component';
 import { ServicedashboardComponent } from './servicedashboard/servicedashboard.component';
+import { ServicequeueComponent } from './servicequeue/servicequeue.component';
 
 const routes: Routes = [
 
@@ -38,6 +39,12 @@ const routes: Routes = [
   {
     path: 'service/dashboard',
     component: ServicedashboardComponent
+  },
+
+  
+  {
+    path: 'service/livequeue',
+    component: ServicequeueComponent
   }
 ];
 
