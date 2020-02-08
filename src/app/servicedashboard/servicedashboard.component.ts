@@ -77,6 +77,15 @@ export class ServicedashboardComponent implements OnInit {
      
   */
 
+  InjectTicket(value){
+    this.service.InjectTickets(value)
+    .then(res => {
+      console.log(res)
+    }, err => {
+      console.log(err)
+    })
+  }
+
    serviceSignOut() {
      // call the function to sign out the service
     this.service.serviceSignOut();

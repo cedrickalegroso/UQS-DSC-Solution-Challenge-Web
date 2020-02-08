@@ -78,6 +78,19 @@ export class ServiceService {
      return this.router.navigate(['/service/dashboard']);
   }
 
+  async InjectTickets(value){
+    let service1 = 'YeDfP4taedaXkv8EEDzMwcHk8Rj2'
+    let ticketOwnerUid1 = '30I9qlK4OfZbeBGpzljWfHFuFcL2'
+    let random = Math.ceil(Math.random()*100)
+    
+    await this.afs.doc(`tickets/${random}$`).set({
+      service: service1,
+      ticketNo: value.ticketNo,
+      ticketOwnerUid: ticketOwnerUid1
+    })
+
+  }
+
   // service sign out
   async serviceSignOut(){
     // sign out the service
