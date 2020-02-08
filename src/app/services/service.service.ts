@@ -84,7 +84,7 @@ export class ServiceService {
     let random = Math.ceil(Math.random()*100)
     
     await this.afs.doc(`tickets/${random}$`).set({
-      service: service1,
+      serviceUid: service1,
       ticketNo: value.ticketNo,
       ticketOwnerUid: ticketOwnerUid1
     })
