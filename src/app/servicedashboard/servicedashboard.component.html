@@ -380,6 +380,26 @@
                   <div class="card-body text-center">
                     <div class="chart-pie pt-4 pb-2">
                        
+                      <!-- Testing only -->
+
+                      <form [formGroup]="TicketInjectForm" class="Form-Control" >
+                        
+                        <mat-form-field class="example-full-width" >
+                          <input matInput placeholder="Ticket No" type="text" formControlName="ticketNo" required>
+                      </mat-form-field>
+
+
+  
+
+                      <div class="buttonCenter">
+                        <button mat-flat-button  class="loginButton" color="primary" (click)="injecTicket(TicketInjectForm.value)" > Inject Ticket </button>
+                      </div>   
+
+
+                      </form>
+
+                      <!-- Testing only -->
+
                     </div>
                     <div class="mt-4 text-center small">
                      
