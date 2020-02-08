@@ -77,8 +77,8 @@ export class ServicedashboardComponent implements OnInit {
      
   */
 
-  InjectTicket(value){
-    this.service.InjectTickets(value)
+  injecTicket(value){
+    this.service.injecTicket(value)
     .then(res => {
       console.log(res)
     }, err => {

@@ -78,7 +78,7 @@ export class ServiceService {
      return this.router.navigate(['/service/dashboard']);
   }
 
-  async InjectTickets(value){
+  async injecTicket(value){
     let service1 = 'YeDfP4taedaXkv8EEDzMwcHk8Rj2'
     let ticketOwnerUid1 = '30I9qlK4OfZbeBGpzljWfHFuFcL2'
     let random = Math.ceil(Math.random()*100)
