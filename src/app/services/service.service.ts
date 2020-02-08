@@ -21,7 +21,7 @@ import { resolve } from 'url';
 export class ServiceService {
   service$: Observable<Service>;
 
-  tickets$: Observable<Ticket>;
+
   private TicketsCollection: AngularFirestoreCollection<Ticket>;
   tickets: Observable<Ticket[]>;
 

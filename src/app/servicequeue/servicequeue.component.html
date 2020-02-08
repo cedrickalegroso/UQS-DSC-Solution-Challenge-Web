@@ -1,5 +1,17 @@
 <html>
 
+    <div *ngIf="service.service$ | async as service">
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ service.displayName }}</span>
+
+        <div *ngFor="let ticket of service.tickets | async ">
+            <p style="color: black">  {{ ticket.ticketNo }} </p>
+          </div> 
+          
+    </div>
+
+ 
+
+ 
 
     <body id="livequeuewrapper">
           <div class="container-fluid">
