@@ -1,18 +1,6 @@
-<html>
 
-    <div *ngIf="service.service$ | async as service">
-        <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ service.displayName }}</span>
-
-        <div *ngFor="let ticket of service.tickets | async ">
-            <p style="color: black">  {{ ticket.ticketNo }} </p>
-          </div> 
-          
-    </div>
-
+<div *ngIf="service.service$ | async as service; else load " >
  
-
- 
-
     <body id="livequeuewrapper">
           <div class="container-fluid">
               <div class="row">
@@ -21,22 +9,53 @@
                   </div>
                   <div class="col-md-3">
 
-                      <h1 class="display-4"> Queue </h1>
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ service.displayName }}</span>
 
-                      <div class="container rounded ticket-wrapper mx-auto p-3">
-                          <h4 class=""> Cashier 1</h4>
-                          <h1 class=""> P1100</h1>
+          <h1 class="display-4"> Queue </h1>
+
+                      <div class="card-body">
+                        <div class="chart-area">
+                          <div *ngFor="let ticket of ticket.tickets$ | async ">
+                           
+                            <div class="container rounded ticket-wrapper mx-auto p-3">
+                                <h4 class=""> Cashier 1</h4>
+                                <h1 class=""> {{ ticket.ticketNo }}</h1>
+                            </div>
+
+                          </div> 
+            
+                          <ng-template #noticket>
+                            <p> no tix </p>
+                          </ng-template>
+                        </div>
                       </div>
 
-                      <div class="container rounded ticket-wrapper mx-auto p-3">
-                        <h4 class=""> Cashier 1</h4>
-                        <h1 class=""> P1102</h1>
-                    </div>
+                          
 
                 </div>
               </div>
           </div>
     </body>
 
+  </div>
 
-  </html>
+  <ng-template #load>
+
+    <div class="container text-center loadStyle">
+      <div class="row">
+        <div class="col-md-12">
+          <mat-progress-spinner 
+          class="example-margin "
+          [color]="color"
+          [mode]="mode"
+          [value]="value">
+      </mat-progress-spinner>
+      <p> Please wait while we load some data.</p>
+        </div>
+      </div>
+    </div>
+   
+      
+  
+  </ng-template>
+

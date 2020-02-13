@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ServiceService } from '../services/service.service';
+import { TicketsService } from '../services/tickets.service';
 import * as firebase from 'firebase/app';
 import { Ticket } from '../services/ticket.model';
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-servicequeue',
@@ -12,9 +14,11 @@ import { Ticket } from '../services/ticket.model';
   styleUrls: ['./servicequeue.component.scss']
 })
 export class ServicequeueComponent implements OnInit {
+  mode: ProgressSpinnerMode = 'indeterminate';
 
   constructor(
-    public service: ServiceService,
+    private service: ServiceService,
+    private ticket: TicketsService,
     private _formBuilder: FormBuilder,
     private readonly afs: AngularFirestore,
     private afStorage: AngularFireStorage,
@@ -22,19 +26,19 @@ export class ServicequeueComponent implements OnInit {
 
   ngOnInit() {
 
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log(user.uid);
-      } else {
-        console.log("0");
-      }
-    });
     
   }
 
-  testtickets(){
-    this.service.testTickets();
-   }
+  injecTicket(value){
+    this.ticket.injecTicket(value)
+    .then(res => {
+      console.log(res)
+    }, err => {
+      console.log(err)
+    })
+  }
+  
+
 
    
 }

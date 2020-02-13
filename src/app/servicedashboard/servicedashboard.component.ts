@@ -5,6 +5,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { ServiceService } from '../services/service.service';
 import * as firebase from 'firebase/app';
 import { Ticket } from '../services/ticket.model';
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
+import { TicketsService } from '../services/tickets.service';
 
 @Component({
   selector: 'app-servicedashboard',
@@ -13,11 +15,12 @@ import { Ticket } from '../services/ticket.model';
 })
 export class ServicedashboardComponent implements OnInit {
 
-
+  mode: ProgressSpinnerMode = 'indeterminate';
   TicketInjectForm: FormGroup; // for testing tickets only!
 
   constructor(
     public service: ServiceService,
+    private ticket: TicketsService,
     private _formBuilder: FormBuilder,
     private readonly afs: AngularFirestore,
     private afStorage: AngularFireStorage,
@@ -32,53 +35,29 @@ export class ServicedashboardComponent implements OnInit {
         console.log("0");
       }
     });
-
+     
+    // for testing tickets only!
      this.TicketInjectForm = this._formBuilder.group({
       ticketNo: ['', Validators.required],
     });
 
   }
   
-  // test only
-
-  testtickets(){
-   this.service.testTickets();
-  }
 
 
-  /* 
-    
-  @gaille
-     
-     Database collection: tickets
-     Method name should be: injecTicket
-     Form here call the method in the service.service.ts 
 
-     example:
-
-        MethodName(value){
-          this.service."functionsname"(value)
-          .then( res => {
-            console.log(res);
-          }, err => {
-            console.log(err);
-          });
-        }
-
-     because this is for testing purpose only prepare some data to be 
-     inject on the database 
-    
-     needed field in the database is: 
-     serviceUid: <- default data should be: YeDfP4taedaXkv8EEDzMwcHk8Rj2
-     ticketNo:  value.ticketNo
-     ticketOwnerUid: <- default data should be: 30I9qlK4OfZbeBGpzljWfHFuFcL2
-
-     
-     
-  */
 
   injecTicket(value){
-    this.service.injecTicket(value)
+    this.ticket.injecTicket(value)
+    .then(res => {
+      console.log(res)
+    }, err => {
+      console.log(err)
+    })
+  }
+  
+  injectwithAutoId(){
+    this.ticket.autoIdTicket()
     .then(res => {
       console.log(res)
     }, err => {

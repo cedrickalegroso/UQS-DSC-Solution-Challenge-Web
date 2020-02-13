@@ -1,4 +1,8 @@
-<body id="page-top">
+
+
+  <div *ngIf="service.service$ | async as service; else load " >
+    
+  <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -63,14 +67,12 @@
   
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
-          <div *ngIf=" service.service$ | async as service; else Usercheck " >
+         
               <a (click)="serviceSignOut()" style="color: white; text-align: left; cursor: pointer;"> Sign out </a>
-          </div>
+     
         </div>
 
-        <ng-template #Usercheck>
-         <p>no user found??</p> 
-        </ng-template>
+       
   
       </ul>
       <!-- End of Sidebar -->
@@ -212,11 +214,11 @@
 
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div *ngIf="service.service$ | async as service">
+                
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ service.displayName }}</span>
                    
                   <img class="img-profile rounded-circle" [src]="service.photoUrl">
-                </div>
+           
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -251,7 +253,7 @@
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-              <a href="service/livequeue" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Open Live Tickets</a>
+              <a href="/service/livequeue"  target="_blank"class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i>Open Live Tickets</a>
               <a (click)="service.addcity()" > TEST TICKETS </a>
 
              
@@ -345,10 +347,11 @@
                   <!-- Card Body -->
                   <div class="card-body">
                     <div class="chart-area">
-                      <div *ngFor="let ticket of service.tickets | async ">
+                      <div *ngIf="ticket.tickets$; else noticket">
+                      <div *ngFor="let ticket of ticket.tickets$ | async ">
                         <p style="color: black">  {{ ticket.ticketNo }} </p>
                       </div> 
-        
+                    </div>
                       <ng-template #noticket>
                         <p> no tix </p>
                       </ng-template>
@@ -393,6 +396,10 @@
 
                       <div class="buttonCenter">
                         <button mat-flat-button  class="loginButton" color="primary" (click)="injecTicket(TicketInjectForm.value)" > Inject Ticket </button>
+                      </div>   
+
+                      <div class="buttonCenter">
+                        <button mat-flat-button  class="loginButton" color="primary" (click)="injectwithAutoId()" > Auto Id  </button>
                       </div>   
 
 
@@ -590,3 +597,26 @@
       </div>
     </div>
     </body>
+
+
+</div>
+
+<ng-template #load>
+
+  <div class="container text-center loadStyle">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-progress-spinner 
+        class="example-margin "
+        [color]="color"
+        [mode]="mode"
+        [value]="value">
+    </mat-progress-spinner>
+    <p> Please wait while we load some data.</p>
+      </div>
+    </div>
+  </div>
+ 
+    
+
+</ng-template>

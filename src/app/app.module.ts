@@ -20,6 +20,9 @@ import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceComponent } from './service/service/service.component';
 import { ServicedashboardComponent } from './servicedashboard/servicedashboard.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
+import { ServicequeueComponent } from './servicequeue/servicequeue.component';
+import { LoginServiceComponent } from './login-service/login-service.component';
 
 // Material
 import {MatInputModule} from '@angular/material/input';
@@ -29,10 +32,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
-import { LoginServiceComponent } from './login-service/login-service.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { SnackbarComponent } from './snackbar/snackbar.component';
-import { ServicequeueComponent } from './servicequeue/servicequeue.component';
+
+
 
 @NgModule({
   declarations: [

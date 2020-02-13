@@ -10,6 +10,14 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+ .loadStyle {
+   margin-top: 40vh;
+   mat-progress-spinner{
+    margin-left: auto;
+    margin-right: auto;
+   } 
+ }
  :root {
     --blue: #4e73df;
     --indigo: #6610f2;

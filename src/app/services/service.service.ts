@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 import { auth } from 'firebase/app';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, timestamp } from 'rxjs/operators';
 import { Service } from './service.model';
 import { Ticket } from './ticket.model';
 import * as firebase from 'firebase/app';
@@ -21,46 +22,23 @@ import { resolve } from 'url';
 export class ServiceService {
   service$: Observable<Service>;
 
-
-  private TicketsCollection: AngularFirestoreCollection<Ticket>;
-  tickets: Observable<Ticket[]>;
-
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
   ) {
-
-
     this.service$ = this.afAuth.authState.pipe(
       switchMap( user => {
         if (user) {
-
-          this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
-            return ref
-                  .where('serviceUid', '==', user.uid)
-         });
-         this.tickets = this.TicketsCollection.valueChanges();
-
-
           return this.afs.doc<Service>(`services/${user.uid}`).valueChanges()
         } else {
           return of(null);
         }
       })
     );
-
-   
-
-  }
-
-  testTickets() {
-    if (this.tickets != null) {
-      console.log(this.tickets);
-    } else {
-     console.log('err?');
-    }
-   }
+  }  
+  
+  
 
   // create service and add it to database
   async serviceRegisterthroughEmail(value) {
@@ -78,18 +56,7 @@ export class ServiceService {
      return this.router.navigate(['/service/dashboard']);
   }
 
-  async injecTicket(value){
-    let service1 = 'YeDfP4taedaXkv8EEDzMwcHk8Rj2'
-    let ticketOwnerUid1 = '30I9qlK4OfZbeBGpzljWfHFuFcL2'
-    let random = Math.ceil(Math.random()*100)
-    
-    await this.afs.doc(`tickets/${random}$`).set({
-      serviceUid: service1,
-      ticketNo: value.ticketNo,
-      ticketOwnerUid: ticketOwnerUid1
-    })
-
-  }
+  
 
   // service sign out
   async serviceSignOut(){
