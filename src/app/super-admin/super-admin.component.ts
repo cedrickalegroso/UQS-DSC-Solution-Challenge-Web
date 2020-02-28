@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { AuthService } from '../services/auth.service';
+import { SuperadminService } from '../services/superadmin.service';
 import * as firebase from 'firebase/app';
+import { SystemService } from '../services/system.service';
+import { from, BehaviorSubject } from 'rxjs';
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 
 
 @Component({
@@ -13,10 +16,13 @@ import * as firebase from 'firebase/app';
 })
 export class SuperAdminComponent implements OnInit {
    
-  webclientversion: FormGroup;
+  versionCOntrolSystem: FormGroup;
+  updateForm: FormGroup;
+  mode: ProgressSpinnerMode = 'indeterminate';
 
   constructor(
-    public auth: AuthService,
+    private super$: SuperadminService,
+    private version$: SystemService,
     private _formBuilder: FormBuilder,
     private readonly afs: AngularFirestore,
     private afStorage: AngularFireStorage,
@@ -31,13 +37,29 @@ export class SuperAdminComponent implements OnInit {
         console.log("0");
       }
     });
+   
+       // the login form group
+       this.versionCOntrolSystem = this._formBuilder.group({
+        versionNo: ['', Validators.required],
+        description: ['', Validators.required],
+      });
+
 
 
   }
 
 
   signOutSuperAdmin() {
-    this.auth.signOut;
+   // this.super$.signOut;
+  }
+
+  updateDefClick(value){
+   this.version$.VersioncontrolUpdate(value)
+   .then( res=> {
+     console.log(res);
+   }, err => {
+     console.log(err);
+   })
   }
 
 }

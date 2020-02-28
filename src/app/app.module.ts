@@ -18,7 +18,6 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServiceComponent } from './service/service/service.component';
 import { ServicedashboardComponent } from './servicedashboard/servicedashboard.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ServicequeueComponent } from './servicequeue/servicequeue.component';
@@ -44,7 +43,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RegisterServiceComponent,
     AppAuthComponent,
     SuperAdminComponent,
-    ServiceComponent,
     DialogUploadPhoto,
     LoginServiceComponent,
     ServicedashboardComponent,

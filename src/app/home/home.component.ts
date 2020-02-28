@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SuperadminService } from '../services/superadmin.service';
+import { SystemService } from '../services/system.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private system: SystemService,
+  ) { }
 
   ngOnInit() {
   }
-
+p
 }

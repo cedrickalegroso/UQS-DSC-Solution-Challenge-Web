@@ -70,7 +70,24 @@
       </div>
     </div>
 
-    <hr class="featurette-divider">
+
+    <div class="row featurette mt-5">
+      <div class="col-md-12 text-center">
+        <h2 class="featurette-heading">Try it out now!</h2>
+        <p class="lead">
+           Already convinced in using the UQS App? Click the CTA below!
+   
+           <br />
+         <a href="/login"><button class="btn btn-primary rounded"> Try Beta </button></a> 
+        </p>
+      </div>
+    </div>
+
+
+    <hr class="featurette-divider ">
+
+
+
 
     <h1 class="text-center display-3 text-dark mt-5">
       Documentation
@@ -81,22 +98,36 @@
     </p>
 
 
-    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-      <img class="mr-3" src="/docs/4.4/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
-      <div class="lh-100">
-        <h6 class="mb-0 text-white lh-100">Bootstrap</h6>
-        <small>Since 2011</small>
-      </div>
-    </div>
+    
+
+    <div *ngFor="let ver of system.Version$ | async ">
+      <p style="color: black">  {{ ver.description }} </p>
+    </div> 
+
+<ng-template #none>
+ <p> oppse </p>
+</ng-template>
   
     <div class="my-3 p-3 bg-white rounded shadow-sm">
       <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+     
 
+      
       <div class="media text-muted pt-3">
         <img src="../../assets/tempLogo.png" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
           <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
-          Added Database Functions for the web and mobile app | January 29, 2019 
+         App now works normally and how we want it but needs more work | February 19, 2020 
+        </p>
+      </div>
+
+
+  
+      <div class="media text-muted pt-3">
+        <img src="../../assets/tempLogo.png" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
+          Added Database Functions for the web and mobile app | January 29, 2020 
         </p>
       </div>
 
@@ -105,7 +136,7 @@
         <img src="../../assets/tempLogo.png" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
           <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
-          First release of UQS on the web | January 28, 2019
+          First release of UQS on the web | January 28, 2020
         </p>
       </div>
 

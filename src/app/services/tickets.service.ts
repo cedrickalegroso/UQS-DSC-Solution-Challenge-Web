@@ -26,7 +26,8 @@ export class TicketsService {
              return ref 
                 .where('serviceUid', '==', user.uid)
                 .limit(3)
-          })
+          });
+          
          return  this.tickets$ = this.TicketsCollection.valueChanges();
         } else {
           return of(null);
@@ -49,6 +50,20 @@ export class TicketsService {
       ticketOwnerUid: ticketOwnerUid1,
       timestamp:  Math.floor(Date.now() / 1000)
     })
+
+  // call the last level 
+  return this.ticketcounter();
+  }
+
+  async ticketcounter(){
+    let serviceUid = this.afAuth.auth.currentUser;
+    
+    let test1 = 
+
+    console.log('test1 intiated ' + this.afs.doc(`services/${serviceUid.uid}/ticketCount`).get())
+    // await this.afs.doc(`services/${serviceUid.uid}`).update({
+      // ticketCount: this.ticketCount + 1
+   //  })
   }
 
   async autoIdTicket() {
