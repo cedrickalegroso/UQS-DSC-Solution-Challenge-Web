@@ -51,19 +51,8 @@ export class TicketsService {
       timestamp:  Math.floor(Date.now() / 1000)
     })
 
-  // call the last level 
-  return this.ticketcounter();
-  }
-
-  async ticketcounter(){
-    let serviceUid = this.afAuth.auth.currentUser;
-    
-    let test1 = 
-
-    console.log('test1 intiated ' + this.afs.doc(`services/${serviceUid.uid}/ticketCount`).get())
-    // await this.afs.doc(`services/${serviceUid.uid}`).update({
-      // ticketCount: this.ticketCount + 1
-   //  })
+ 
+  
   }
 
   async autoIdTicket() {
