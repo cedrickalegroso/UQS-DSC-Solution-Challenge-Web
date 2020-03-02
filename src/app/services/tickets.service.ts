@@ -5,6 +5,8 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import * as firebase from 'firebase/app';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,17 +38,19 @@ export class TicketsService {
     );
   }
 
+   // soon to be deprecated 
   async injecTicket(value){
-    let serviceUid = this.afAuth.auth.currentUser;
+    let service = firebase.auth().currentUser;
     let ticketOwnerUid1 = '30I9qlK4OfZbeBGpzljWfHFuFcL2'
     let unixTimestamp = Math.floor(Date.now() / 1000)
-    let refNo = 'bdo' + value.ticketNo + unixTimestamp
+    let refNo = 'TEST' + value.ticketNo + unixTimestamp
    
 
     await this.afs.doc(`tickets/${refNo}`).set({
       refNo: refNo,
-      serviceUid: serviceUid.uid,
-      ticketNo: value.ticketNo,
+      serviceUid: service.uid,
+      ticketNo: "TEST" + value.ticketNo,
+      ticketRaw: value.ticketNo,
       ticketOwnerUid: ticketOwnerUid1,
       timestamp:  Math.floor(Date.now() / 1000)
     })
@@ -56,27 +60,88 @@ export class TicketsService {
   }
 
   async autoIdTicket() {
-    //query the collection to get the lates ticketNo
+    let data;
+    let unixTimestamp = Math.floor(Date.now() / 1000);
+    let service = firebase.auth().currentUser;
+    let ticketColl = this.afs.collection('tickets', ref => ref.orderBy('ticketRaw', 'desc').where('serviceUid', '==', service.uid).limit(1))
+    ticketColl.get().toPromise().then(
+      function(querySnaphot) {
+      
+        
+         if (querySnaphot.empty) {
+          console.log("empty")
+          ticketColl.doc(`${ 1 + unixTimestamp }`).set({
+            refNo: 'TEST',
+            serviceUid: service.uid,
+            ticketNo: 'TEST' + 1,
+            ticketRaw: 1,
+            ticketOwnerUid: 'TEST',
+            timestamp:  Math.floor(Date.now() / 1000)
+          });
+         } else {
+          querySnaphot.forEach( async function(doc) {
+            data = doc.data();
+            let ticketRaw1 = data.ticketRaw + 1;
+            let ticketOwnerUid = "15VTijHFqoTgmXowy38BlFjPJJ43"
+            let refNo ='TEST' + ticketRaw1 + unixTimestamp;
+            let ticketFinal = 'TEST' + ticketRaw1;
 
-    // ref
-    this.latestTicket$ = this.afs.collection<Ticket>('tickets', ref => {
-       return ref
-         .orderBy("timestamp", "desc")
-         .limit(1)
-    });
-  
+            ticketColl.doc(`${refNo}`).set({
+              refNo: refNo,
+              serviceUid: service.uid,
+              ticketNo: ticketFinal,
+              ticketRaw: ticketRaw1,  
+              ticketOwnerUid: ticketOwnerUid,
+              timestamp:  Math.floor(Date.now() / 1000)
+            });
+          }
+          )
+         }
+         
+      /*  querySnaphot.forEach( async function(doc) {
+          data = doc.data();
+          console.log(data)
+          if (doc.exists) {
+            data = doc.data();
+            
+            let ticketRaw1 = data.ticketRaw + 1;
+            let unixTimestamp = Math.floor(Date.now() / 1000);
+            let ticketOwnerUid = "15VTijHFqoTgmXowy38BlFjPJJ43"
+            let refNo ='TEST' + ticketRaw1 + unixTimestamp;
+            let ticketFinal = 'TEST' + ticketRaw1;
 
-    this.id = this.TicketsCollection.valueChanges();
+            if (data.ticketRaw >= 1  ) {    
+              console.log(114)         
+              ticketColl.doc(`${refNo}`).set({
+                  refNo: refNo,
+                  serviceUid: service.uid,
+                  ticketNo: ticketFinal,
+                  ticketRaw: ticketRaw1,  
+                  ticketOwnerUid: ticketOwnerUid,
+                  timestamp:  Math.floor(Date.now() / 1000)
+                });
+            } else {
+              console.log(115)
+              ticketColl.doc(`${refNo}`).set({
+                refNo: refNo,
+                serviceUid: service.uid,
+                ticketNo: 'TEST' + 1,
+                ticketRaw: 1,
+                ticketOwnerUid: ticketOwnerUid,
+                timestamp:  Math.floor(Date.now() / 1000)
+              });
+            }
 
-    this.TicketsCollection.doc(this.id).ref.get().then(function(doc) {
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-      } else {
-        console.log("No such document!");
+
+          } else {
+            console.log("Error getting ticket");
+          } 
+        }); */
       }
-    }).catch(function(error) {
-      console.log("Error getting document:", error);
-    });
-  }
+    ) 
+  }   
+
+
+
 
 }
