@@ -37,13 +37,13 @@ export class AuthService {
 
   async facebookSignin() {
     const provider = new auth.FacebookAuthProvider();
-    const credential = await this.afAuth.signInWithPopup(provider);
+    const credential = await this.afAuth.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
 
 
   async SuperAdminemailSignup(value) {
-    const credential = await this.afAuth.createUserWithEmailAndPassword(value.email, value.password) 
+    const credential = await this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password) 
     return this.SuperAdminCreate(credential.user);
   }
 
@@ -60,7 +60,7 @@ export class AuthService {
 
 
   async SuperAdminemailSignin(value) {
-   await this.afAuth.signInWithEmailAndPassword(value.email, value.password) 
+   await this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password) 
    this.router.navigate(['/admin']); // redirect to superadmin Dashboard
   }
 
@@ -104,7 +104,7 @@ export class AuthService {
   }
 
   async signOut() {
-    await this.afAuth.signOut();
+    await this.afAuth.auth.signOut();
     return this.router.navigate(['/']);
   }
 
