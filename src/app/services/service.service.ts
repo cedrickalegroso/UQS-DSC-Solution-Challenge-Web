@@ -10,10 +10,11 @@ import { Observable, of } from 'rxjs';
 import { switchMap, timestamp } from 'rxjs/operators';
 import { Service } from './service.model';
 import { Ticket } from './ticket.model';
-import * as firebase from 'firebase/app';
 import { async } from '@angular/core/testing';
 import { resolve } from 'url';
-
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/storage';
 
 
 @Injectable({
@@ -42,7 +43,7 @@ export class ServiceService {
 
   // create service and add it to database
   async serviceRegisterthroughEmail(value) {
-    const credential = await this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password) 
+    const credential = await this.afAuth.createUserWithEmailAndPassword(value.email, value.password) 
     this.afs.doc(`services/${credential.user.uid}`).set({
       uid: credential.user.uid,
       email: credential.user.email,
@@ -52,7 +53,7 @@ export class ServiceService {
 
   // create service and add it to database
    async loginService(value) {
-     await this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password) 
+     await this.afAuth.signInWithEmailAndPassword(value.email, value.password) 
      return this.router.navigate(['/service/dashboard']);
   }
 
@@ -61,7 +62,7 @@ export class ServiceService {
   // service sign out
   async serviceSignOut(){
     // sign out the service
-    await this.afAuth.auth.signOut();
+    await this.afAuth.signOut();
     // redirect to homepage
     return this.router.navigate(['/']);
   }

@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -28,12 +29,12 @@ export class SuperadminService {
   }
 
   async SuperAdminSignup(value) {
-    const credential = await this.afAuth.auth.createUserWithEmailAndPassword(value.email, value.password)
+    const credential = await this.afAuth.createUserWithEmailAndPassword(value.email, value.password)
     return this.SuperAdminCreate(credential.user);
   }
 
   async SuperAdminSignin(value){
-    const credential = await this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password);
+    const credential = await this.afAuth.signInWithEmailAndPassword(value.email, value.password);
     return this.SuperAdminCreate(credential.user);
   }
 

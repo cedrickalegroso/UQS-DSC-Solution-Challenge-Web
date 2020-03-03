@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { VersionControl } from './versionControl.model';
 import { switchMap } from 'rxjs/operators';
+import 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
