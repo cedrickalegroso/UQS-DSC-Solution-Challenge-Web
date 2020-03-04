@@ -1,0 +1,21 @@
+[debug] [2020-03-04T00:48:25.387Z] ----------------------------------------------------------------------
+[debug] [2020-03-04T00:48:25.389Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Cedrick Alegroso\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2020-03-04T00:48:25.389Z] CLI Version:   7.14.0
+[debug] [2020-03-04T00:48:25.390Z] Platform:      win32
+[debug] [2020-03-04T00:48:25.390Z] Node Version:  v10.16.3
+[debug] [2020-03-04T00:48:25.390Z] Time:          Wed Mar 04 2020 08:48:25 GMT+0800 (China Standard Time)
+[debug] [2020-03-04T00:48:25.390Z] ----------------------------------------------------------------------
+[debug] [2020-03-04T00:48:25.390Z] 
+[debug] [2020-03-04T00:48:25.400Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-04T00:48:25.401Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: functions
+[debug] [2020-03-04T00:48:27.446Z] [hub] writing locator at C:\Users\CEDRIC~1\AppData\Local\Temp\hub-theuqs-52673.json
+[info] +  hub: emulator hub started at http://localhost:4400
+[warn] !  Your requested "node" version "8" doesn't match your global version "10"
+[info] +  functions: functions emulator started at http://localhost:5001
+[info] i  functions: Watching "C:\Users\Cedrick Alegroso\Documents\Cedrick\Flutter\gsc\uqsweb2\functions" for Cloud Functions...
+[debug] [2020-03-04T00:48:29.492Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-03-04T00:48:29.492Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-03-04T00:48:29.492Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-03-04T00:48:29.493Z] [worker-~diagnostic~-674807a0-1119-4f5b-97b9-bfd85e954b4e]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick Alegroso\Documents\Cedrick\Flutter\gsc\uqsweb2\functions\19344
+[debug] [2020-03-04T00:48:29.493Z] [worker-~diagnostic~-674807a0-1119-4f5b-97b9-bfd85e954b4e]: BUSY

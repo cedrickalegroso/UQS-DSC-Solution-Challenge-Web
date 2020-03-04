@@ -12,6 +12,7 @@ const express = require('express');
 const app = express();
 const db = admin.firestore();
 
+
 const cors = require('cors');
 app.use( cors( {origin: true }));
 
@@ -23,7 +24,7 @@ app.get('/hello-world', (req, res) => {
 
 
 // Create 
-app.post('/api/createTicket', (req, res) => {
+app.post('/api/createTicket{test}', (req, res) => {
     
     (async() => {
             
