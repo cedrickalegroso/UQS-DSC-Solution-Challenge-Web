@@ -43,19 +43,16 @@ export class ServicedashboardComponent implements OnInit {
 
   }
   
-
-
-
-
-  injecTicket(value){
-    this.ticket.injecTicket(value)
+  ticketDone(ticket){
+    this.ticket.ticketDone(ticket)
     .then(res => {
       console.log(res)
     }, err => {
       console.log(err)
     })
   }
-  
+
+
   injectwithAutoId(){
     this.ticket.autoIdTicket()
     .then(res => {

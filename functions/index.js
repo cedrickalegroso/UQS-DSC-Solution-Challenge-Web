@@ -37,56 +37,90 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
             let serviceUid = req.body.sid;
             let ticketOwnner = req.body.uid;
             let unixTimestamp = Math.floor(Date.now() / 100);
-            let serviceColl = db.collection('services', ref => ref.where('uid', '==', serviceUid).limit(1));
+            let serviceColl = db.collection('services');
+            let queryserviceColl = serviceColl.where('uid', '==', serviceUid).limit(1).get()
+            .then( snapshot => {
+               if (snapshot.empty) {
+                  console.log("ERROR SERVICE NOT FOUND");
+               } else {
+                  snapshot.forEach(doc => {
+                  serviceData = doc.data().abbreviation;
+                  });
+               }
+            });
             let ticketColl = db.collection('tickets');
             let queryticketColl = ticketColl.where('serviceUid', '==', 'PShgL9TBqdVIcvDJ4CBbHJs1U1F3').orderBy('ticketRaw', 'desc').limit(1).get()
             .then( snapshot => {
-   
-               if (snapshot.empty) {
-                  
-                  ticketColl.doc(`${  + 1 + unixTimestamp }`).set({
+               if (snapshot.empty) {                
+                  ticketColl.doc(`${ serviceData + 1 + unixTimestamp }`).set({
                      refNo:  1 + unixTimestamp,
                      serviceUid: serviceUid,
-                     ticketNo: "ADM" + 1,
+                     ticketNo: serviceData + 1,
                      ticketRaw: 1,
                      ticketOwnerUid: ticketOwnner,
-                     timestamp:  unixTimestamp
-                   });
-
-                   
+                     timestamp:  unixTimestamp,
+                     ticketStatus: 1
+                   });                  
                } else {
-
                   snapshot.forEach(doc => {
                      data = doc.data();
-
                      let ticketRaw1 = data.ticketRaw + 1;
-                     let refNo ="ADM" + ticketRaw1 + unixTimestamp;
-                     let ticketFinal = "ADM" + ticketRaw1;
+                     let refNo = serviceData + ticketRaw1 + unixTimestamp;
+                     let ticketFinal = serviceData + ticketRaw1;
                      ticketColl.doc(`${refNo}`).set({
                         refNo: refNo,
                         serviceUid: serviceUid,
                         ticketNo: ticketFinal,
                         ticketRaw: ticketRaw1,  
                         ticketOwnerUid: ticketOwnner,
-                        timestamp:  unixTimestamp
+                        timestamp:  unixTimestamp,
+                        ticketStatus: 1
                    });
                    });
                 }
-            });
-             
+            });           
             return res.status(200).send();
-
           }
           catch (error)
           {
-
              console.log(error)
              return res.status(500).send(error);    
-
-          }
-          
+          }         
     })();
  });
+
+
+ // ticketDOne
+app.post('/api/ticketdone:refNo', (req, res) => {
+
+   (async() => {
+      try{
+         let ref;
+         let unixTimestamp = Math.floor(Date.now() / 1000);
+         let ticketColl = db.collection('tickets');
+         let queryticketColl = ticketColl.where('refNo', '==', req.body.refNo).limit(1).get()
+         .then( snapshot => {
+             if(snapshot.empty){
+                console.log("ERROR TICKET NOT FOUND");
+             } else {
+                snapshot.forEach(doc => {
+                ref = doc.data().refNo;
+                ticketColl.doc(`${ref}`).update({
+                ticketStatus: 0,
+                timestampDone: unixTimestamp
+                });
+                });
+             }
+         });
+         return res.status(200).send();
+      } 
+      catch(error)
+      {
+         console.log(error)
+         return res.status(500).send(error);
+      }
+   });
+});
 
  
 // Read

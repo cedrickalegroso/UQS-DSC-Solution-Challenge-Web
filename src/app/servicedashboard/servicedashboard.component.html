@@ -349,7 +349,17 @@
                     <div class="chart-area">
                       <div *ngIf="ticket.tickets$; else noticket">
                       <div *ngFor="let ticket of ticket.tickets$ | async ">
-                        <p style="color: black">  {{ ticket.ticketNo }} </p>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p style="color: black">  {{ ticket.ticketNo }} </p>
+                          </div>
+
+                          <div class="col-md-6">
+                            <button (click)="ticketDone(ticket)" class="btn btn-success" > Done </button>
+                          </div>
+                        </div>
+                       
+                      
                       </div> 
                     </div>
                       <ng-template #noticket>
