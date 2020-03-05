@@ -1,5 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const afs = require('@angular/fire/firestore');
+
 
 var serviceAccount = require("../functions/theuqspermission.json");
 
@@ -24,21 +26,56 @@ app.get('/hello-world', (req, res) => {
 
 
 // Create 
-app.post('/api/createTicket{test}', (req, res) => {
+app.post('/api/createTicket:sid:uid', (req, res) => {
     
     (async() => {
             
           try
           {
+            let data;
+            let serviceData;
+            let serviceUid = req.body.sid;
+            let ticketOwnner = req.body.uid;
+            let unixTimestamp = Math.floor(Date.now() / 100);
+            let serviceColl = db.collection('services', ref => ref.where('uid', '==', serviceUid).limit(1));
+            let ticketColl = db.collection('tickets');
+            let queryticketColl = ticketColl.where('serviceUid', '==', 'PShgL9TBqdVIcvDJ4CBbHJs1U1F3').orderBy('ticketRaw', 'desc').limit(1).get()
+            .then( snapshot => {
+   
+               if (snapshot.empty) {
+                  
+                  ticketColl.doc(`${  + 1 + unixTimestamp }`).set({
+                     refNo:  1 + unixTimestamp,
+                     serviceUid: serviceUid,
+                     ticketNo: "ADM" + 1,
+                     ticketRaw: 1,
+                     ticketOwnerUid: ticketOwnner,
+                     timestamp:  unixTimestamp
+                   });
 
-             await db.collection('products').doc('/' + req.body.id + '/')
-             .create({
-                 name: req.body.name,
-                 description: req.body.description,
-                 price: req.body.price
-             })
+                   
+               } else {
 
-             return res.status(200).send();
+                  snapshot.forEach(doc => {
+                     data = doc.data();
+
+                     let ticketRaw1 = data.ticketRaw + 1;
+                     let refNo ="ADM" + ticketRaw1 + unixTimestamp;
+                     let ticketFinal = "ADM" + ticketRaw1;
+                     ticketColl.doc(`${refNo}`).set({
+                        refNo: refNo,
+                        serviceUid: serviceUid,
+                        ticketNo: ticketFinal,
+                        ticketRaw: ticketRaw1,  
+                        ticketOwnerUid: ticketOwnner,
+                        timestamp:  unixTimestamp
+                   });
+                   });
+                }
+            });
+             
+            return res.status(200).send();
+
           }
           catch (error)
           {
