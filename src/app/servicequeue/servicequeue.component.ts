@@ -29,15 +29,7 @@ export class ServicequeueComponent implements OnInit {
     
   }
 
-  injecTicket(value){
-    this.ticket.injecTicket(value)
-    .then(res => {
-      console.log(res)
-    }, err => {
-      console.log(err)
-    })
-  }
-  
+
 
 
    
