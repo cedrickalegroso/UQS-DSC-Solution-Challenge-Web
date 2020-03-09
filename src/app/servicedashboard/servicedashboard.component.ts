@@ -42,6 +42,10 @@ export class ServicedashboardComponent implements OnInit {
     });
 
   }
+
+  test(){
+    this.ticket.nextTicket();
+  }
   
   ticketDone(ticket){
     this.ticket.ticketDone(ticket)
