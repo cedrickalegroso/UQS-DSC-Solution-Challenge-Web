@@ -34,8 +34,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
-
+import { TellerAuthComponent } from './teller-auth/teller-auth.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     LoginServiceComponent,
     ServicedashboardComponent,
     SnackbarComponent,
-    ServicequeueComponent
+    ServicequeueComponent,
+    TellerAuthComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatInputModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [AngularFireStorage],
   bootstrap: [AppComponent],

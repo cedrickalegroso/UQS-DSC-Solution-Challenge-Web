@@ -40,11 +40,12 @@ export class ServicedashboardComponent implements OnInit {
      this.TicketInjectForm = this._formBuilder.group({
       ticketNo: ['', Validators.required],
     });
-
+   
+     this.test();
   }
 
   test(){
-    this.ticket.nextTicket();
+    this.ticket.countActiveTicket();
   }
   
   ticketDone(ticket){

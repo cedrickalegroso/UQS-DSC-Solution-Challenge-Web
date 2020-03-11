@@ -15,7 +15,7 @@ export class TicketsService {
   private TicketsCollection: AngularFirestoreCollection<Ticket>;
   tickets$: Observable<Ticket[]>;
   latestTicket$;
-  id;
+  activeTickets$;
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -54,6 +54,37 @@ export class TicketsService {
           ticketStatus: 0,
           timestampDone: unixTimestamp
           });   
+          });
+        }
+      }
+    )
+  }
+
+  async countActiveTicket(){
+   let data;
+   let service = firebase.auth().currentUser;
+   let ticketColl = this.afs.collection('tickets', ref => ref.where('serviceUid', '==', service.uid).where('ticketStatus', '==', 1));
+   ticketColl.get().toPromise().then(
+     snap => {
+       console.log(snap.size);
+       return this.activeTickets$ = snap.size;
+     }
+   )
+  }
+
+
+  async nextTicket(){
+    let data
+    let service = firebase.auth().currentUser
+    let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).orderBy('ticketRaw', 'asc').limit(1))
+    ticketColl.get().toPromise().then(
+      function(querySnaphot) {
+        if(querySnaphot.empty) {
+          console.log("EMPTY");
+        } else {
+          querySnaphot.forEach( async function(doc) {
+            data = doc.data();
+            console.log(data.ticketNo);
           });
         }
       }
@@ -144,23 +175,7 @@ export class TicketsService {
   }   
 
 
-  async nextTicket(){
-    let data
-    let service = firebase.auth().currentUser
-    let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).orderBy('ticketRaw', 'asc').limit(1))
-    ticketColl.get().toPromise().then(
-      function(querySnaphot) {
-        if(querySnaphot.empty) {
-          console.log("EMPTY");
-        } else {
-          querySnaphot.forEach( async function(doc) {
-            data = doc.data();
-            console.log(data.ticketNo);
-          });
-        }
-      }
-    )
-  }
+ 
 
 }
 
