@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ServiceService } from '../services/service.service';
 import * as firebase from 'firebase/app';
@@ -21,6 +22,7 @@ export class ServicedashboardComponent implements OnInit {
   constructor(
     public service: ServiceService,
     private ticket: TicketsService,
+    public dialog: MatDialog,
     private _formBuilder: FormBuilder,
     private readonly afs: AngularFirestore,
     private afStorage: AngularFireStorage,
@@ -41,7 +43,19 @@ export class ServicedashboardComponent implements OnInit {
       ticketNo: ['', Validators.required],
     });
    
-     this.test();
+    
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SelectTellerNoDialog, {
+      width: '250px',
+      height: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     
+    });
   }
 
   test(){
@@ -72,4 +86,53 @@ export class ServicedashboardComponent implements OnInit {
     this.service.serviceSignOut();
   }
 
+}
+
+@Component({
+  selector: 'app-servicedashboard',
+  templateUrl: 'selectTellerDialog.html',
+})
+export class SelectTellerNoDialog {
+
+  mode: ProgressSpinnerMode = 'indeterminate';
+
+  constructor(
+    public dialogRef: MatDialogRef<SelectTellerNoDialog>,
+    public dialog: MatDialog,
+    private ticket: TicketsService,
+    ) {
+
+    }
+
+  tellers: any[] = [
+    { id: 1, name: 'Teller 1' },
+    { id: 2, name: 'Teller 2' },
+    { id: 3, name: 'Teller 3' },
+    { id: 4, name: 'Teller 4' },
+    { id: 5, name: 'Teller 5' },
+    { id: 6, name: 'Teller 6' }
+  ];
+  selected: number ;
+
+
+  nextTicket(selected){
+    this.ticket.nextTicket(selected)
+    .then(res => {
+      console.log(res)
+    }, err => {
+      console.log(err)
+    })
+  }
+
+
+  selectTeller(id: number) {
+    this.selected = id
+ 
+  }
+
+
+  close(teller){
+    this.dialogRef.close(teller);
+    console.log(teller.id)
+  }
 }

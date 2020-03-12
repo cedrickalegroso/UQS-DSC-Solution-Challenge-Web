@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HomenavbarComponent } from './homenavbar/homenavbar.component';
+
 import { RegisterServiceComponent, DialogUploadPhoto } from './register-service/register-service.component';
 import { AppAuthComponent } from './app-auth/app-auth.component';
 
@@ -20,7 +21,7 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServicedashboardComponent } from './servicedashboard/servicedashboard.component';
+import { ServicedashboardComponent, SelectTellerNoDialog } from './servicedashboard/servicedashboard.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ServicequeueComponent } from './servicequeue/servicequeue.component';
 import { LoginServiceComponent } from './login-service/login-service.component';
@@ -37,6 +38,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TellerAuthComponent } from './teller-auth/teller-auth.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import {MatSelectModule} from '@angular/material/select';
     AppAuthComponent,
     SuperAdminComponent,
     DialogUploadPhoto,
+    SelectTellerNoDialog,
     LoginServiceComponent,
     ServicedashboardComponent,
     SnackbarComponent,
@@ -70,10 +74,11 @@ import {MatSelectModule} from '@angular/material/select';
     MatDialogModule,
     MatSnackBarModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [AngularFireStorage],
   bootstrap: [AppComponent],
-  entryComponents: [DialogUploadPhoto, SnackbarComponent],
+  entryComponents: [DialogUploadPhoto, SnackbarComponent, SelectTellerNoDialog],
 })
 export class AppModule { }

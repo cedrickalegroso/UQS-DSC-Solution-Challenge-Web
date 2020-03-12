@@ -1,41 +1,30 @@
 
 <div *ngIf="service.service$ | async as service; else load " >
  
-    <body id="livequeuewrapper">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-md-9">
+  <mat-drawer-container class="example-container">
+    
+    <mat-drawer-content>
+      
+      <img  style="width: 64px;" class="img-profile rounded-circle" [src]="service.photoUrl">
+      <span class="serviceName"> {{ service.displayName }} </span>
 
-                  </div>
-                  <div class="col-md-3">
+    </mat-drawer-content>
 
-        <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ service.displayName }}</span>
+    <mat-drawer mode="side" position="end" opened>
+    
+       <h1 class="display-4 text-white text-center mt-3"> Live Queue </h1>
+       <br />
+      <div *ngFor="let ticket of ticket.tickets$ | async " style="padding: 10px;">
+        <mat-card>
+          <h4 class="text-primary" > Cashier 1</h4>
+          <h1 class="text-primary"> {{ ticket.ticketNo }}</h1>
+        </mat-card>
+  
+      </div>
+     
+    </mat-drawer>
+  </mat-drawer-container>
 
-          <h1 class="display-4"> Queue </h1>
-
-                      <div class="card-body">
-                        <div class="chart-area">
-                          <div *ngFor="let ticket of ticket.tickets$ | async ">
-                           
-                            <div class="container rounded ticket-wrapper mx-auto p-3">
-                                <h4 class=""> Cashier 1</h4>
-                                <h1 class=""> {{ ticket.ticketNo }}</h1>
-                            </div>
-
-                          </div> 
-            
-                          <ng-template #noticket>
-                            <p> no tix </p>
-                          </ng-template>
-                        </div>
-                      </div>
-
-                          
-
-                </div>
-              </div>
-          </div>
-    </body>
 
   </div>
 

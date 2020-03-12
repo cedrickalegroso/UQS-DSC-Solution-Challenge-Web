@@ -15,7 +15,8 @@ import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 })
 export class ServicequeueComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
-
+  time = new Date ();
+  timer;
   constructor(
     private service: ServiceService,
     private ticket: TicketsService,
@@ -26,7 +27,9 @@ export class ServicequeueComponent implements OnInit {
 
   ngOnInit() {
 
-    
+    this.timer = setInterval( () => {
+      this.time = new Date();
+  }, 1000 );
   }
 
 

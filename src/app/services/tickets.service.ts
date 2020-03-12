@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
+import { Component, OnInit } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,13 @@ export class TicketsService {
   tickets$: Observable<Ticket[]>;
   latestTicket$;
   activeTickets$;
+  nextTicket$: Observable<Ticket[]>;
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
-  ) { 
+  )
+  { 
     this.tickets$ = this.afAuth.authState.pipe(
       switchMap( user => {
         if (user) {
@@ -37,6 +40,15 @@ export class TicketsService {
         }
       })
     );
+
+
+  }
+
+  ngOnInit() {
+   
+
+
+
   }
 
   async ticketDone(ticket){
@@ -73,10 +85,10 @@ export class TicketsService {
   }
 
 
-  async nextTicket(){
+  async nextTicket(selected){
     let data
     let service = firebase.auth().currentUser
-    let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).orderBy('ticketRaw', 'asc').limit(1))
+    let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).where('teller', '==', 0).orderBy('ticketRaw', 'asc').limit(1))
     ticketColl.get().toPromise().then(
       function(querySnaphot) {
         if(querySnaphot.empty) {
@@ -85,6 +97,10 @@ export class TicketsService {
           querySnaphot.forEach( async function(doc) {
             data = doc.data();
             console.log(data.ticketNo);
+            ticketColl.doc(`${data.refNo}`).update({
+              teller: selected
+            });
+            return this.nextTicket$ = this.TicketsCollection.valueChanges();
           });
         }
       }

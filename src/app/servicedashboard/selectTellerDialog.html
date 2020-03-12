@@ -1,0 +1,63 @@
+
+
+ <mat-card-header>
+    <p>Select a teller no.</p>
+    <mat-form-field>
+      <select matNativeControl required (change)="selectTeller($event.target.value)">
+      [(ngModel)] ="selected">
+      <option [value]="teller.id" (click)="close(teller)" *ngFor="let teller of tellers">{{teller.name}}</option>
+    </select>
+    </mat-form-field>
+  </mat-card-header>
+ 
+  <mat-card-content>
+   
+
+    <div *ngIf="selected; else loading">
+
+        <div *ngIf="ticket.nextTicket$ | async as tix " style="padding: 10px;">
+            <mat-card>
+              <h4 class="text-primary" > Cashier 1</h4>
+              <h1 class="text-primary"> {{ tix.ticketNo }}</h1>
+            </mat-card>
+      
+          </div>
+        
+        
+          <mat-card-actions>
+            <button mat-button>DONE</button>
+            <button  (click)="nextTicket(selected)">NEXT</button>
+          </mat-card-actions>
+    
+    </div>
+    
+    <ng-template #loading>
+        
+        <div class="container text-center loadStyle">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-progress-spinner 
+                class="example-margin "
+                [color]="color"
+                [mode]="mode"
+                [value]="value">
+            </mat-progress-spinner>
+            <p> Please select a Teller number first</p>
+              </div>
+            </div>
+          </div>
+       
+          
+    
+    </ng-template>
+
+
+  </mat-card-content>
+
+
+
+
+
+
+
+

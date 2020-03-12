@@ -33,6 +33,32 @@ let transporter = nodemailer.createTransport({
    }
 });
 
+// Routes
+app.get('/api/createTicket:dest', (req, res) => {
+
+   const dest = req.query.dest;
+
+   const mailOptions = {
+      from: 'Your Account Name <yourgmailaccount@gmail.com>', // Something like: Jane Doe <janedoe@gmail.com>
+      to: dest,
+      subject: 'I\'M A PICKLE!!!', // email subject
+      html: `<p style="font-size: 16px;">Pickle Riiiiiiiiiiiiiiiick!!</p>
+          <br />
+          <img src="https://images.prod.meredith.com/product/fc8754735c8a9b4aebb786278e7265a5/1538025388228/l/rick-and-morty-pickle-rick-sticker" />
+      ` // email content in HTML
+  };
+
+   // returning result
+   return transporter.sendMail(mailOptions, (erro, info) => {
+      if(erro){
+          return res.send(erro.toString());
+      }
+      return res.send('Sended');
+  });
+
+});
+
+
 exports.sendMail = functions.https.onRequest((req, res) => {
    cors(req, res, () => {
      
@@ -89,12 +115,13 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
             .then( snapshot => {
                if (snapshot.empty) {                
                   ticketColl.doc(`${ serviceData + 1 + unixTimestamp }`).set({
-                     refNo:  1 + unixTimestamp,
+                     refNo: serviceData +  1 + unixTimestamp,
                      serviceUid: serviceUid,
                      ticketNo: serviceData + 1,
                      ticketRaw: 1,
                      ticketOwnerUid: ticketOwnner,
                      timestamp:  unixTimestamp,
+                     teller: 0,
                      ticketStatus: 1
                    });                  
                } else {
@@ -110,6 +137,7 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
                         ticketRaw: ticketRaw1,  
                         ticketOwnerUid: ticketOwnner,
                         timestamp:  unixTimestamp,
+                        teller: 0,
                         ticketStatus: 1
                    });
                    });
