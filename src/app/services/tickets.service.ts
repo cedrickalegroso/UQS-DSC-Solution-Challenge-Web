@@ -17,6 +17,7 @@ export class TicketsService {
   tickets$: Observable<Ticket[]>;
   latestTicket$;
   activeTickets$;
+  selected;
   nextTicket$: Observable<Ticket[]>;
   constructor(
     private afAuth: AngularFireAuth,
@@ -31,6 +32,7 @@ export class TicketsService {
              return ref 
                 .where('serviceUid', '==', user.uid)
                 .where('ticketStatus', '==', 1 )
+                .where('ticketStatus', '>', 0 )
                 .limit(5)
           });
           
@@ -40,6 +42,7 @@ export class TicketsService {
         }
       })
     );
+
 
 
   }
@@ -84,15 +87,18 @@ export class TicketsService {
    )
   }
 
+  
 
   async nextTicket(selected){
-    let data
+    let data;
     let service = firebase.auth().currentUser
+
+
     let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).where('teller', '==', 0).orderBy('ticketRaw', 'asc').limit(1))
     ticketColl.get().toPromise().then(
       function(querySnaphot) {
         if(querySnaphot.empty) {
-          console.log("EMPTY");
+          console.log("EMPTY");   
         } else {
           querySnaphot.forEach( async function(doc) {
             data = doc.data();
@@ -100,12 +106,30 @@ export class TicketsService {
             ticketColl.doc(`${data.refNo}`).update({
               teller: selected
             });
-            return this.nextTicket$ = this.TicketsCollection.valueChanges();
           });
         }
       }
-    )
-  }
+    ) 
+
+    this.nextTicket$ = ticketColl.get().pipe(
+      switchMap( user => {
+        if (user) {
+          this.TicketsCollection = this.afs.collection<Ticket>('tickets', ref => {
+             return ref 
+                .where('serviceUid', '==', service.uid)
+                .where('ticketStatus', '==', 1 )
+                .where('teller', '==', selected )
+                .limit(1)
+          });
+        
+         return  this.nextTicket$ = this.TicketsCollection.valueChanges();
+
+        } else {
+          return of(null);
+        }
+      })
+    );
+  }  
 
 
   async autoIdTicket() {

@@ -1,0 +1,95 @@
+<style>
+
+.example-full-width{
+    width: 100%;
+}
+
+.img-profileDialog{
+    width: 74px;
+}
+
+.profileDialogWrapper{
+    text-align: center;
+}
+
+
+
+
+</style>
+
+
+<div *ngIf="service.service$ | async as service; else load " class="profileDialogWrapper" >
+    <p> Account Settings </p>
+
+ 
+
+    <img class="img-profileDialog rounded-circle"   [src]="service.photoUrl">
+   <span>
+    <button mat-raised-button (click)="uploadPhotoDialog()" color="accent">Upload Photo</button>
+   </span>
+   
+    <br />
+
+    <br />
+
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Personal data
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field class="example-full-width">
+                <mat-label>Display Name</mat-label>
+                <input matInput placeholder="{{ service.displayName }}" >
+              </mat-form-field>
+      
+      
+              <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input matInput placeholder="{{ service.email }}" >
+                </mat-form-field>
+      
+      
+                <mat-form-field class="example-full-width">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput placeholder="{{ service.email }}" >
+                </mat-form-field>
+
+                <button mat-raised-button color="accent">Submit</button>
+
+        </mat-expansion-panel>      
+    </mat-accordion>
+
+        <br/>
+
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Security
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field class="example-full-width">
+                    <mat-label>New Password</mat-label>
+                    <input type="password" matInput placeholder="A verry Secure password" >
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                  <mat-label>Re-type new Password</mat-label>
+                  <input type="password" matInput placeholder="A verry Secure password" >
+                </mat-form-field>
+          
+                <button mat-raised-button color="accent">Submit</button>
+            </mat-expansion-panel>      
+        </mat-accordion>
+    
+  
+
+
+
+</div>
+
+<ng-template #load>
+    <p> ERROR </p>
+</ng-template>

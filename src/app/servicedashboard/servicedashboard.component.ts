@@ -48,14 +48,22 @@ export class ServicedashboardComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SelectTellerNoDialog, {
-      width: '250px',
-      height: '400px'
+      width: '400px',
+      height: '600px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-     
+   
+  }
+
+
+  
+  openProfileDialog(): void {
+    const dialogRef = this.dialog.open(profileDialog, {
+      width: '400px',
+      height: '600px'
     });
+
+   
   }
 
   test(){
@@ -135,4 +143,94 @@ export class SelectTellerNoDialog {
     this.dialogRef.close(teller);
     console.log(teller.id)
   }
+}
+
+
+@Component({
+  selector: 'app-servicedashboard',
+  templateUrl: 'profileDialog.html',
+})
+export class profileDialog {
+
+  mode: ProgressSpinnerMode = 'indeterminate';
+  editMode = false;
+  constructor(
+    public service: ServiceService,
+    private ticket: TicketsService,
+    public dialog: MatDialog,
+    private _formBuilder: FormBuilder,
+    private readonly afs: AngularFirestore,
+    private afStorage: AngularFireStorage,
+    ) { }
+
+    ngOnInit() {
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log(user.uid);
+        } else {
+          console.log("0");
+        }
+      });
+
+    }    
+ 
+
+    uploadPhotoDialog(): void {
+      const dialogRef = this.dialog.open(uploadProdilePicture, {
+        width: '400px',
+        height: '600px'
+      });
+  
+     
+    }
+
+}
+
+
+@Component({
+  selector: 'app-servicedashboard',
+  templateUrl: 'uploadProfilePicture.html',
+})
+export class uploadProdilePicture {
+
+  mode: ProgressSpinnerMode = 'indeterminate';
+  uploadPhotoForm: FormGroup;
+  constructor(
+    public service: ServiceService,
+    private ticket: TicketsService,
+    public dialog: MatDialog,
+    private _formBuilder: FormBuilder,
+    private readonly afs: AngularFirestore,
+    private afStorage: AngularFireStorage,
+    ) { 
+      this.uploadPhotoForm = this._formBuilder.group({
+        file: ['', Validators.required],
+      });
+    }
+
+    ngOnInit() {
+
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log(user.uid);
+        } else {
+          console.log("0");
+        }
+      });
+
+    }    
+
+    uploadPhoto(event){
+      // call this function
+      this.service.updatePhoto(event)
+      // get the res and err
+      .then( res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      })
+    }
+ 
+
 }

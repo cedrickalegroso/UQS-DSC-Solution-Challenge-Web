@@ -21,7 +21,7 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServicedashboardComponent, SelectTellerNoDialog } from './servicedashboard/servicedashboard.component';
+import { ServicedashboardComponent, SelectTellerNoDialog, profileDialog, uploadProdilePicture } from './servicedashboard/servicedashboard.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ServicequeueComponent } from './servicequeue/servicequeue.component';
 import { LoginServiceComponent } from './login-service/login-service.component';
@@ -39,6 +39,8 @@ import { TellerAuthComponent } from './teller-auth/teller-auth.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 import { from } from 'rxjs';
 
 @NgModule({
@@ -55,7 +57,9 @@ import { from } from 'rxjs';
     ServicedashboardComponent,
     SnackbarComponent,
     ServicequeueComponent,
-    TellerAuthComponent
+    TellerAuthComponent,
+    profileDialog,
+    uploadProdilePicture
   ],
   imports: [
     BrowserModule,
@@ -75,10 +79,11 @@ import { from } from 'rxjs';
     MatSnackBarModule,
     MatCardModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule
   ],
   providers: [AngularFireStorage],
   bootstrap: [AppComponent],
-  entryComponents: [DialogUploadPhoto, SnackbarComponent, SelectTellerNoDialog],
+  entryComponents: [DialogUploadPhoto, SnackbarComponent, SelectTellerNoDialog, profileDialog, uploadProdilePicture],
 })
 export class AppModule { }

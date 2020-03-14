@@ -15,13 +15,25 @@
 
     <div *ngIf="selected; else loading">
 
-        <div *ngIf="ticket.nextTicket$ | async as tix " style="padding: 10px;">
-            <mat-card>
-              <h4 class="text-primary" > Cashier 1</h4>
-              <h1 class="text-primary"> {{ tix.ticketNo }}</h1>
-            </mat-card>
-      
+      <div *ngIf="ticket.nextTicket$; else notix">
+        <div *ngFor="let ticket of ticket.nextTicket$ | async ">
+          <div class="row">
+            <div class="col-md-6">
+              <p style="color: black">  {{ ticket.ticketNo }} </p>
+            </div>
+
+            <div class="col-md-6">
+              <button (click)="ticketDone(ticket)" class="btn btn-success" > Done </button>
+            </div>
           </div>
+         
+        
+        </div> 
+      </div>
+
+          <ng-template #notix>
+            <p> notix </p>
+          </ng-template>
         
         
           <mat-card-actions>

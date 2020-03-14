@@ -1,0 +1,44 @@
+<style>
+
+    .example-full-width{
+        width: 100%;
+    }
+    
+    .img-profileDialog{
+        width: 124px;
+    }
+    
+    .profileDialogWrapper{
+        text-align: center;
+    }
+    
+    
+    
+    
+    </style>
+
+
+<div class="profileDialogWrapper">
+
+    
+<div *ngIf="service.service$ | async as service; else load " class="profileDialogWrapper" >
+
+    <p> Upload a photo </p>
+
+    <br>
+    <br>
+
+    <img class="img-profileDialog rounded-circle"   [src]="service.photoUrl">
+
+    <br>
+    <br>
+
+    <form [formGroup]="uploadPhotoForm" style="height: 100%; position: relative; top: 30px;">
+        <input type="file" (change)="uploadPhoto($event)" accept=".png,.jpg" />
+       
+        </form>
+
+</div>
+
+</div>
+    
