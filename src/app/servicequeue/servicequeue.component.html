@@ -14,9 +14,9 @@
     
        <h1 class="display-4 text-white text-center mt-3"> Live Queue </h1>
        <br />
-      <div *ngFor="let ticket of ticket.tickets$ | async " style="padding: 10px;">
+      <div *ngFor="let ticket of ticket.liveTickets$ | async " style="padding: 10px;">
         <mat-card>
-          <h4 class="text-primary" > Cashier 1</h4>
+          <h4 class="text-primary" > Teller {{ ticket.teller }}</h4>
           <h1 class="text-primary"> {{ ticket.ticketNo }}</h1>
         </mat-card>
   

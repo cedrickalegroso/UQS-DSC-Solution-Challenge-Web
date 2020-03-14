@@ -16,7 +16,7 @@ export class TicketsService {
   private TicketsCollection: AngularFirestoreCollection<Ticket>;
   tickets$: Observable<Ticket[]>;
   latestTicket$;
-  activeTickets$;
+  liveTickets$: Observable<Ticket[]>;
   selected;
   nextTicket$: Observable<Ticket[]>;
   constructor(
@@ -25,6 +25,13 @@ export class TicketsService {
     private router: Router,
   )
   { 
+
+    /* Tickets Status meanings 
+      0 - Done
+      1 - active but not shown in live queues since it doesnt have any teller
+      2 - shown on live queues with a teller
+    */
+
     this.tickets$ = this.afAuth.authState.pipe(
       switchMap( user => {
         if (user) {
@@ -32,11 +39,27 @@ export class TicketsService {
              return ref 
                 .where('serviceUid', '==', user.uid)
                 .where('ticketStatus', '==', 1 )
-                .where('ticketStatus', '>', 0 )
                 .limit(5)
           });
           
          return  this.tickets$ = this.TicketsCollection.valueChanges();
+        } else {
+          return of(null);
+        }
+      })
+    );
+
+    this.liveTickets$ = this.afAuth.authState.pipe(
+      switchMap( user => {
+        if (user) {
+          this.TicketsCollection = afs.collection<Ticket>('tickets', ref => {
+             return ref 
+                .where('serviceUid', '==', user.uid)
+                .where('ticketStatus', '==', 2 )
+                .limit(5)
+          });
+          
+         return  this.liveTickets$ = this.TicketsCollection.valueChanges();
         } else {
           return of(null);
         }
@@ -75,17 +98,7 @@ export class TicketsService {
     )
   }
 
-  async countActiveTicket(){
-   let data;
-   let service = firebase.auth().currentUser;
-   let ticketColl = this.afs.collection('tickets', ref => ref.where('serviceUid', '==', service.uid).where('ticketStatus', '==', 1));
-   ticketColl.get().toPromise().then(
-     snap => {
-       console.log(snap.size);
-       return this.activeTickets$ = snap.size;
-     }
-   )
-  }
+ 
 
   
 
@@ -104,7 +117,8 @@ export class TicketsService {
             data = doc.data();
             console.log(data.ticketNo);
             ticketColl.doc(`${data.refNo}`).update({
-              teller: selected
+              teller: selected,
+              ticketStatus: 2
             });
           });
         }
@@ -117,7 +131,7 @@ export class TicketsService {
           this.TicketsCollection = this.afs.collection<Ticket>('tickets', ref => {
              return ref 
                 .where('serviceUid', '==', service.uid)
-                .where('ticketStatus', '==', 1 )
+                .where('ticketStatus', '==', 2 )
                 .where('teller', '==', selected )
                 .limit(1)
           });

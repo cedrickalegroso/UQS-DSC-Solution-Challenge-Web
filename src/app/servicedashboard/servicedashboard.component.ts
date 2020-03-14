@@ -66,9 +66,7 @@ export class ServicedashboardComponent implements OnInit {
    
   }
 
-  test(){
-    this.ticket.countActiveTicket();
-  }
+
   
   ticketDone(ticket){
     this.ticket.ticketDone(ticket)
@@ -137,6 +135,16 @@ export class SelectTellerNoDialog {
     this.selected = id
  
   }
+
+  ticketDone(ticket){
+    this.ticket.ticketDone(ticket)
+    .then(res => {
+      console.log(res)
+    }, err => {
+      console.log(err)
+    })
+  }
+
 
 
   close(teller){
