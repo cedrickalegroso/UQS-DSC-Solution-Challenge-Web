@@ -39,25 +39,29 @@
                     Personal data
                 </mat-panel-title>
             </mat-expansion-panel-header>
+            <form [formGroup]="dataUpdate" class="loginForm" >
+           
             <mat-form-field class="example-full-width">
                 <mat-label>Display Name</mat-label>
-                <input matInput placeholder="{{ service.displayName }}" >
+                <input matInput formControlName="displayName" type="text" placeholder="{{ service.displayName }}" >
               </mat-form-field>
+
+   
       
       
               <mat-form-field class="example-full-width">
                   <mat-label>Email</mat-label>
-                  <input matInput placeholder="{{ service.email }}" >
+                  <input matInput formControlName="email" type="email" placeholder="{{ service.email }}" >
                 </mat-form-field>
       
       
                 <mat-form-field class="example-full-width">
                   <mat-label>Phone Number</mat-label>
-                  <input matInput placeholder="{{ service.email }}" >
+                  <input matInput formControlName="phoneNumber" type="text"  placeholder="{{ service.email }}" >
                 </mat-form-field>
-
-                <button mat-raised-button color="accent">Submit</button>
-
+                  <a  (click)="updateData(dataUpdate.value)" > test </a>
+                <button mat-raised-button (click)="updateData(dataUpdate.value)" color="accent">Submit</button>
+            </form>
         </mat-expansion-panel>      
     </mat-accordion>
 

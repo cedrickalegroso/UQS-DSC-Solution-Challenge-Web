@@ -162,6 +162,7 @@ export class profileDialog {
 
   mode: ProgressSpinnerMode = 'indeterminate';
   editMode = false;
+  dataUpdate: FormGroup;
   constructor(
     public service: ServiceService,
     private ticket: TicketsService,
@@ -181,8 +182,20 @@ export class profileDialog {
         }
       });
 
+      this.dataUpdate = this._formBuilder.group({
+        displayName: ['', Validators.required],
+        email: ['', Validators.required],
+        phoneNumber: ['', Validators.required]
+      });
+
     }    
  
+
+    updateData(value){
+      console.log(value.displayName);
+      console.log(value.email);
+      console.log(value.phoneNumber);
+    }
 
     uploadPhotoDialog(): void {
       const dialogRef = this.dialog.open(uploadProdilePicture, {

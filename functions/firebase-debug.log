@@ -31,3 +31,53 @@
 [debug] [2020-03-15T13:47:25.782Z] [worker-pool] submitWork(triggerId=)
 [debug] [2020-03-15T13:47:25.783Z] [worker-~diagnostic~-9db5bd1b-17d9-492d-b48a-d3e2424cad95]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\7504
 [debug] [2020-03-15T13:47:25.783Z] [worker-~diagnostic~-9db5bd1b-17d9-492d-b48a-d3e2424cad95]: BUSY
+[debug] [2020-03-15T13:47:26.098Z] [runtime-status] [7504] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"13.11.0"}
+[debug] [2020-03-15T13:47:26.098Z] [runtime-status] [7504] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-03-15T13:47:26.101Z] [runtime-status] [7504] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-15T13:47:26.102Z] [runtime-status] [7504] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-15T13:47:26.103Z] [runtime-status] [7504] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[info] +  functions[app]: http function initialized (http://localhost:5001/theuqs-52673/us-central1/app).
+[debug] [2020-03-15T13:47:26.651Z] [worker-~diagnostic~-9db5bd1b-17d9-492d-b48a-d3e2424cad95]: IDLE
+[debug] [2020-03-15T13:49:43.724Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-15T13:49:43.724Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-15T13:49:43.724Z] Accepted request POST /theuqs-52673/us-central1/app/api/createTicket:sid:uid --> app
+[debug] [2020-03-15T13:49:43.729Z] [worker-pool] addWorker(app)
+[debug] [2020-03-15T13:49:43.729Z] [worker-pool] Adding worker with key app, total=1
+[debug] [2020-03-15T13:49:43.729Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-15T13:49:43.729Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\1516
+[debug] [2020-03-15T13:49:43.729Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: BUSY
+[debug] [2020-03-15T13:49:44.085Z] [runtime-status] [1516] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"13.11.0"}
+[debug] [2020-03-15T13:49:44.087Z] [runtime-status] [1516] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-03-15T13:49:44.090Z] [runtime-status] [1516] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-15T13:49:44.091Z] [runtime-status] [1516] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-15T13:49:44.092Z] [runtime-status] [1516] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-15T13:49:44.745Z] [runtime-status] [1516] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-15T13:49:44.745Z] [runtime-status] [1516] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-15T13:49:44.746Z] [runtime-status] [1516] Running app in mode HTTPS
+[debug] [2020-03-15T13:49:44.748Z] [runtime-status] [1516] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\1516
+[debug] [2020-03-15T13:49:44.752Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-15T13:49:44.770Z] [runtime-status] [1516] Ephemeral server handling POST request
+[info] >  PShgL9TBqdVIcvDJ4CBbHJs1U1F3
+[debug] [2020-03-15T13:49:44.778Z] [runtime-status] [1516] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-15T13:49:44.899Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: IDLE
+[debug] [2020-03-15T13:49:44.899Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-15T13:51:58.482Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-15T13:51:58.482Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-15T13:51:58.482Z] Accepted request POST /theuqs-52673/us-central1/app/api/createTicket:sid:uid --> app
+[debug] [2020-03-15T13:51:58.482Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-15T13:51:58.482Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\1516
+[debug] [2020-03-15T13:51:58.482Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: BUSY
+[debug] [2020-03-15T13:51:58.483Z] [runtime-status] [1516] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-15T13:51:58.483Z] [runtime-status] [1516] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-15T13:51:58.484Z] [runtime-status] [1516] Running app in mode HTTPS
+[debug] [2020-03-15T13:51:58.484Z] [runtime-status] [1516] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\1516
+[debug] [2020-03-15T13:51:58.485Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-15T13:51:58.488Z] [runtime-status] [1516] Ephemeral server handling POST request
+[info] >  PShgL9TBqdVIcvDJ4CBbHJs1U1F3
+[debug] [2020-03-15T13:51:58.494Z] [runtime-status] [1516] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-15T13:51:58.495Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: IDLE
+[debug] [2020-03-15T13:51:58.495Z] [work-queue] {"queueLength":0,"workRunningCount":0}
