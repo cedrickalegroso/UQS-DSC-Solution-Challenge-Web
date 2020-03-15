@@ -81,3 +81,6 @@
 [info] i  functions: Finished "app" in ~1s
 [debug] [2020-03-15T13:51:58.495Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: IDLE
 [debug] [2020-03-15T13:51:58.495Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-15T15:12:57.630Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: exited
+[debug] [2020-03-15T15:12:57.632Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: FINISHED
+[debug] [2020-03-15T15:12:57.644Z] [worker-~diagnostic~-9db5bd1b-17d9-492d-b48a-d3e2424cad95]: exited

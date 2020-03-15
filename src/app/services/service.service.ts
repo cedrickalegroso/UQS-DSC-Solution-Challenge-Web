@@ -51,6 +51,8 @@ export class ServiceService {
     });
   }
 
+  
+
   // create service and add it to database
    async loginService(value) {
      await this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password) 
