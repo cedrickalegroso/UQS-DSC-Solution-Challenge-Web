@@ -192,9 +192,7 @@ export class profileDialog {
  
 
     updateData(value){
-      console.log(value.displayName);
-      console.log(value.email);
-      console.log(value.phoneNumber);
+      this.service.updateprofiledata
     }
 
     uploadPhotoDialog(): void {
