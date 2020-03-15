@@ -139,7 +139,22 @@ export class ServiceService {
           });      
         }
 
-   
+   async updateprofiledata(value) {
+     // get the user 
+    const user = firebase.auth().currentUser;
+    // check if ther is a user
+    if (!user){
+      // if there is no user 
+      return this.router.navigate(['/']); // redirect to home
+    } else {
+      // if there is a user update the data
+      this.afs.doc(`services/${user.uid}`).update({
+        displayName: value.displayName,
+        email: value.email,
+        phoneNumber: value.phoneNumber
+      })
+    };
+   }
 
         // 
 
