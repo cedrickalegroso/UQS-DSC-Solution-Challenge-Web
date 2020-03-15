@@ -192,7 +192,7 @@ export class profileDialog {
  
 
     updateData(value){
-      this.service.updateprofiledata
+      this.service.updateprofiledata(value)
     }
 
     uploadPhotoDialog(): void {
