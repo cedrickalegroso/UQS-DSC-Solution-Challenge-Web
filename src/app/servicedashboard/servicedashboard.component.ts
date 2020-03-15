@@ -163,6 +163,7 @@ export class profileDialog {
   mode: ProgressSpinnerMode = 'indeterminate';
   editMode = false;
   dataUpdate: FormGroup;
+  securityUpdateform: FormGroup;
   constructor(
     public service: ServiceService,
     private ticket: TicketsService,
@@ -187,12 +188,21 @@ export class profileDialog {
         email: ['', Validators.required],
         phoneNumber: ['', Validators.required]
       });
+      this.securityUpdateform = this._formBuilder.group({
+        newPassword: ['', Validators.required],
+        confirmPassword: ['', Validators.required]
+      });
 
     }    
  
 
     updateData(value){
       this.service.updateprofiledata(value)
+    }
+
+    securityUpdate(value){
+      console.log(value.newPassword)
+      console.log(value.confirmPassword)
     }
 
     uploadPhotoDialog(): void {
