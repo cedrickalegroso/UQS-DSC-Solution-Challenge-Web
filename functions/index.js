@@ -34,6 +34,7 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
             
           try
           {
+            
             let data;
             let serviceData;
             let serviceUid = req.body.sid;
@@ -53,7 +54,7 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
                return true;
             });
             let ticketColl = db.collection('tickets');
-            let queryticketColl = ticketColl.where('serviceUid', '==', 'PShgL9TBqdVIcvDJ4CBbHJs1U1F3').orderBy('ticketRaw', 'desc').limit(1).get()
+            let queryticketColl = ticketColl.where('serviceUid', '==', serviceUid).orderBy('ticketRaw', 'desc').limit(1).get()
             .then( snapshot => {
                if (snapshot.empty) {                
                   ticketColl.doc(`${ serviceData + 1 + unixTimestamp }`).set({
@@ -95,6 +96,67 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
           }         
     })();
  });
+
+
+ // Create v2 
+
+ app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
+    
+   (async() => {
+           
+         try
+         {
+           
+           let data;
+           let abbreviation = req.body.abb;
+           let serviceUid = req.body.sid;
+           let ticketOwnner = req.body.uid;
+           console.log(serviceUid);
+           let unixTimestamp = Math.floor(Date.now() / 100);
+           
+           let ticketColl = db.collection('tickets');
+           let queryticketColl = ticketColl.where('serviceUid', '==', serviceUid).orderBy('ticketRaw', 'desc').limit(1).get()
+           .then( snapshot => {
+              if (snapshot.empty) {                
+                 ticketColl.doc(`${ abbreviation + 1 + unixTimestamp }`).set({
+                    refNo:  abbreviation + 1 + unixTimestamp,
+                    serviceUid: serviceUid,
+                    ticketNo:  1,
+                    ticketRaw: 1,
+                    ticketOwnerUid: ticketOwnner,
+                    timestamp:  unixTimestamp,
+                    teller: 0,
+                    ticketStatus: 1
+                  });                  
+              } else {
+                 snapshot.forEach(doc => {
+                    data = doc.data();
+                    let ticketRaw1 = data.ticketRaw + 1;
+                    let refNo =  abbreviation + ticketRaw1 + unixTimestamp;
+                    let ticketFinal = abbreviation + ticketRaw1;
+                    ticketColl.doc(`${refNo}`).set({
+                       refNo: refNo,
+                       serviceUid: serviceUid,
+                       ticketNo: ticketFinal,
+                       ticketRaw: ticketRaw1,  
+                       ticketOwnerUid: ticketOwnner,
+                       timestamp:  unixTimestamp,
+                       teller: 0,
+                       ticketStatus: 1
+                  });
+                  });
+               }
+               return true;
+           });           
+           return res.status(200).send();
+         }
+         catch (error)
+         {
+            console.log(error)
+            return res.status(500).send(error);    
+         }         
+   })();
+});
 
 
  // ticketDOne

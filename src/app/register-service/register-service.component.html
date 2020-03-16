@@ -47,7 +47,10 @@
             
                                   <div class="buttonCenter">
                                     <button mat-flat-button class="loginButton" color="accent" matStepperNext (click)="tryRegister(firstFormGroup.value)" > Register </button>
-                                    <button mat-flat-button class="loginButton" color="accent" matStepperNext (click)="testSnack()" > test </button>
+                                    <br />
+                                  <!--  <p class="text-center"> Supported providers </p>
+                                    
+                                    <button mat-flat-button class="loginButton" color="accent"  (click)="tryFacebookAuth(stepper)" > Facebook Login </button> -->
                                 </div> 
                
                                   
@@ -111,6 +114,13 @@
                             </mat-form-field>
             
                            <br /> 
+
+                           
+                           <mat-form-field class="example-full-width" >
+                            <input matInput placeholder="Abbreviation" type="text" formControlName="abbreviation" required>
+                          </mat-form-field>
+          
+                         <br /> 
             
             
                             <div class="buttonCenter">
@@ -156,7 +166,7 @@
                           <h3> Done! </h3>
                           <p> Verify your email address and start using usap! </p>
                           
-                          <a mat-flat-button class="loginButton" color="primary" href="/"  > Redirect to login </a>
+                          <a mat-flat-button class="loginButton" color="primary" href="/login"  > Redirect to login </a>
                         </div>
             
                       </mat-drawer-content>

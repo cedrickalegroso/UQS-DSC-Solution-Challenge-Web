@@ -8,6 +8,8 @@ import * as firebase from 'firebase/app';
 import { Ticket } from '../services/ticket.model';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import { TicketsService } from '../services/tickets.service';
+import { SnackbarComponent } from '../snackbar/snackbar.component'
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-servicedashboard',
@@ -169,6 +171,7 @@ export class profileDialog {
     private ticket: TicketsService,
     public dialog: MatDialog,
     private _formBuilder: FormBuilder,
+    public _snackbar: MatSnackBar,
     private readonly afs: AngularFirestore,
     private afStorage: AngularFireStorage,
     ) { }
@@ -189,6 +192,7 @@ export class profileDialog {
         phoneNumber: ['', Validators.required]
       });
       this.securityUpdateform = this._formBuilder.group({
+        currentPassword: ['', Validators.required],
         newPassword: ['', Validators.required],
         confirmPassword: ['', Validators.required]
       });
@@ -201,9 +205,25 @@ export class profileDialog {
     }
 
     securityUpdate(value){
-      console.log(value.newPassword)
-      console.log(value.confirmPassword)
+
+      if (value.newPassword == value.confirmPassword) {
+        this.service.updatePassword(value);
+      } else {
+        const Message = "Password confirm does not match";
+        const config = 'errconf'
+        this.openSnackBar(Message, config);
+      }
+     
     }
+
+    // the snackbar method
+   openSnackBar(Message: string, config: string) {
+    this._snackbar.openFromComponent(SnackbarComponent, {
+      data: Message,
+      panelClass: config,
+      duration:  5000,
+    });
+  }
 
     uploadPhotoDialog(): void {
       const dialogRef = this.dialog.open(uploadProdilePicture, {

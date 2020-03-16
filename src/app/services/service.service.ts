@@ -16,6 +16,8 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/storage';
 
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../snackbar/snackbar.component'
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,7 @@ export class ServiceService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
+    public _snackbar: MatSnackBar
   ) {
     this.service$ = this.afAuth.authState.pipe(
       switchMap( user => {
@@ -39,7 +42,33 @@ export class ServiceService {
     );
   }  
   
+
+ async updatePassword(value){
+   const user = firebase.auth().currentUser;
+  user.updatePassword(value.newPassword).then( () => {
+    this.afAuth.auth.signOut();
+    const Message = "Password changed successully";
+    const config = 'succonf'
+    this.openSnackBar(Message, config);
+  }, err => {
+    this.afAuth.auth.signOut();
+    const Message = err.message;
+    const config = 'errconf'
+    this.openSnackBar(Message, config);
+  });
+   
+ }
   
+  async facebookSignin(){
+    const provider = new auth.FacebookAuthProvider();
+    const credential = await this.afAuth.auth.signInWithPopup(provider);
+    
+    this.afs.doc(`userCollection/${credential.user.uid}`).set({
+    uid: credential.user.uid,
+    email: credential.user.email,
+    photoUrl: 'https://firebasestorage.googleapis.com/v0/b/theuqs-52673.appspot.com/o/default%2FtempLogo.png?alt=media&token=0abc6b8c-a7e6-4b0f-bd52-6b6f9ccbdc65'
+    });
+  }
 
   // create service and add it to database
   async serviceRegisterthroughEmail(value) {
@@ -49,15 +78,50 @@ export class ServiceService {
       email: credential.user.email,
       photoUrl: 'https://firebasestorage.googleapis.com/v0/b/theuqs-52673.appspot.com/o/default%2FtempLogo.png?alt=media&token=0abc6b8c-a7e6-4b0f-bd52-6b6f9ccbdc65',
     });
+
+    
+    return  this.sendEmailVerification();
   }
 
-  
+   // the snackbar method
+   openSnackBar(Message: string, config: string) {
+    this._snackbar.openFromComponent(SnackbarComponent, {
+      data: Message,
+      panelClass: config,
+      duration:  5000,
+    });
+  }
 
   // create service and add it to database
    async loginService(value) {
      await this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password) 
-     return this.router.navigate(['/service/dashboard']);
+
+     const user = firebase.auth().currentUser;
+     if (user.emailVerified) {
+      return this.router.navigate(['/service/dashboard']);
+     } else {
+      this.afAuth.auth.signOut();
+       const Message = "Service email not verified";
+       const config = 'errconf'
+       this.openSnackBar(Message, config);
+       
+     }
+     
   }
+
+
+    async checkAuth(){
+      const user = firebase.auth().currentUser;
+
+      if (!user){
+       
+      } else {
+           // redirect to homepage
+        return this.router.navigate(['/service/dashboard']);
+      }
+   
+     
+    }
 
   
 
@@ -66,7 +130,7 @@ export class ServiceService {
     // sign out the service
     await this.afAuth.auth.signOut();
     // redirect to homepage
-    return this.router.navigate(['/']);
+     return this.router.navigate(['/']);
   }
 
 
@@ -82,7 +146,8 @@ export class ServiceService {
       // if there is a user update the data
       this.afs.doc(`services/${user.uid}`).update({
         displayName: value.displayName,
-        phoneNumber: value.phoneNumber
+        phoneNumber: value.phoneNumber,
+        abbreviation: value.abbreviation
       })
     };
   }
@@ -138,8 +203,20 @@ export class ServiceService {
               };
               return serviceRef.set(data, { merge: true });
             });    
-          });      
+
+          });     
+          
         }
+
+  async sendEmailVerification() {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      console.log("email sent");
+      user.sendEmailVerification();
+    } else {
+      return this.router.navigate(['/']); // redirect to home
+    }
+  }
 
    async updateprofiledata(value) {
      // get the user 

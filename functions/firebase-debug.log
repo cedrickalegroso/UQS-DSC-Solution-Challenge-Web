@@ -1,86 +1,464 @@
-[debug] [2020-03-15T13:47:21.567Z] ----------------------------------------------------------------------
-[debug] [2020-03-15T13:47:21.569Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Cedrick\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
-[debug] [2020-03-15T13:47:21.569Z] CLI Version:   7.15.0
-[debug] [2020-03-15T13:47:21.569Z] Platform:      win32
-[debug] [2020-03-15T13:47:21.569Z] Node Version:  v13.11.0
-[debug] [2020-03-15T13:47:21.570Z] Time:          Sun Mar 15 2020 21:47:21 GMT+0800 (China Standard Time)
-[debug] [2020-03-15T13:47:21.570Z] ----------------------------------------------------------------------
-[debug] [2020-03-15T13:47:21.570Z] 
-[debug] [2020-03-15T13:47:21.577Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2020-03-15T13:47:21.578Z] > authorizing via signed-in user
-[debug] [2020-03-15T13:47:21.578Z] [iam] checking project theuqs-52673 for permissions ["firebase.projects.get"]
-[debug] [2020-03-15T13:47:21.579Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/theuqs-52673:testIamPermissions  
-
-[debug] [2020-03-15T13:47:22.835Z] <<< HTTP RESPONSE 200
-[debug] [2020-03-15T13:47:22.837Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/theuqs-52673  
- 
-[debug] [2020-03-15T13:47:23.751Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from 'C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web'...
-[info] 
-[debug] [2020-03-15T13:47:23.754Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/theuqs-52673/webApps/-/config  
- 
-[debug] [2020-03-15T13:47:24.924Z] <<< HTTP RESPONSE 200
-[info] i  hosting[theuqsteam]: Serving hosting files from: dist/uqsweb
-[info] +  hosting[theuqsteam]: Local server: http://localhost:5000
-[warn] !  Your requested "node" version "8" doesn't match your global version "13"
+[debug] [2020-03-16T12:23:00.512Z] ----------------------------------------------------------------------
+[debug] [2020-03-16T12:23:00.514Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Cedrick\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2020-03-16T12:23:00.514Z] CLI Version:   7.15.0
+[debug] [2020-03-16T12:23:00.514Z] Platform:      win32
+[debug] [2020-03-16T12:23:00.514Z] Node Version:  v12.16.1
+[debug] [2020-03-16T12:23:00.515Z] Time:          Mon Mar 16 2020 20:23:00 GMT+0800 (China Standard Time)
+[debug] [2020-03-16T12:23:00.515Z] ----------------------------------------------------------------------
+[debug] [2020-03-16T12:23:00.515Z] 
+[debug] [2020-03-16T12:23:00.523Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-16T12:23:00.523Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: functions
+[debug] [2020-03-16T12:23:02.569Z] [hub] writing locator at C:\Users\Cedrick\AppData\Local\Temp\hub-theuqs-52673.json
+[info] +  hub: emulator hub started at http://localhost:4400
+[warn] !  Your requested "node" version "8" doesn't match your global version "12"
 [info] +  functions: functions emulator started at http://localhost:5001
 [info] i  functions: Watching "C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions" for Cloud Functions...
-[debug] [2020-03-15T13:47:25.782Z] [worker-pool] addWorker(~diagnostic~)
-[debug] [2020-03-15T13:47:25.782Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
-[debug] [2020-03-15T13:47:25.782Z] [worker-pool] submitWork(triggerId=)
-[debug] [2020-03-15T13:47:25.783Z] [worker-~diagnostic~-9db5bd1b-17d9-492d-b48a-d3e2424cad95]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\7504
-[debug] [2020-03-15T13:47:25.783Z] [worker-~diagnostic~-9db5bd1b-17d9-492d-b48a-d3e2424cad95]: BUSY
-[debug] [2020-03-15T13:47:26.098Z] [runtime-status] [7504] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"13.11.0"}
-[debug] [2020-03-15T13:47:26.098Z] [runtime-status] [7504] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
-[debug] [2020-03-15T13:47:26.101Z] [runtime-status] [7504] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
-[debug] [2020-03-15T13:47:26.102Z] [runtime-status] [7504] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
-[debug] [2020-03-15T13:47:26.103Z] [runtime-status] [7504] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:04.615Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-03-16T12:23:04.615Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-03-16T12:23:04.616Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-03-16T12:23:04.616Z] [worker-~diagnostic~-57ee59be-a210-4fa8-a754-4213a0b45f50]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:23:04.616Z] [worker-~diagnostic~-57ee59be-a210-4fa8-a754-4213a0b45f50]: BUSY
+[debug] [2020-03-16T12:23:04.938Z] [runtime-status] [14584] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"12.16.1"}
+[debug] [2020-03-16T12:23:04.938Z] [runtime-status] [14584] Disabled runtime features: undefined
+[debug] [2020-03-16T12:23:04.941Z] [runtime-status] [14584] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:23:04.942Z] [runtime-status] [14584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:05.178Z] [runtime-status] [14584] Found google-gax at C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\node_modules\google-gax\build\src\index.js
+[debug] [2020-03-16T12:23:05.178Z] [runtime-status] [14584] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2020-03-16T12:23:05.219Z] [runtime-status] [14584] Checked functions.config() {"config":{}}
+[debug] [2020-03-16T12:23:05.220Z] [runtime-status] [14584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:05.221Z] [runtime-status] [14584] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:23:05.221Z] [runtime-status] [14584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:05.271Z] [runtime-status] [14584] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2020-03-16T12:23:05.353Z] [runtime-status] [14584] initializeApp(DEFAULT) {"databaseURL":"https://theuqs-52673.firebaseio.com","storageBucket":"theuqs-52673.appspot.com","projectId":"theuqs-52673","credential":{"implicit":false,"projectId":"theuqs-52673","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLOZ7orjgvV8On\nGmo12kpqag1loD+eTWsNToS/Am0vSljA4S4rwGtQ9aapDc925m2JBo1ozOmLps+O\nVNfPRh4knKWOwHfsV/2J7FEeMOq+ade7nY32Me8DeUPhuSRjCPDl+mdmkSzLVOFH\nsBJrg4XcI2oV7iYW0rq0x4xq1tYrkvC80W3fKJdKEDyLM3fUnxr9wz2atNQ+o/dS\nUxclMbokKOmmJhVcHpWxLLtcxnr9RNsIMkk+C5VJhrqnLE5BfvfLvNzBG9kFZi//\ndjBOOnHkSP1mg82QDRnPNzZqrI6Und3PZFJb7Oke5LGfvTOcqPhJzxU7uY219lqI\n4b8pPxb9AgMBAAECggEAAYIzfkmwzBUsNCTbjfvJWqHf6JW4cy3i8g3XqW1Urymv\nn/rr81Ix2b+BFbcvB5RtUruUOCdxQmKiHs3dbkH4flAVYIpoOX5ruObisUUusOwr\nOE7Sm3XCbvWq/dV4gi2yUBq8QsQoH3hJVdVmRZsL1tcCdhg2+ytkTGxAzBg9LcSd\nltBK6OjhbaLDkrKB3jhUh//388d78gLeSIiIBV7Z+378umBxW7IE/cC9uy+Nwpwo\nhzPHha8vQetdYz3cfBWjaqpI/w+QZOf1JH6HdnSK8qSLP/Ebsh4FlFvoK2XLu5Z0\nW3wmO2fziKOzKM4Jz72zGEQf6iMPNHQB0rbmdWymZwKBgQDoPuhw+VAdDZ4QTQ30\nUZOuTRwfdy2fJecTVOzNPn0gK7Ssju7qfS0+dh9bU3Waw7vl66+1aaKCzynn1FWg\noVcXWtdKBTEZbDkWbGLBbg620BevDG3ZpU1Ydbe2/o1M1TgqIoPgFxK1Vt2khJsp\n9Orakg/p6f0Tt9FKpR0w2YoIfwKBgQDgAtb6r8GsN5vlfPxvZXkBsjtFNfqXf/j8\ngqCrTR61rTjsIFWQWzEtQPs6ttCCeT+97tTPksnszKZUvajHcDTEp8d+jl5GUr4L\nZGqLCTZOUcNink3r572MAJN6hra8alDyEBA3kVGu3b4Dobzx1DOL+e71gik4vIU2\ncwq2qJRCgwKBgECb/54uPZNXjnmKdi9Z4nPDD+fRB+gWa0p9fcM7dyPUBNdcjCq/\n2C5gPijx9u2vNj6oaqFVWdh6OXY9I/Uj7U6Z/vqgpyAjc15BmNem/oDtMymHk6fQ\nzMunNAy8lCKjzpQqNfXJdXLtT4vNOD1b3Vog+Dxi0/0ATkEt3gkQ+82RAoGBAMXx\n3HOikRoT/X8ZJZtt6DKWgwdSfoAXBjZjW4RjXkqdqdoFbHZmDpt1e0pTtwZEDA5S\nl9xgUmwcHrJs8VJilU5dD8yGE0pC3UoFzpvTZRhp6aQgTKyzl2u6KpevqJPvwl1T\n0nC3yZ0itkBRUDvFDlOXZA+vl6tZ8sC9gW8Mog3vAoGBAJ3T96XcXiY9O/zE0rov\nMCCPgcI6qgaV+B0nIUrMSicbpdZv9pg1PY19bpnr5aR/3T2nY4tHObHin6lf5lC5\nsuc5WGD2DBiS/axIYoIapiThcM70cV1zkEga2t1H0fb7UVUzwlHmuYoHVKZ4Ynbe\nPPdJ8O1AoTrxJbIw+lNA0mJb\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-efq0q@theuqs-52673.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
 [info] +  functions[app]: http function initialized (http://localhost:5001/theuqs-52673/us-central1/app).
-[debug] [2020-03-15T13:47:26.651Z] [worker-~diagnostic~-9db5bd1b-17d9-492d-b48a-d3e2424cad95]: IDLE
-[debug] [2020-03-15T13:49:43.724Z] [work-queue] {"queueLength":1,"workRunningCount":0}
-[debug] [2020-03-15T13:49:43.724Z] [work-queue] {"queueLength":0,"workRunningCount":1}
-[debug] [2020-03-15T13:49:43.724Z] Accepted request POST /theuqs-52673/us-central1/app/api/createTicket:sid:uid --> app
-[debug] [2020-03-15T13:49:43.729Z] [worker-pool] addWorker(app)
-[debug] [2020-03-15T13:49:43.729Z] [worker-pool] Adding worker with key app, total=1
-[debug] [2020-03-15T13:49:43.729Z] [worker-pool] submitWork(triggerId=app)
-[debug] [2020-03-15T13:49:43.729Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\1516
-[debug] [2020-03-15T13:49:43.729Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: BUSY
-[debug] [2020-03-15T13:49:44.085Z] [runtime-status] [1516] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"13.11.0"}
-[debug] [2020-03-15T13:49:44.087Z] [runtime-status] [1516] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
-[debug] [2020-03-15T13:49:44.090Z] [runtime-status] [1516] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
-[debug] [2020-03-15T13:49:44.091Z] [runtime-status] [1516] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
-[debug] [2020-03-15T13:49:44.092Z] [runtime-status] [1516] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
-[debug] [2020-03-15T13:49:44.745Z] [runtime-status] [1516] Trigger "app" has been found, beginning invocation!
+[info] +  emulators: All emulators started, it is now safe to connect.
+[debug] [2020-03-16T12:23:05.522Z] [worker-~diagnostic~-57ee59be-a210-4fa8-a754-4213a0b45f50]: IDLE
+[debug] [2020-03-16T12:23:36.391Z] File C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\index.js changed, reloading triggers
+[debug] [2020-03-16T12:23:37.393Z] [worker-pool] Shutting down IDLE worker (~diagnostic~)
+[debug] [2020-03-16T12:23:37.393Z] [worker-~diagnostic~-57ee59be-a210-4fa8-a754-4213a0b45f50]: FINISHING
+[debug] [2020-03-16T12:23:37.407Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-03-16T12:23:37.407Z] [worker-pool] Adding worker with key ~diagnostic~, total=2
+[debug] [2020-03-16T12:23:37.407Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-03-16T12:23:37.407Z] [worker-~diagnostic~-be46a5d3-7b8e-42ce-a7de-3a5dc6b1de62]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14876
+[debug] [2020-03-16T12:23:37.407Z] [worker-~diagnostic~-be46a5d3-7b8e-42ce-a7de-3a5dc6b1de62]: BUSY
+[debug] [2020-03-16T12:23:37.408Z] [worker-~diagnostic~-57ee59be-a210-4fa8-a754-4213a0b45f50]: exited
+[debug] [2020-03-16T12:23:37.408Z] [worker-~diagnostic~-57ee59be-a210-4fa8-a754-4213a0b45f50]: FINISHED
+[debug] [2020-03-16T12:23:37.777Z] [runtime-status] [14876] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"12.16.1"}
+[debug] [2020-03-16T12:23:37.778Z] [runtime-status] [14876] Disabled runtime features: undefined
+[debug] [2020-03-16T12:23:37.781Z] [runtime-status] [14876] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:23:37.782Z] [runtime-status] [14876] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:38.036Z] [runtime-status] [14876] Found google-gax at C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\node_modules\google-gax\build\src\index.js
+[debug] [2020-03-16T12:23:38.036Z] [runtime-status] [14876] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2020-03-16T12:23:38.079Z] [runtime-status] [14876] Checked functions.config() {"config":{}}
+[debug] [2020-03-16T12:23:38.080Z] [runtime-status] [14876] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:38.081Z] [runtime-status] [14876] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:23:38.081Z] [runtime-status] [14876] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:38.137Z] [runtime-status] [14876] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2020-03-16T12:23:38.223Z] [runtime-status] [14876] initializeApp(DEFAULT) {"databaseURL":"https://theuqs-52673.firebaseio.com","storageBucket":"theuqs-52673.appspot.com","projectId":"theuqs-52673","credential":{"implicit":false,"projectId":"theuqs-52673","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLOZ7orjgvV8On\nGmo12kpqag1loD+eTWsNToS/Am0vSljA4S4rwGtQ9aapDc925m2JBo1ozOmLps+O\nVNfPRh4knKWOwHfsV/2J7FEeMOq+ade7nY32Me8DeUPhuSRjCPDl+mdmkSzLVOFH\nsBJrg4XcI2oV7iYW0rq0x4xq1tYrkvC80W3fKJdKEDyLM3fUnxr9wz2atNQ+o/dS\nUxclMbokKOmmJhVcHpWxLLtcxnr9RNsIMkk+C5VJhrqnLE5BfvfLvNzBG9kFZi//\ndjBOOnHkSP1mg82QDRnPNzZqrI6Und3PZFJb7Oke5LGfvTOcqPhJzxU7uY219lqI\n4b8pPxb9AgMBAAECggEAAYIzfkmwzBUsNCTbjfvJWqHf6JW4cy3i8g3XqW1Urymv\nn/rr81Ix2b+BFbcvB5RtUruUOCdxQmKiHs3dbkH4flAVYIpoOX5ruObisUUusOwr\nOE7Sm3XCbvWq/dV4gi2yUBq8QsQoH3hJVdVmRZsL1tcCdhg2+ytkTGxAzBg9LcSd\nltBK6OjhbaLDkrKB3jhUh//388d78gLeSIiIBV7Z+378umBxW7IE/cC9uy+Nwpwo\nhzPHha8vQetdYz3cfBWjaqpI/w+QZOf1JH6HdnSK8qSLP/Ebsh4FlFvoK2XLu5Z0\nW3wmO2fziKOzKM4Jz72zGEQf6iMPNHQB0rbmdWymZwKBgQDoPuhw+VAdDZ4QTQ30\nUZOuTRwfdy2fJecTVOzNPn0gK7Ssju7qfS0+dh9bU3Waw7vl66+1aaKCzynn1FWg\noVcXWtdKBTEZbDkWbGLBbg620BevDG3ZpU1Ydbe2/o1M1TgqIoPgFxK1Vt2khJsp\n9Orakg/p6f0Tt9FKpR0w2YoIfwKBgQDgAtb6r8GsN5vlfPxvZXkBsjtFNfqXf/j8\ngqCrTR61rTjsIFWQWzEtQPs6ttCCeT+97tTPksnszKZUvajHcDTEp8d+jl5GUr4L\nZGqLCTZOUcNink3r572MAJN6hra8alDyEBA3kVGu3b4Dobzx1DOL+e71gik4vIU2\ncwq2qJRCgwKBgECb/54uPZNXjnmKdi9Z4nPDD+fRB+gWa0p9fcM7dyPUBNdcjCq/\n2C5gPijx9u2vNj6oaqFVWdh6OXY9I/Uj7U6Z/vqgpyAjc15BmNem/oDtMymHk6fQ\nzMunNAy8lCKjzpQqNfXJdXLtT4vNOD1b3Vog+Dxi0/0ATkEt3gkQ+82RAoGBAMXx\n3HOikRoT/X8ZJZtt6DKWgwdSfoAXBjZjW4RjXkqdqdoFbHZmDpt1e0pTtwZEDA5S\nl9xgUmwcHrJs8VJilU5dD8yGE0pC3UoFzpvTZRhp6aQgTKyzl2u6KpevqJPvwl1T\n0nC3yZ0itkBRUDvFDlOXZA+vl6tZ8sC9gW8Mog3vAoGBAJ3T96XcXiY9O/zE0rov\nMCCPgcI6qgaV+B0nIUrMSicbpdZv9pg1PY19bpnr5aR/3T2nY4tHObHin6lf5lC5\nsuc5WGD2DBiS/axIYoIapiThcM70cV1zkEga2t1H0fb7UVUzwlHmuYoHVKZ4Ynbe\nPPdJ8O1AoTrxJbIw+lNA0mJb\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-efq0q@theuqs-52673.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
+[debug] [2020-03-16T12:23:38.396Z] [worker-~diagnostic~-be46a5d3-7b8e-42ce-a7de-3a5dc6b1de62]: IDLE
+[debug] [2020-03-16T12:23:44.453Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:23:44.453Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:23:44.453Z] Accepted request POST /theuqs-52673/us-central1/app/api/createTicketv2:sid:uid:abb --> app
+[debug] [2020-03-16T12:23:44.454Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1
+[debug] [2020-03-16T12:23:44.457Z] [worker-pool] addWorker(app)
+[debug] [2020-03-16T12:23:44.457Z] [worker-pool] Adding worker with key app, total=1
+[debug] [2020-03-16T12:23:44.458Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:23:44.458Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:23:44.458Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: BUSY
+[debug] [2020-03-16T12:23:44.774Z] [runtime-status] [14584] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"12.16.1"}
+[debug] [2020-03-16T12:23:44.776Z] [runtime-status] [14584] Disabled runtime features: undefined
+[debug] [2020-03-16T12:23:44.778Z] [runtime-status] [14584] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:23:44.779Z] [runtime-status] [14584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:45.023Z] [runtime-status] [14584] Found google-gax at C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\node_modules\google-gax\build\src\index.js
+[debug] [2020-03-16T12:23:45.023Z] [runtime-status] [14584] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2020-03-16T12:23:45.067Z] [runtime-status] [14584] Checked functions.config() {"config":{}}
+[debug] [2020-03-16T12:23:45.067Z] [runtime-status] [14584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:45.068Z] [runtime-status] [14584] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:23:45.069Z] [runtime-status] [14584] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:23:45.120Z] [runtime-status] [14584] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2020-03-16T12:23:45.202Z] [runtime-status] [14584] initializeApp(DEFAULT) {"databaseURL":"https://theuqs-52673.firebaseio.com","storageBucket":"theuqs-52673.appspot.com","projectId":"theuqs-52673","credential":{"implicit":false,"projectId":"theuqs-52673","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLOZ7orjgvV8On\nGmo12kpqag1loD+eTWsNToS/Am0vSljA4S4rwGtQ9aapDc925m2JBo1ozOmLps+O\nVNfPRh4knKWOwHfsV/2J7FEeMOq+ade7nY32Me8DeUPhuSRjCPDl+mdmkSzLVOFH\nsBJrg4XcI2oV7iYW0rq0x4xq1tYrkvC80W3fKJdKEDyLM3fUnxr9wz2atNQ+o/dS\nUxclMbokKOmmJhVcHpWxLLtcxnr9RNsIMkk+C5VJhrqnLE5BfvfLvNzBG9kFZi//\ndjBOOnHkSP1mg82QDRnPNzZqrI6Und3PZFJb7Oke5LGfvTOcqPhJzxU7uY219lqI\n4b8pPxb9AgMBAAECggEAAYIzfkmwzBUsNCTbjfvJWqHf6JW4cy3i8g3XqW1Urymv\nn/rr81Ix2b+BFbcvB5RtUruUOCdxQmKiHs3dbkH4flAVYIpoOX5ruObisUUusOwr\nOE7Sm3XCbvWq/dV4gi2yUBq8QsQoH3hJVdVmRZsL1tcCdhg2+ytkTGxAzBg9LcSd\nltBK6OjhbaLDkrKB3jhUh//388d78gLeSIiIBV7Z+378umBxW7IE/cC9uy+Nwpwo\nhzPHha8vQetdYz3cfBWjaqpI/w+QZOf1JH6HdnSK8qSLP/Ebsh4FlFvoK2XLu5Z0\nW3wmO2fziKOzKM4Jz72zGEQf6iMPNHQB0rbmdWymZwKBgQDoPuhw+VAdDZ4QTQ30\nUZOuTRwfdy2fJecTVOzNPn0gK7Ssju7qfS0+dh9bU3Waw7vl66+1aaKCzynn1FWg\noVcXWtdKBTEZbDkWbGLBbg620BevDG3ZpU1Ydbe2/o1M1TgqIoPgFxK1Vt2khJsp\n9Orakg/p6f0Tt9FKpR0w2YoIfwKBgQDgAtb6r8GsN5vlfPxvZXkBsjtFNfqXf/j8\ngqCrTR61rTjsIFWQWzEtQPs6ttCCeT+97tTPksnszKZUvajHcDTEp8d+jl5GUr4L\nZGqLCTZOUcNink3r572MAJN6hra8alDyEBA3kVGu3b4Dobzx1DOL+e71gik4vIU2\ncwq2qJRCgwKBgECb/54uPZNXjnmKdi9Z4nPDD+fRB+gWa0p9fcM7dyPUBNdcjCq/\n2C5gPijx9u2vNj6oaqFVWdh6OXY9I/Uj7U6Z/vqgpyAjc15BmNem/oDtMymHk6fQ\nzMunNAy8lCKjzpQqNfXJdXLtT4vNOD1b3Vog+Dxi0/0ATkEt3gkQ+82RAoGBAMXx\n3HOikRoT/X8ZJZtt6DKWgwdSfoAXBjZjW4RjXkqdqdoFbHZmDpt1e0pTtwZEDA5S\nl9xgUmwcHrJs8VJilU5dD8yGE0pC3UoFzpvTZRhp6aQgTKyzl2u6KpevqJPvwl1T\n0nC3yZ0itkBRUDvFDlOXZA+vl6tZ8sC9gW8Mog3vAoGBAJ3T96XcXiY9O/zE0rov\nMCCPgcI6qgaV+B0nIUrMSicbpdZv9pg1PY19bpnr5aR/3T2nY4tHObHin6lf5lC5\nsuc5WGD2DBiS/axIYoIapiThcM70cV1zkEga2t1H0fb7UVUzwlHmuYoHVKZ4Ynbe\nPPdJ8O1AoTrxJbIw+lNA0mJb\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-efq0q@theuqs-52673.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
+[debug] [2020-03-16T12:23:45.369Z] [runtime-status] [14584] Trigger "app" has been found, beginning invocation!
 [info] i  functions: Beginning execution of "app"
-[debug] [2020-03-15T13:49:44.745Z] [runtime-status] [1516] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
-[debug] [2020-03-15T13:49:44.746Z] [runtime-status] [1516] Running app in mode HTTPS
-[debug] [2020-03-15T13:49:44.748Z] [runtime-status] [1516] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\1516
-[debug] [2020-03-15T13:49:44.752Z] [functions] Runtime ready! Sending request!
-[debug] [2020-03-15T13:49:44.770Z] [runtime-status] [1516] Ephemeral server handling POST request
-[info] >  PShgL9TBqdVIcvDJ4CBbHJs1U1F3
-[debug] [2020-03-15T13:49:44.778Z] [runtime-status] [1516] Ephemeral server survived.
+[debug] [2020-03-16T12:23:45.374Z] [runtime-status] [14584] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:23:45.374Z] [runtime-status] [14584] Running app in mode HTTPS
+[debug] [2020-03-16T12:23:45.375Z] [runtime-status] [14584] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:23:45.376Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:23:45.396Z] [runtime-status] [14584] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:23:45.404Z] [runtime-status] [14584] Ephemeral server survived.
 [info] i  functions: Finished "app" in ~1s
-[debug] [2020-03-15T13:49:44.899Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: IDLE
-[debug] [2020-03-15T13:49:44.899Z] [work-queue] {"queueLength":0,"workRunningCount":0}
-[debug] [2020-03-15T13:51:58.482Z] [work-queue] {"queueLength":1,"workRunningCount":0}
-[debug] [2020-03-15T13:51:58.482Z] [work-queue] {"queueLength":0,"workRunningCount":1}
-[debug] [2020-03-15T13:51:58.482Z] Accepted request POST /theuqs-52673/us-central1/app/api/createTicket:sid:uid --> app
-[debug] [2020-03-15T13:51:58.482Z] [worker-pool] submitWork(triggerId=app)
-[debug] [2020-03-15T13:51:58.482Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\1516
-[debug] [2020-03-15T13:51:58.482Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: BUSY
-[debug] [2020-03-15T13:51:58.483Z] [runtime-status] [1516] Trigger "app" has been found, beginning invocation!
+[debug] [2020-03-16T12:23:45.543Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: IDLE
+[debug] [2020-03-16T12:23:45.543Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[warn] !  Google API requested!
+   - URL: "https://www.googleapis.com/oauth2/v4/token"
+   - Be careful, this may be a production service.
+[debug] [2020-03-16T12:24:28.875Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:24:28.875Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:24:28.875Z] Accepted request POST /theuqs-52673/us-central1/app/api/createTicketv2:sid:uid:abb --> app
+[debug] [2020-03-16T12:24:28.875Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:24:28.875Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:24:28.875Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: BUSY
+[debug] [2020-03-16T12:24:28.876Z] [runtime-status] [14584] Trigger "app" has been found, beginning invocation!
 [info] i  functions: Beginning execution of "app"
-[debug] [2020-03-15T13:51:58.483Z] [runtime-status] [1516] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
-[debug] [2020-03-15T13:51:58.484Z] [runtime-status] [1516] Running app in mode HTTPS
-[debug] [2020-03-15T13:51:58.484Z] [runtime-status] [1516] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\1516
-[debug] [2020-03-15T13:51:58.485Z] [functions] Runtime ready! Sending request!
-[debug] [2020-03-15T13:51:58.488Z] [runtime-status] [1516] Ephemeral server handling POST request
-[info] >  PShgL9TBqdVIcvDJ4CBbHJs1U1F3
-[debug] [2020-03-15T13:51:58.494Z] [runtime-status] [1516] Ephemeral server survived.
+[debug] [2020-03-16T12:24:28.876Z] [runtime-status] [14584] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:24:28.876Z] [runtime-status] [14584] Running app in mode HTTPS
+[debug] [2020-03-16T12:24:28.877Z] [runtime-status] [14584] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:24:28.878Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:24:28.880Z] [runtime-status] [14584] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:24:28.887Z] [runtime-status] [14584] Ephemeral server survived.
 [info] i  functions: Finished "app" in ~1s
-[debug] [2020-03-15T13:51:58.495Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: IDLE
-[debug] [2020-03-15T13:51:58.495Z] [work-queue] {"queueLength":0,"workRunningCount":0}
-[debug] [2020-03-15T15:12:57.630Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: exited
-[debug] [2020-03-15T15:12:57.632Z] [worker-app-d16983fd-4ab6-4357-9d80-c92b4cfc1353]: FINISHED
-[debug] [2020-03-15T15:12:57.644Z] [worker-~diagnostic~-9db5bd1b-17d9-492d-b48a-d3e2424cad95]: exited
+[debug] [2020-03-16T12:24:28.888Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: IDLE
+[debug] [2020-03-16T12:24:28.888Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:24:43.990Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:24:43.990Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:24:43.990Z] Accepted request POST /theuqs-52673/us-central1/app/api/createTicketv2:sid:uid:abb --> app
+[debug] [2020-03-16T12:24:43.990Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:24:43.990Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:24:43.990Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: BUSY
+[debug] [2020-03-16T12:24:43.990Z] [runtime-status] [14584] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:24:43.991Z] [runtime-status] [14584] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:24:43.991Z] [runtime-status] [14584] Running app in mode HTTPS
+[debug] [2020-03-16T12:24:43.991Z] [runtime-status] [14584] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:24:43.992Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:24:43.995Z] [runtime-status] [14584] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:24:44.001Z] [runtime-status] [14584] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:24:44.002Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: IDLE
+[debug] [2020-03-16T12:24:44.002Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:25:17.111Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:25:17.111Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:25:17.111Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:25:17.111Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:25:17.111Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:25:17.111Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: BUSY
+[debug] [2020-03-16T12:25:17.111Z] [runtime-status] [14584] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:25:17.112Z] [runtime-status] [14584] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:25:17.112Z] [runtime-status] [14584] Running app in mode HTTPS
+[debug] [2020-03-16T12:25:17.112Z] [runtime-status] [14584] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:25:17.113Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:25:17.115Z] [runtime-status] [14584] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:25:17.122Z] [runtime-status] [14584] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:25:17.123Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: IDLE
+[debug] [2020-03-16T12:25:17.123Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:25:20.742Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:25:20.742Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:25:20.742Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:25:20.742Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:25:20.742Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:25:20.742Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: BUSY
+[debug] [2020-03-16T12:25:20.743Z] [runtime-status] [14584] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:25:20.744Z] [runtime-status] [14584] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:25:20.744Z] [runtime-status] [14584] Running app in mode HTTPS
+[debug] [2020-03-16T12:25:20.744Z] [runtime-status] [14584] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:25:20.745Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:25:20.747Z] [runtime-status] [14584] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:25:20.753Z] [runtime-status] [14584] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:25:20.755Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: IDLE
+[debug] [2020-03-16T12:25:20.755Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:25:23.045Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:25:23.045Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:25:23.045Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:25:23.045Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:25:23.045Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:25:23.045Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: BUSY
+[debug] [2020-03-16T12:25:23.045Z] [runtime-status] [14584] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:25:23.046Z] [runtime-status] [14584] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:25:23.046Z] [runtime-status] [14584] Running app in mode HTTPS
+[debug] [2020-03-16T12:25:23.047Z] [runtime-status] [14584] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:25:23.048Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:25:23.050Z] [runtime-status] [14584] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:25:23.056Z] [runtime-status] [14584] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:25:23.058Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: IDLE
+[debug] [2020-03-16T12:25:23.058Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:25:36.673Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:25:36.673Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:25:36.673Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:25:36.673Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:25:36.673Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:25:36.673Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: BUSY
+[debug] [2020-03-16T12:25:36.673Z] [runtime-status] [14584] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:25:36.674Z] [runtime-status] [14584] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:25:36.674Z] [runtime-status] [14584] Running app in mode HTTPS
+[debug] [2020-03-16T12:25:36.674Z] [runtime-status] [14584] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\14584
+[debug] [2020-03-16T12:25:36.675Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:25:36.677Z] [runtime-status] [14584] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:25:36.685Z] [runtime-status] [14584] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:25:36.685Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: IDLE
+[debug] [2020-03-16T12:25:36.686Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:26:20.222Z] File C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\index.js changed, reloading triggers
+[debug] [2020-03-16T12:26:21.223Z] [worker-pool] Shutting down IDLE worker (~diagnostic~)
+[debug] [2020-03-16T12:26:21.223Z] [worker-~diagnostic~-be46a5d3-7b8e-42ce-a7de-3a5dc6b1de62]: FINISHING
+[debug] [2020-03-16T12:26:21.223Z] [worker-pool] Shutting down IDLE worker (app)
+[debug] [2020-03-16T12:26:21.223Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: FINISHING
+[debug] [2020-03-16T12:26:21.228Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-03-16T12:26:21.228Z] [worker-pool] Adding worker with key ~diagnostic~, total=2
+[debug] [2020-03-16T12:26:21.228Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-03-16T12:26:21.228Z] [worker-~diagnostic~-1be6c6f8-758f-4986-b65b-1e14838c5f7b]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\12072
+[debug] [2020-03-16T12:26:21.228Z] [worker-~diagnostic~-1be6c6f8-758f-4986-b65b-1e14838c5f7b]: BUSY
+[debug] [2020-03-16T12:26:21.230Z] [worker-~diagnostic~-be46a5d3-7b8e-42ce-a7de-3a5dc6b1de62]: exited
+[debug] [2020-03-16T12:26:21.230Z] [worker-~diagnostic~-be46a5d3-7b8e-42ce-a7de-3a5dc6b1de62]: FINISHED
+[debug] [2020-03-16T12:26:21.231Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: exited
+[debug] [2020-03-16T12:26:21.231Z] [worker-app-6934425f-13a5-4444-ba8a-f2797ce28e5b]: FINISHED
+[debug] [2020-03-16T12:26:21.568Z] [runtime-status] [12072] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"12.16.1"}
+[debug] [2020-03-16T12:26:21.570Z] [runtime-status] [12072] Disabled runtime features: undefined
+[debug] [2020-03-16T12:26:21.572Z] [runtime-status] [12072] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:26:21.574Z] [runtime-status] [12072] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:26:21.831Z] [runtime-status] [12072] Found google-gax at C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\node_modules\google-gax\build\src\index.js
+[debug] [2020-03-16T12:26:21.832Z] [runtime-status] [12072] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2020-03-16T12:26:21.874Z] [runtime-status] [12072] Checked functions.config() {"config":{}}
+[debug] [2020-03-16T12:26:21.874Z] [runtime-status] [12072] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:26:21.875Z] [runtime-status] [12072] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:26:21.876Z] [runtime-status] [12072] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:26:21.934Z] [runtime-status] [12072] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2020-03-16T12:26:22.015Z] [runtime-status] [12072] initializeApp(DEFAULT) {"databaseURL":"https://theuqs-52673.firebaseio.com","storageBucket":"theuqs-52673.appspot.com","projectId":"theuqs-52673","credential":{"implicit":false,"projectId":"theuqs-52673","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLOZ7orjgvV8On\nGmo12kpqag1loD+eTWsNToS/Am0vSljA4S4rwGtQ9aapDc925m2JBo1ozOmLps+O\nVNfPRh4knKWOwHfsV/2J7FEeMOq+ade7nY32Me8DeUPhuSRjCPDl+mdmkSzLVOFH\nsBJrg4XcI2oV7iYW0rq0x4xq1tYrkvC80W3fKJdKEDyLM3fUnxr9wz2atNQ+o/dS\nUxclMbokKOmmJhVcHpWxLLtcxnr9RNsIMkk+C5VJhrqnLE5BfvfLvNzBG9kFZi//\ndjBOOnHkSP1mg82QDRnPNzZqrI6Und3PZFJb7Oke5LGfvTOcqPhJzxU7uY219lqI\n4b8pPxb9AgMBAAECggEAAYIzfkmwzBUsNCTbjfvJWqHf6JW4cy3i8g3XqW1Urymv\nn/rr81Ix2b+BFbcvB5RtUruUOCdxQmKiHs3dbkH4flAVYIpoOX5ruObisUUusOwr\nOE7Sm3XCbvWq/dV4gi2yUBq8QsQoH3hJVdVmRZsL1tcCdhg2+ytkTGxAzBg9LcSd\nltBK6OjhbaLDkrKB3jhUh//388d78gLeSIiIBV7Z+378umBxW7IE/cC9uy+Nwpwo\nhzPHha8vQetdYz3cfBWjaqpI/w+QZOf1JH6HdnSK8qSLP/Ebsh4FlFvoK2XLu5Z0\nW3wmO2fziKOzKM4Jz72zGEQf6iMPNHQB0rbmdWymZwKBgQDoPuhw+VAdDZ4QTQ30\nUZOuTRwfdy2fJecTVOzNPn0gK7Ssju7qfS0+dh9bU3Waw7vl66+1aaKCzynn1FWg\noVcXWtdKBTEZbDkWbGLBbg620BevDG3ZpU1Ydbe2/o1M1TgqIoPgFxK1Vt2khJsp\n9Orakg/p6f0Tt9FKpR0w2YoIfwKBgQDgAtb6r8GsN5vlfPxvZXkBsjtFNfqXf/j8\ngqCrTR61rTjsIFWQWzEtQPs6ttCCeT+97tTPksnszKZUvajHcDTEp8d+jl5GUr4L\nZGqLCTZOUcNink3r572MAJN6hra8alDyEBA3kVGu3b4Dobzx1DOL+e71gik4vIU2\ncwq2qJRCgwKBgECb/54uPZNXjnmKdi9Z4nPDD+fRB+gWa0p9fcM7dyPUBNdcjCq/\n2C5gPijx9u2vNj6oaqFVWdh6OXY9I/Uj7U6Z/vqgpyAjc15BmNem/oDtMymHk6fQ\nzMunNAy8lCKjzpQqNfXJdXLtT4vNOD1b3Vog+Dxi0/0ATkEt3gkQ+82RAoGBAMXx\n3HOikRoT/X8ZJZtt6DKWgwdSfoAXBjZjW4RjXkqdqdoFbHZmDpt1e0pTtwZEDA5S\nl9xgUmwcHrJs8VJilU5dD8yGE0pC3UoFzpvTZRhp6aQgTKyzl2u6KpevqJPvwl1T\n0nC3yZ0itkBRUDvFDlOXZA+vl6tZ8sC9gW8Mog3vAoGBAJ3T96XcXiY9O/zE0rov\nMCCPgcI6qgaV+B0nIUrMSicbpdZv9pg1PY19bpnr5aR/3T2nY4tHObHin6lf5lC5\nsuc5WGD2DBiS/axIYoIapiThcM70cV1zkEga2t1H0fb7UVUzwlHmuYoHVKZ4Ynbe\nPPdJ8O1AoTrxJbIw+lNA0mJb\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-efq0q@theuqs-52673.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
+[debug] [2020-03-16T12:26:22.180Z] [worker-~diagnostic~-1be6c6f8-758f-4986-b65b-1e14838c5f7b]: IDLE
+[debug] [2020-03-16T12:26:27.415Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:26:27.416Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:26:27.416Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:26:27.416Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1
+[debug] [2020-03-16T12:26:27.416Z] [worker-pool] Cleaned up workers for app: 1 --> 0
+[debug] [2020-03-16T12:26:27.419Z] [worker-pool] addWorker(app)
+[debug] [2020-03-16T12:26:27.419Z] [worker-pool] Adding worker with key app, total=1
+[debug] [2020-03-16T12:26:27.419Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:26:27.420Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:27.420Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: BUSY
+[debug] [2020-03-16T12:26:27.734Z] [runtime-status] [5920] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"12.16.1"}
+[debug] [2020-03-16T12:26:27.735Z] [runtime-status] [5920] Disabled runtime features: undefined
+[debug] [2020-03-16T12:26:27.737Z] [runtime-status] [5920] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:26:27.739Z] [runtime-status] [5920] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:26:27.990Z] [runtime-status] [5920] Found google-gax at C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\node_modules\google-gax\build\src\index.js
+[debug] [2020-03-16T12:26:27.991Z] [runtime-status] [5920] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2020-03-16T12:26:28.034Z] [runtime-status] [5920] Checked functions.config() {"config":{}}
+[debug] [2020-03-16T12:26:28.034Z] [runtime-status] [5920] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:26:28.035Z] [runtime-status] [5920] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:26:28.036Z] [runtime-status] [5920] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:26:28.088Z] [runtime-status] [5920] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2020-03-16T12:26:28.175Z] [runtime-status] [5920] initializeApp(DEFAULT) {"databaseURL":"https://theuqs-52673.firebaseio.com","storageBucket":"theuqs-52673.appspot.com","projectId":"theuqs-52673","credential":{"implicit":false,"projectId":"theuqs-52673","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLOZ7orjgvV8On\nGmo12kpqag1loD+eTWsNToS/Am0vSljA4S4rwGtQ9aapDc925m2JBo1ozOmLps+O\nVNfPRh4knKWOwHfsV/2J7FEeMOq+ade7nY32Me8DeUPhuSRjCPDl+mdmkSzLVOFH\nsBJrg4XcI2oV7iYW0rq0x4xq1tYrkvC80W3fKJdKEDyLM3fUnxr9wz2atNQ+o/dS\nUxclMbokKOmmJhVcHpWxLLtcxnr9RNsIMkk+C5VJhrqnLE5BfvfLvNzBG9kFZi//\ndjBOOnHkSP1mg82QDRnPNzZqrI6Und3PZFJb7Oke5LGfvTOcqPhJzxU7uY219lqI\n4b8pPxb9AgMBAAECggEAAYIzfkmwzBUsNCTbjfvJWqHf6JW4cy3i8g3XqW1Urymv\nn/rr81Ix2b+BFbcvB5RtUruUOCdxQmKiHs3dbkH4flAVYIpoOX5ruObisUUusOwr\nOE7Sm3XCbvWq/dV4gi2yUBq8QsQoH3hJVdVmRZsL1tcCdhg2+ytkTGxAzBg9LcSd\nltBK6OjhbaLDkrKB3jhUh//388d78gLeSIiIBV7Z+378umBxW7IE/cC9uy+Nwpwo\nhzPHha8vQetdYz3cfBWjaqpI/w+QZOf1JH6HdnSK8qSLP/Ebsh4FlFvoK2XLu5Z0\nW3wmO2fziKOzKM4Jz72zGEQf6iMPNHQB0rbmdWymZwKBgQDoPuhw+VAdDZ4QTQ30\nUZOuTRwfdy2fJecTVOzNPn0gK7Ssju7qfS0+dh9bU3Waw7vl66+1aaKCzynn1FWg\noVcXWtdKBTEZbDkWbGLBbg620BevDG3ZpU1Ydbe2/o1M1TgqIoPgFxK1Vt2khJsp\n9Orakg/p6f0Tt9FKpR0w2YoIfwKBgQDgAtb6r8GsN5vlfPxvZXkBsjtFNfqXf/j8\ngqCrTR61rTjsIFWQWzEtQPs6ttCCeT+97tTPksnszKZUvajHcDTEp8d+jl5GUr4L\nZGqLCTZOUcNink3r572MAJN6hra8alDyEBA3kVGu3b4Dobzx1DOL+e71gik4vIU2\ncwq2qJRCgwKBgECb/54uPZNXjnmKdi9Z4nPDD+fRB+gWa0p9fcM7dyPUBNdcjCq/\n2C5gPijx9u2vNj6oaqFVWdh6OXY9I/Uj7U6Z/vqgpyAjc15BmNem/oDtMymHk6fQ\nzMunNAy8lCKjzpQqNfXJdXLtT4vNOD1b3Vog+Dxi0/0ATkEt3gkQ+82RAoGBAMXx\n3HOikRoT/X8ZJZtt6DKWgwdSfoAXBjZjW4RjXkqdqdoFbHZmDpt1e0pTtwZEDA5S\nl9xgUmwcHrJs8VJilU5dD8yGE0pC3UoFzpvTZRhp6aQgTKyzl2u6KpevqJPvwl1T\n0nC3yZ0itkBRUDvFDlOXZA+vl6tZ8sC9gW8Mog3vAoGBAJ3T96XcXiY9O/zE0rov\nMCCPgcI6qgaV+B0nIUrMSicbpdZv9pg1PY19bpnr5aR/3T2nY4tHObHin6lf5lC5\nsuc5WGD2DBiS/axIYoIapiThcM70cV1zkEga2t1H0fb7UVUzwlHmuYoHVKZ4Ynbe\nPPdJ8O1AoTrxJbIw+lNA0mJb\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-efq0q@theuqs-52673.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
+[debug] [2020-03-16T12:26:28.345Z] [runtime-status] [5920] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:26:28.350Z] [runtime-status] [5920] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:26:28.350Z] [runtime-status] [5920] Running app in mode HTTPS
+[debug] [2020-03-16T12:26:28.350Z] [runtime-status] [5920] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:28.351Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:26:28.370Z] [runtime-status] [5920] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:26:28.378Z] [runtime-status] [5920] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:26:28.514Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: IDLE
+[debug] [2020-03-16T12:26:28.514Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[warn] !  Google API requested!
+   - URL: "https://www.googleapis.com/oauth2/v4/token"
+   - Be careful, this may be a production service.
+[debug] [2020-03-16T12:26:31.605Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:26:31.605Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:26:31.605Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:26:31.605Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:26:31.605Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:31.605Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: BUSY
+[debug] [2020-03-16T12:26:31.606Z] [runtime-status] [5920] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:26:31.607Z] [runtime-status] [5920] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:26:31.607Z] [runtime-status] [5920] Running app in mode HTTPS
+[debug] [2020-03-16T12:26:31.607Z] [runtime-status] [5920] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:31.608Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:26:31.611Z] [runtime-status] [5920] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:26:31.620Z] [runtime-status] [5920] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:26:31.622Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: IDLE
+[debug] [2020-03-16T12:26:31.622Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:26:33.276Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:26:33.276Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:26:33.276Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:26:33.276Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:26:33.276Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:33.276Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: BUSY
+[debug] [2020-03-16T12:26:33.276Z] [runtime-status] [5920] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:26:33.277Z] [runtime-status] [5920] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:26:33.277Z] [runtime-status] [5920] Running app in mode HTTPS
+[debug] [2020-03-16T12:26:33.277Z] [runtime-status] [5920] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:33.278Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:26:33.281Z] [runtime-status] [5920] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:26:33.287Z] [runtime-status] [5920] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:26:33.288Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: IDLE
+[debug] [2020-03-16T12:26:33.288Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:26:34.715Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:26:34.715Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:26:34.716Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:26:34.716Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:26:34.716Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:34.716Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: BUSY
+[debug] [2020-03-16T12:26:34.716Z] [runtime-status] [5920] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:26:34.717Z] [runtime-status] [5920] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:26:34.717Z] [runtime-status] [5920] Running app in mode HTTPS
+[debug] [2020-03-16T12:26:34.717Z] [runtime-status] [5920] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:34.718Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:26:34.720Z] [runtime-status] [5920] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:26:34.728Z] [runtime-status] [5920] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:26:34.729Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: IDLE
+[debug] [2020-03-16T12:26:34.729Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:26:36.192Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:26:36.192Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:26:36.192Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:26:36.193Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:26:36.193Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:36.193Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: BUSY
+[debug] [2020-03-16T12:26:36.193Z] [runtime-status] [5920] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:26:36.194Z] [runtime-status] [5920] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:26:36.194Z] [runtime-status] [5920] Running app in mode HTTPS
+[debug] [2020-03-16T12:26:36.194Z] [runtime-status] [5920] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:36.195Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:26:36.197Z] [runtime-status] [5920] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:26:36.204Z] [runtime-status] [5920] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:26:36.205Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: IDLE
+[debug] [2020-03-16T12:26:36.205Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:26:38.117Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:26:38.117Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:26:38.117Z] Accepted request POST /theuqs-52673/us-central1/app/api/update:sid:uid:abb --> app
+[debug] [2020-03-16T12:26:38.117Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:26:38.117Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:38.117Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: BUSY
+[debug] [2020-03-16T12:26:38.118Z] [runtime-status] [5920] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:26:38.119Z] [runtime-status] [5920] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:26:38.119Z] [runtime-status] [5920] Running app in mode HTTPS
+[debug] [2020-03-16T12:26:38.119Z] [runtime-status] [5920] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\5920
+[debug] [2020-03-16T12:26:38.120Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:26:38.123Z] [runtime-status] [5920] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:26:38.132Z] [runtime-status] [5920] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:26:38.133Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: IDLE
+[debug] [2020-03-16T12:26:38.133Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:27:28.390Z] File C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\index.js changed, reloading triggers
+[debug] [2020-03-16T12:27:29.390Z] [worker-pool] Shutting down IDLE worker (~diagnostic~)
+[debug] [2020-03-16T12:27:29.390Z] [worker-~diagnostic~-1be6c6f8-758f-4986-b65b-1e14838c5f7b]: FINISHING
+[debug] [2020-03-16T12:27:29.390Z] [worker-pool] Shutting down IDLE worker (app)
+[debug] [2020-03-16T12:27:29.390Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: FINISHING
+[debug] [2020-03-16T12:27:29.394Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-03-16T12:27:29.394Z] [worker-pool] Adding worker with key ~diagnostic~, total=2
+[debug] [2020-03-16T12:27:29.395Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-03-16T12:27:29.395Z] [worker-~diagnostic~-3f46ddb9-da0b-49db-92be-e31a6a607f9c]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\12636
+[debug] [2020-03-16T12:27:29.395Z] [worker-~diagnostic~-3f46ddb9-da0b-49db-92be-e31a6a607f9c]: BUSY
+[debug] [2020-03-16T12:27:29.398Z] [worker-~diagnostic~-1be6c6f8-758f-4986-b65b-1e14838c5f7b]: exited
+[debug] [2020-03-16T12:27:29.398Z] [worker-~diagnostic~-1be6c6f8-758f-4986-b65b-1e14838c5f7b]: FINISHED
+[debug] [2020-03-16T12:27:29.399Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: exited
+[debug] [2020-03-16T12:27:29.399Z] [worker-app-da2bf8d3-ca77-480e-8aaa-ecea1af39388]: FINISHED
+[debug] [2020-03-16T12:27:29.785Z] [runtime-status] [12636] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"12.16.1"}
+[debug] [2020-03-16T12:27:29.787Z] [runtime-status] [12636] Disabled runtime features: undefined
+[debug] [2020-03-16T12:27:29.790Z] [runtime-status] [12636] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:27:29.791Z] [runtime-status] [12636] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:27:30.042Z] [runtime-status] [12636] Found google-gax at C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\node_modules\google-gax\build\src\index.js
+[debug] [2020-03-16T12:27:30.042Z] [runtime-status] [12636] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2020-03-16T12:27:30.085Z] [runtime-status] [12636] Checked functions.config() {"config":{}}
+[debug] [2020-03-16T12:27:30.085Z] [runtime-status] [12636] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:27:30.086Z] [runtime-status] [12636] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:27:30.087Z] [runtime-status] [12636] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:27:30.137Z] [runtime-status] [12636] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2020-03-16T12:27:30.222Z] [runtime-status] [12636] initializeApp(DEFAULT) {"databaseURL":"https://theuqs-52673.firebaseio.com","storageBucket":"theuqs-52673.appspot.com","projectId":"theuqs-52673","credential":{"implicit":false,"projectId":"theuqs-52673","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLOZ7orjgvV8On\nGmo12kpqag1loD+eTWsNToS/Am0vSljA4S4rwGtQ9aapDc925m2JBo1ozOmLps+O\nVNfPRh4knKWOwHfsV/2J7FEeMOq+ade7nY32Me8DeUPhuSRjCPDl+mdmkSzLVOFH\nsBJrg4XcI2oV7iYW0rq0x4xq1tYrkvC80W3fKJdKEDyLM3fUnxr9wz2atNQ+o/dS\nUxclMbokKOmmJhVcHpWxLLtcxnr9RNsIMkk+C5VJhrqnLE5BfvfLvNzBG9kFZi//\ndjBOOnHkSP1mg82QDRnPNzZqrI6Und3PZFJb7Oke5LGfvTOcqPhJzxU7uY219lqI\n4b8pPxb9AgMBAAECggEAAYIzfkmwzBUsNCTbjfvJWqHf6JW4cy3i8g3XqW1Urymv\nn/rr81Ix2b+BFbcvB5RtUruUOCdxQmKiHs3dbkH4flAVYIpoOX5ruObisUUusOwr\nOE7Sm3XCbvWq/dV4gi2yUBq8QsQoH3hJVdVmRZsL1tcCdhg2+ytkTGxAzBg9LcSd\nltBK6OjhbaLDkrKB3jhUh//388d78gLeSIiIBV7Z+378umBxW7IE/cC9uy+Nwpwo\nhzPHha8vQetdYz3cfBWjaqpI/w+QZOf1JH6HdnSK8qSLP/Ebsh4FlFvoK2XLu5Z0\nW3wmO2fziKOzKM4Jz72zGEQf6iMPNHQB0rbmdWymZwKBgQDoPuhw+VAdDZ4QTQ30\nUZOuTRwfdy2fJecTVOzNPn0gK7Ssju7qfS0+dh9bU3Waw7vl66+1aaKCzynn1FWg\noVcXWtdKBTEZbDkWbGLBbg620BevDG3ZpU1Ydbe2/o1M1TgqIoPgFxK1Vt2khJsp\n9Orakg/p6f0Tt9FKpR0w2YoIfwKBgQDgAtb6r8GsN5vlfPxvZXkBsjtFNfqXf/j8\ngqCrTR61rTjsIFWQWzEtQPs6ttCCeT+97tTPksnszKZUvajHcDTEp8d+jl5GUr4L\nZGqLCTZOUcNink3r572MAJN6hra8alDyEBA3kVGu3b4Dobzx1DOL+e71gik4vIU2\ncwq2qJRCgwKBgECb/54uPZNXjnmKdi9Z4nPDD+fRB+gWa0p9fcM7dyPUBNdcjCq/\n2C5gPijx9u2vNj6oaqFVWdh6OXY9I/Uj7U6Z/vqgpyAjc15BmNem/oDtMymHk6fQ\nzMunNAy8lCKjzpQqNfXJdXLtT4vNOD1b3Vog+Dxi0/0ATkEt3gkQ+82RAoGBAMXx\n3HOikRoT/X8ZJZtt6DKWgwdSfoAXBjZjW4RjXkqdqdoFbHZmDpt1e0pTtwZEDA5S\nl9xgUmwcHrJs8VJilU5dD8yGE0pC3UoFzpvTZRhp6aQgTKyzl2u6KpevqJPvwl1T\n0nC3yZ0itkBRUDvFDlOXZA+vl6tZ8sC9gW8Mog3vAoGBAJ3T96XcXiY9O/zE0rov\nMCCPgcI6qgaV+B0nIUrMSicbpdZv9pg1PY19bpnr5aR/3T2nY4tHObHin6lf5lC5\nsuc5WGD2DBiS/axIYoIapiThcM70cV1zkEga2t1H0fb7UVUzwlHmuYoHVKZ4Ynbe\nPPdJ8O1AoTrxJbIw+lNA0mJb\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-efq0q@theuqs-52673.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
+[debug] [2020-03-16T12:27:30.385Z] [worker-~diagnostic~-3f46ddb9-da0b-49db-92be-e31a6a607f9c]: IDLE
+[debug] [2020-03-16T12:27:37.148Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:27:37.149Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:27:37.149Z] Accepted request POST /theuqs-52673/us-central1/app/api/creaticketNew:sid:uid:abb --> app
+[debug] [2020-03-16T12:27:37.149Z] [worker-pool] Cleaned up workers for ~diagnostic~: 2 --> 1
+[debug] [2020-03-16T12:27:37.149Z] [worker-pool] Cleaned up workers for app: 1 --> 0
+[debug] [2020-03-16T12:27:37.152Z] [worker-pool] addWorker(app)
+[debug] [2020-03-16T12:27:37.152Z] [worker-pool] Adding worker with key app, total=1
+[debug] [2020-03-16T12:27:37.152Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:27:37.152Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\2396
+[debug] [2020-03-16T12:27:37.153Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: BUSY
+[debug] [2020-03-16T12:27:37.475Z] [runtime-status] [2396] Functions runtime initialized. {"cwd":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions","node_version":"12.16.1"}
+[debug] [2020-03-16T12:27:37.476Z] [runtime-status] [2396] Disabled runtime features: undefined
+[debug] [2020-03-16T12:27:37.479Z] [runtime-status] [2396] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:27:37.480Z] [runtime-status] [2396] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:27:37.722Z] [runtime-status] [2396] Found google-gax at C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\node_modules\google-gax\build\src\index.js
+[debug] [2020-03-16T12:27:37.722Z] [runtime-status] [2396] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2020-03-16T12:27:37.764Z] [runtime-status] [2396] Checked functions.config() {"config":{}}
+[debug] [2020-03-16T12:27:37.765Z] [runtime-status] [2396] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:27:37.766Z] [runtime-status] [2396] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}
+[debug] [2020-03-16T12:27:37.766Z] [runtime-status] [2396] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-functions\\lib\\index.js"}
+[debug] [2020-03-16T12:27:37.817Z] [runtime-status] [2396] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.9.2","resolution":"C:\\Users\\Cedrick\\Documents\\GitHub\\UQS-DSC-Solution-Challenge-Web\\functions\\node_modules\\firebase-admin\\lib\\index.js"}}
+[debug] [2020-03-16T12:27:37.904Z] [runtime-status] [2396] initializeApp(DEFAULT) {"databaseURL":"https://theuqs-52673.firebaseio.com","storageBucket":"theuqs-52673.appspot.com","projectId":"theuqs-52673","credential":{"implicit":false,"projectId":"theuqs-52673","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLOZ7orjgvV8On\nGmo12kpqag1loD+eTWsNToS/Am0vSljA4S4rwGtQ9aapDc925m2JBo1ozOmLps+O\nVNfPRh4knKWOwHfsV/2J7FEeMOq+ade7nY32Me8DeUPhuSRjCPDl+mdmkSzLVOFH\nsBJrg4XcI2oV7iYW0rq0x4xq1tYrkvC80W3fKJdKEDyLM3fUnxr9wz2atNQ+o/dS\nUxclMbokKOmmJhVcHpWxLLtcxnr9RNsIMkk+C5VJhrqnLE5BfvfLvNzBG9kFZi//\ndjBOOnHkSP1mg82QDRnPNzZqrI6Und3PZFJb7Oke5LGfvTOcqPhJzxU7uY219lqI\n4b8pPxb9AgMBAAECggEAAYIzfkmwzBUsNCTbjfvJWqHf6JW4cy3i8g3XqW1Urymv\nn/rr81Ix2b+BFbcvB5RtUruUOCdxQmKiHs3dbkH4flAVYIpoOX5ruObisUUusOwr\nOE7Sm3XCbvWq/dV4gi2yUBq8QsQoH3hJVdVmRZsL1tcCdhg2+ytkTGxAzBg9LcSd\nltBK6OjhbaLDkrKB3jhUh//388d78gLeSIiIBV7Z+378umBxW7IE/cC9uy+Nwpwo\nhzPHha8vQetdYz3cfBWjaqpI/w+QZOf1JH6HdnSK8qSLP/Ebsh4FlFvoK2XLu5Z0\nW3wmO2fziKOzKM4Jz72zGEQf6iMPNHQB0rbmdWymZwKBgQDoPuhw+VAdDZ4QTQ30\nUZOuTRwfdy2fJecTVOzNPn0gK7Ssju7qfS0+dh9bU3Waw7vl66+1aaKCzynn1FWg\noVcXWtdKBTEZbDkWbGLBbg620BevDG3ZpU1Ydbe2/o1M1TgqIoPgFxK1Vt2khJsp\n9Orakg/p6f0Tt9FKpR0w2YoIfwKBgQDgAtb6r8GsN5vlfPxvZXkBsjtFNfqXf/j8\ngqCrTR61rTjsIFWQWzEtQPs6ttCCeT+97tTPksnszKZUvajHcDTEp8d+jl5GUr4L\nZGqLCTZOUcNink3r572MAJN6hra8alDyEBA3kVGu3b4Dobzx1DOL+e71gik4vIU2\ncwq2qJRCgwKBgECb/54uPZNXjnmKdi9Z4nPDD+fRB+gWa0p9fcM7dyPUBNdcjCq/\n2C5gPijx9u2vNj6oaqFVWdh6OXY9I/Uj7U6Z/vqgpyAjc15BmNem/oDtMymHk6fQ\nzMunNAy8lCKjzpQqNfXJdXLtT4vNOD1b3Vog+Dxi0/0ATkEt3gkQ+82RAoGBAMXx\n3HOikRoT/X8ZJZtt6DKWgwdSfoAXBjZjW4RjXkqdqdoFbHZmDpt1e0pTtwZEDA5S\nl9xgUmwcHrJs8VJilU5dD8yGE0pC3UoFzpvTZRhp6aQgTKyzl2u6KpevqJPvwl1T\n0nC3yZ0itkBRUDvFDlOXZA+vl6tZ8sC9gW8Mog3vAoGBAJ3T96XcXiY9O/zE0rov\nMCCPgcI6qgaV+B0nIUrMSicbpdZv9pg1PY19bpnr5aR/3T2nY4tHObHin6lf5lC5\nsuc5WGD2DBiS/axIYoIapiThcM70cV1zkEga2t1H0fb7UVUzwlHmuYoHVKZ4Ynbe\nPPdJ8O1AoTrxJbIw+lNA0mJb\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-efq0q@theuqs-52673.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] !  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
+[debug] [2020-03-16T12:27:38.071Z] [runtime-status] [2396] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:27:38.072Z] [runtime-status] [2396] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:27:38.072Z] [runtime-status] [2396] Running app in mode HTTPS
+[debug] [2020-03-16T12:27:38.074Z] [runtime-status] [2396] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\2396
+[debug] [2020-03-16T12:27:38.077Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:27:38.096Z] [runtime-status] [2396] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:27:38.104Z] [runtime-status] [2396] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:27:38.233Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: IDLE
+[debug] [2020-03-16T12:27:38.233Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[warn] !  Google API requested!
+   - URL: "https://www.googleapis.com/oauth2/v4/token"
+   - Be careful, this may be a production service.
+[debug] [2020-03-16T12:27:40.581Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:27:40.582Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:27:40.582Z] Accepted request POST /theuqs-52673/us-central1/app/api/creaticketNew:sid:uid:abb --> app
+[debug] [2020-03-16T12:27:40.582Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:27:40.582Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\2396
+[debug] [2020-03-16T12:27:40.582Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: BUSY
+[debug] [2020-03-16T12:27:40.582Z] [runtime-status] [2396] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:27:40.583Z] [runtime-status] [2396] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:27:40.583Z] [runtime-status] [2396] Running app in mode HTTPS
+[debug] [2020-03-16T12:27:40.583Z] [runtime-status] [2396] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\2396
+[debug] [2020-03-16T12:27:40.584Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:27:40.586Z] [runtime-status] [2396] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:27:40.587Z] [runtime-status] [2396] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:27:40.589Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: IDLE
+[debug] [2020-03-16T12:27:40.589Z] [work-queue] {"queueLength":0,"workRunningCount":0}
+[debug] [2020-03-16T12:27:42.163Z] [work-queue] {"queueLength":1,"workRunningCount":0}
+[debug] [2020-03-16T12:27:42.163Z] [work-queue] {"queueLength":0,"workRunningCount":1}
+[debug] [2020-03-16T12:27:42.163Z] Accepted request POST /theuqs-52673/us-central1/app/api/creaticketNew:sid:uid:abb --> app
+[debug] [2020-03-16T12:27:42.163Z] [worker-pool] submitWork(triggerId=app)
+[debug] [2020-03-16T12:27:42.163Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: Assigning socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\2396
+[debug] [2020-03-16T12:27:42.163Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: BUSY
+[debug] [2020-03-16T12:27:42.163Z] [runtime-status] [2396] Trigger "app" has been found, beginning invocation!
+[info] i  functions: Beginning execution of "app"
+[debug] [2020-03-16T12:27:42.164Z] [runtime-status] [2396] triggerDefinition {"httpsTrigger":{},"name":"app","entryPoint":"app"}
+[debug] [2020-03-16T12:27:42.164Z] [runtime-status] [2396] Running app in mode HTTPS
+[debug] [2020-03-16T12:27:42.165Z] [runtime-status] [2396] Attempting to listen to socketPath: \\?\pipe\C:\Users\Cedrick\Documents\GitHub\UQS-DSC-Solution-Challenge-Web\functions\2396
+[debug] [2020-03-16T12:27:42.166Z] [functions] Runtime ready! Sending request!
+[debug] [2020-03-16T12:27:42.168Z] [runtime-status] [2396] Ephemeral server handling POST request
+[info] >  VuE9JFHoriRD717k14PlW48uAcE2
+[debug] [2020-03-16T12:27:42.169Z] [runtime-status] [2396] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2020-03-16T12:27:42.171Z] [worker-app-60bc8a1b-12b6-40a6-9a43-a4ff2bde634a]: IDLE
+[debug] [2020-03-16T12:27:42.171Z] [work-queue] {"queueLength":0,"workRunningCount":0}

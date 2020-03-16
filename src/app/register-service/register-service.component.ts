@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -8,6 +8,8 @@ import { ServiceService } from '../services/service.service'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SnackbarComponent } from '../snackbar/snackbar.component'
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatStepper } from '@angular/material/stepper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-service',
@@ -16,11 +18,14 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class RegisterServiceComponent implements OnInit {
 
+  
+  totalStepsCount: number;
+
+  
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   loginFormGroup: FormGroup;
-
 
   constructor(
     public auth: AuthService,
@@ -29,19 +34,11 @@ export class RegisterServiceComponent implements OnInit {
     private readonly afs: AngularFirestore,
     private afStorage: AngularFireStorage,
     public dialog: MatDialog,
-    public _snackbar: MatSnackBar
+    public _snackbar: MatSnackBar,
+    private router: Router,
   ) { }
 
-  ngOnInit() {
-
-    firebase.auth().onAuthStateChanged(function(service) {
-      if (service) {
-        console.log(service.email);
-      } else {
-        console.log("0");
-      }
-    });
-
+  ngOnInit() {   
     this.firstFormGroup = this._formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -50,9 +47,39 @@ export class RegisterServiceComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       displayName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
+      abbreviation: ['', Validators.required],
     });
 
+    this.checkifAuth();
 
+    const user = firebase.auth().currentUser;
+    if (!user){
+        console.log(0)
+    } else {
+      console.log(1)
+    }
+
+  }
+
+  checkifAuth(){
+    this.service.checkAuth()
+  }
+
+
+  tryFacebookAuth(stepper: MatStepper){
+    this.service.facebookSignin()
+    .then( res=> {
+      console.log(res);
+      stepper.next();
+    }, err => {
+      console.log(err);
+    })
+  }
+
+
+
+  logoutService(){
+    this.service.serviceSignOut();
   }
 
    // the snackbar method
@@ -81,7 +108,7 @@ export class RegisterServiceComponent implements OnInit {
     });
   }
 
- 
+
 
   tryUpdateService(value){
     // call the function
