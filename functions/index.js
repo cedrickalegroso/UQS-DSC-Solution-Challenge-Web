@@ -113,7 +113,9 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
            let ticketOwnner = req.body.uid;
            console.log(serviceUid);
            let unixTimestamp = Math.floor(Date.now() / 100);
-           
+
+        
+           let serviceColl = db.collection('services');
            let ticketColl = db.collection('tickets');
            let queryticketColl = ticketColl.where('serviceUid', '==', serviceUid).orderBy('ticketRaw', 'desc').limit(1).get()
            .then( snapshot => {
@@ -121,7 +123,7 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
                  ticketColl.doc(`${ abbreviation + 1 + unixTimestamp }`).set({
                     refNo:  abbreviation + 1 + unixTimestamp,
                     serviceUid: serviceUid,
-                    ticketNo:  1,
+                    ticketNo: abbreviation + 1,
                     ticketRaw: 1,
                     ticketOwnerUid: ticketOwnner,
                     timestamp:  unixTimestamp,
@@ -147,7 +149,10 @@ app.post('/api/createTicket:sid:uid', (req, res) => {
                   });
                }
                return true;
-           });           
+           });     
+           
+      
+
            return res.status(200).send();
          }
          catch (error)
@@ -191,7 +196,18 @@ app.post('/api/ticketdone:refNo', (req, res) => {
    });
 });
 
- 
+// Routes
+app.get('/hello-world', (req, res) => {
+  
+      return res.status(200).send('Hello World! ');
+   
+});
+
+
+
+
+
+
 // Read
 
 // Update

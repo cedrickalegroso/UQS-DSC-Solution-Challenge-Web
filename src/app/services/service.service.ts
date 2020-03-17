@@ -96,7 +96,7 @@ export class ServiceService {
    async loginService(value) {
      await this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password) 
 
-     const user = firebase.auth().currentUser;
+   /*  const user = firebase.auth().currentUser;
      if (user.emailVerified) {
       return this.router.navigate(['/service/dashboard']);
      } else {
@@ -105,7 +105,10 @@ export class ServiceService {
        const config = 'errconf'
        this.openSnackBar(Message, config);
        
-     }
+     } */
+
+
+     return this.router.navigate(['/service/dashboard']);
      
   }
 
