@@ -20,20 +20,6 @@ const cors = require('cors');
 app.use(cors({ origin: true }));
 
 
-//Sendgrid Config
-const mailTransport = nodemailer.createTransport({
-   host: 'smtp.gmail.com',
-   port: 587,
-   secure: false,
-   requireTLS: true,
-  auth: {
-    user: 'theuqs@gmail.com',
-    pass: 'solution2019',
-  },
-});
-
-
-
 
 // Create Ticket
 app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
