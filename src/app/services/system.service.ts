@@ -43,6 +43,6 @@ export class SystemService {
       versionNo: value.versionNo,
       description: value.description,
       timestamp:  Math.floor(Date.now() / 1000)
-    })
+    });
   }
 }

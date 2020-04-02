@@ -4,25 +4,22 @@ service cloud.firestore {
 
     /* Services */
     match /services/{document} {
-      allow write;
-      allow read: if request.auth != null;
+     allow write, read;
     }
     
      /* userCollection */
     match /userCollection/{document} {
-      allow write;
-      allow read: if request.auth != null;
+      allow write, read;
     }
 
       /* superAdmins */
     match /superadmins/{document} {
-      allow write;
-      allow read: if request.auth != null;
+     allow write, read;
     }
     
      /* Tickets */
     match /tickets/{document} {
-     /* allow write, read: if request.auth != null;  */
+     
 
        allow write, read;
     }

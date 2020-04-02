@@ -45,8 +45,16 @@ export class ServicedashboardComponent implements OnInit {
       ticketNo: ['', Validators.required],
     });
    
+
+ 
+  
+  }
+
+  initFirebaseMessage() {
+
     
   }
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(SelectTellerNoDialog, {
@@ -68,6 +76,10 @@ export class ServicedashboardComponent implements OnInit {
    
   }
 
+  ticketReset(){
+ 
+ 
+  }
 
   
   ticketDone(ticket){
@@ -196,6 +208,8 @@ export class profileDialog {
         newPassword: ['', Validators.required],
         confirmPassword: ['', Validators.required]
       });
+
+      
 
     }    
  

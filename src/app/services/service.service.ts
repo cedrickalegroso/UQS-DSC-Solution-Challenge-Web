@@ -76,7 +76,7 @@ export class ServiceService {
     this.afs.doc(`services/${credential.user.uid}`).set({
       uid: credential.user.uid,
       email: credential.user.email,
-      photoUrl: 'https://firebasestorage.googleapis.com/v0/b/theuqs-52673.appspot.com/o/default%2FtempLogo.png?alt=media&token=0abc6b8c-a7e6-4b0f-bd52-6b6f9ccbdc65',
+      photoUrl: 'https://firebasestorage.googleapis.com/v0/b/theuqs-52673.appspot.com/o/default%2FppDef.png?alt=media&token=ee4c1229-d521-47a3-91f0-1c2cd70e2232',
     });
 
     
@@ -150,7 +150,8 @@ export class ServiceService {
       this.afs.doc(`services/${user.uid}`).update({
         displayName: value.displayName,
         phoneNumber: value.phoneNumber,
-        abbreviation: value.abbreviation
+        abbreviation: value.abbreviation,
+        ticketCount: 0
       })
     };
   }

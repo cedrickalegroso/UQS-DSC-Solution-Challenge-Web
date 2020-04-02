@@ -8,7 +8,7 @@ import { HomenavbarComponent } from './homenavbar/homenavbar.component';
 
 import { RegisterServiceComponent, DialogUploadPhoto } from './register-service/register-service.component';
 import { AppAuthComponent } from './app-auth/app-auth.component';
-
+import { AsyncPipe } from '../../node_modules/@angular/common';
 
 //Firebase
 import * as firebase from 'firebase/app';
@@ -59,7 +59,8 @@ import { from } from 'rxjs';
     ServicequeueComponent,
     TellerAuthComponent,
     profileDialog,
-    uploadProdilePicture
+    uploadProdilePicture,
+
   ],
   imports: [
     BrowserModule,
@@ -80,7 +81,8 @@ import { from } from 'rxjs';
     MatCardModule,
     MatSelectModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    
   ],
   providers: [AngularFireStorage],
   bootstrap: [AppComponent],

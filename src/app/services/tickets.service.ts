@@ -87,20 +87,63 @@ export class TicketsService {
           console.log("ERROR: Could not find ticket");
         } else {
           querySnaphot.forEach( async function(doc) {
-          ref = doc.data().refNo;
+         /* ref = doc.data().refNo;
           ticketColl.doc(`${ref}`).update({
           ticketStatus: 0,
           timestampDone: unixTimestamp
-          });   
+          });   */ 
           });
         }
       }
     )
+    return this.notification(ticket);
   }
 
  
+  async notification(ticket){
+    let targetUid;
+    let targetRaw;
+    let service = firebase.auth().currentUser;
+    let unixTimestamp = Math.floor(Date.now() / 1000);
+    let target = ticket.ticketRaw + 5; // 10 
+    let notifColl = this.afs.collection('notifications');
+    let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketRaw', '==', target).where('serviceUid', '==', ticket.serviceUid));
+    ticketColl.get().toPromise().then(
+      function(querySnaphot) {
+        if (querySnaphot.empty) {
+         // err
+        } else {
+         querySnaphot.forEach( async function(doc) {
+           targetUid = doc.data().ticketOwnerUid;
+           targetRaw = doc.data().ticketRaw; 
+           let test = doc.data().ticketNo;
 
-  
+
+        
+         let diff = target - ticket.ticketRaw ;
+         let notifRef =  targetUid +  unixTimestamp;
+         let finalMessage = "There are " + diff   + " person(s) before your turn. Please stay at the vicinity of the area.";
+ 
+          console.log(test);
+          console.log(finalMessage);
+           notifColl.doc(`${notifRef}`).set({
+           message: finalMessage,
+           notifOwnerUid: 'VuE9JFHoriRD717k14PlW48uAcE2',
+           notifService: service.uid,
+           timestamp: unixTimestamp
+         });  
+ 
+        
+
+         });
+        }
+      }
+    ) 
+
+    
+   
+  }
+
 
   async nextTicket(selected){
     let data;
