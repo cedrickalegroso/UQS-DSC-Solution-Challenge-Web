@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const FieldValue = require('firebase-admin').firestore.FieldValue;
 const nodemailer = require('nodemailer');
 
 var serviceAccount = require("./theuqspermission.json");
@@ -20,140 +21,257 @@ const cors = require('cors');
 app.use(cors({ origin: true }));
 
 
+// Cancel ticket
+app.post('/api/CancelTicket:refNo',  (req, res) => {
+   
+   try {
+      console.log('============ using updated api [cancel ticket] ================')
+      console.log('====================  version APRIL 3   =======================')
 
-// Create Ticket
-app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
+      let refNo = req.body.refNo // returns ticket refno
+      let unixTimestamp = Math.floor(Date.now() / 100); // unixtimestamp
 
-   (async () => {
-
-
-      try {
-         console.log('=================== using updated api ========================')
-         console.log('===================  version APRIL 2.1 ========================')
-
-         let abbreviation = req.body.abb // returns service abb
-         let serviceUid = req.body.sid // returns the service uid
-         let ticketOwnner = req.body.uid // returns the user uid
-
-
-
-         admin.firestore().collection('tickets')
-            .where('serviceUid', '==', serviceUid)
-            .where('ticketOwnerUid', '==', ticketOwnner)
-            .where('ticketStatus', '==', 1)
-            .get()
-            .then(snapshot => {
-               if (snapshot.empty) {
-                  console.log('no ticket found for this user ' + ticketOwnner)
-                  return getserviceData(serviceUid, ticketOwnner);
-               } else {
-                  console.log('this user already have a ticket')
-                  message = "Error you already have a existing ticket to this service"
-                  return prepareMessage(message);
-               }
-            })
-            .catch(err => console.log(err))
-
+      admin.firestore().collection('tickets')
+         .doc(refNo)
+         .update({
+            ticketStatus: 0
+         })
+         .then(() => {
+            admin.firestore().doc(`tickets/${refNo}/timeline/${unixTimestamp}`)
+               .set({
+                  message: 'Ticket Canceled'
+               })
             return res.status(200).send();
+         })
+         .catch(err => console.log(err))
 
+
+
+   }
+   catch (error) {
+      console.log(error)
+      return res.status(500).send(error);
+   }
+});
+
+
+// Read Timeline
+app.get('/api/timeline/:refNo', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [read timeline] ================')
+         console.log('====================  version APRIL 5   =======================')
+         let refNo = req.params.refNo // returns the service uid
+         const document = admin.firestore().collection('tickets').doc(refNo)
+         .collection('timeline')
+         let timeline = await document.get()
+         let response =  timeline.docs.map(doc => doc.data());
+
+         console.log(response);
+
+         return res.status(200).send(response)
       }
       catch (error) {
-         console.log(error)
-         return res.status(500).send(error);
+         console.log(error);
+         return res.status(500).send(error)
+
+      }
+   })();
+});
+
+
+// Get univ service
+app.get('/api/getUniversity/', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [get services] ================')
+         console.log('====================  version APRIL 9   =======================')
+         const document = admin.firestore().collection('services').where('categoryIndex', '==', 0)
+         let timeline = await document.get()
+         let response =  timeline.docs.map(doc => doc.data());
+
+         console.log(response);
+
+         return res.status(200).send(response)
+      }
+      catch (error) {
+         console.log(error);
+         return res.status(500).send(error)
+
+      }
+   })();
+});
+
+
+// Get univ service
+app.get('/api/getBanks/', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [get services] ================')
+         console.log('====================  version APRIL 9   =======================')
+         const document = admin.firestore().collection('services').where('categoryIndex', '==', 2)
+         let timeline = await document.get()
+         let response =  timeline.docs.map(doc => doc.data());
+
+         console.log(response);
+
+         return res.status(200).send(response)
+      }
+      catch (error) {
+         console.log(error);
+         return res.status(500).send(error)
+
       }
    })();
 });
 
 
 
-async function getserviceData(serviceUid, ticketOwnner) {
-   console.log('getserviceData triggreed')
-   admin.firestore().collection('services')
-      .where('uid', '==', serviceUid)
-      .limit(1)
-      .get()
-      .then(snapshot => {
-         if (snapshot.empty) {
-            message = "Error service not found"
-            return prepareMessage(message)
-         } else {
-            snapshot.forEach(doc => {
-               console.log('got service data sending it to intialize')
-               serviceData = doc.data();
-               let ticketNo = serviceData.ticketCount + 1;
-               admin.firestore().collection('services').doc(`${serviceUid}`).update({
-                  ticketCount: ticketNo
-               });
-               console.log('got service data sending it to intialize ' + ticketOwnner)
-               return intializeTicket(ticketNo, serviceData, ticketOwnner)
-            });
-         }
-         return;
-      })
-      .catch(err => console.log(err))
-}
+// Get univ service
+app.get('/api/getGovernment/', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [get services] ================')
+         console.log('====================  version APRIL 9   =======================')
+         const document = admin.firestore().collection('services').where('categoryIndex', '==', 1)
+         let timeline = await document.get()
+         let response =  timeline.docs.map(doc => doc.data());
 
-async  function intializeTicket(ticketNo, serviceData, ticketOwnner) {
-   let unixTimestamp = Math.floor(Date.now() / 100); // unixtimestamp
-   console.log('initializing ticket')
-   console.log('creating ticket')
-   admin.firestore().collection('tickets')
-      .doc(`${serviceData.abbreviation + ticketNo + unixTimestamp}`).set({
-         refNo: serviceData.abbreviation + ticketNo + unixTimestamp,
-         serviceUid: serviceData.uid,
-         ticketNo: serviceData.abbreviation + ticketNo,
-         ticketRaw: ticketNo,
-         ticketOwnerUid: ticketOwnner,
-         timestamp: unixTimestamp,
-         teller: 0,
-         ticketStatus: 1
-      });
-   message = "Ticket created successfully"
-   return prepareMessage(message, ticketOwnner);
-}
+         console.log(response);
 
-
-async  function prepareMessage(message, ticketOwnner) {
-   console.log('preparing success message '+ ticketOwnner)
-   admin.firestore().collection('fcmTokens')
-      .where('userUid', '==', ticketOwnner)
-      .get()
-      .then(snapshot => {
-         snapshot.forEach(doc => {
-            registrationToken = doc.data().token
-         })
-      return sendMessage(registrationToken, message)
-      })
-      .catch(err => console.log(err))
-}
-
-
-
-
-async function sendMessage(registrationToken, message) {
-   console.log('token is ' + registrationToken)
-   console.log('message is ' + message)
-   var payload = {
-      notification: {
-         title: 'Success',
-         body: message
+         return res.status(200).send(response)
       }
-   };
+      catch (error) {
+         console.log(error);
+         return res.status(500).send(error)
 
-   admin.messaging().sendToDevice(registrationToken, payload)
-      .then(function (response) {
-         console.log("Successfully sent message:", response);
-         console.log(response.results[0].error);
+      }
+   })();
+});
+
+
+
+
+// Create Ticket
+app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
+   try {
+      console.log('============ using updated api [create ticket] ================')
+      console.log('====================  version APRIL 3   =======================')
+
+      let serviceUid = req.body.sid // returns the service uid
+      let ticketOwnner = req.body.uid // returns the user uid
+      let unixTimestamp = Math.floor(Date.now() / 100);
+
+      admin.firestore().collection('tickets')
+         .where('serviceUid', '==', serviceUid)
+         .where('ticketOwnerUid', '==', ticketOwnner)
+         .where('ticketStatus', '==', 1)
+         .get()
+         .then((snapshot) => {
+            if (!snapshot.empty) {
+               console.log('reject ticket')
+               return err(ticketOwnner)
+            } else {
+               console.log('accpet ticket')
+               return test(serviceUid, ticketOwnner, unixTimestamp)
+            }
+
+         })
+         .catch(err => console.log(err))
+
+
+
+      return res.status(200).send();
+   }
+   catch (error) {
+      console.log(error)
+      return res.status(500).send(error);
+   }
+
+});
+
+
+function ErrMessage(ticketOwnner) {
+   console.log(ticketOwnner)
+}
+
+function err(ticketOwnner) {
+   admin.firestore().collection('fcmTokens').doc(ticketOwnner)
+      .get()
+      .then(doc => {
+         return doc.data()
+      })
+      .then(results => {
+         var payload = {
+            notification: {
+               title: 'Success',
+               body: 'Error you have an existing ticket'
+            }
+         }
+
+         admin.messaging().sendToDevice(results.token, payload)
+         return true;
+      })
+      .catch(err => console.log(err))
+}
+
+function test(serviceUid, ticketOwnner, unixTimestamp) {
+   admin.firestore().collection('services').doc(serviceUid)
+      .update({
+         ticketCount: FieldValue.increment(1)
+      })
+   admin.firestore().collection('services').doc(serviceUid)
+      .get()
+      .then(doc => {
+         return doc.data()
+      })
+      .then(results => {
+         let ticketNo = results.ticketCount + 1
+         let refNo = results.abbreviation + ticketNo + unixTimestamp
+         admin.firestore().collection('tickets').doc(`${refNo}`).set({
+            refNo: results.abbreviation + ticketNo + unixTimestamp,
+            serviceUid: results.uid,
+            ticketNo: results.abbreviation + ticketNo,
+            ticketRaw: ticketNo,
+            ticketOwnerUid: ticketOwnner,
+            timestamp: unixTimestamp,
+            teller: 0,
+            ticketStatus: 1
+         })
+         return refNo;
+      })
+      .then(results => {
+         let date = admin.firestore.Timestamp.now().toDate();
+         admin.firestore().doc(`tickets/${results}/timeline/${unixTimestamp}`)
+            .set({
+               message: date + ' Ticket created'
+            })
          return;
       })
-      .catch(function (error) {
-         console.log("Error sending message:", error);
-         return res.status(500).send();
-      });
+      .catch(err => console.log(err))
 
+   admin.firestore().collection('fcmTokens').doc(ticketOwnner)
+      .get()
+      .then(doc => {
+         return doc.data()
+      })
+      .then(results => {
+         var payload = {
+            notification: {
+               title: 'Success',
+               body: 'Ticket created successfuly'
+            }
+         }
+
+         admin.messaging().sendToDevice(results.token, payload)
+         return true;
+      })
+      .catch(err => console.log(err))
 }
+
 
 
 
 // Export the api to firebse Cloud Functions
 exports.app = functions.https.onRequest(app);
+
