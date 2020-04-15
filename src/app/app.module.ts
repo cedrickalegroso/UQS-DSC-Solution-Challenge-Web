@@ -10,6 +10,9 @@ import { RegisterServiceComponent, DialogUploadPhoto } from './register-service/
 import { AppAuthComponent } from './app-auth/app-auth.component';
 import { AsyncPipe } from '../../node_modules/@angular/common';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 //Firebase
 import * as firebase from 'firebase/app';
 import { AngularFireModule } from '@angular/fire';
@@ -40,8 +43,11 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { from } from 'rxjs';
+import { DocsComponent } from './docs/docs.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +66,7 @@ import { from } from 'rxjs';
     TellerAuthComponent,
     profileDialog,
     uploadProdilePicture,
+    DocsComponent,
 
   ],
   imports: [
@@ -82,6 +89,8 @@ import { from } from 'rxjs';
     MatSelectModule,
     MatButtonModule,
     MatExpansionModule,
+    MatListModule,
+    MatToolbarModule
     
   ],
   providers: [AngularFireStorage],

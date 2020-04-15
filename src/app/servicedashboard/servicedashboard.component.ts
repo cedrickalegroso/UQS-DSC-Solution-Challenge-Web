@@ -81,6 +81,7 @@ export class ServicedashboardComponent implements OnInit {
  
   }
 
+ 
   
   ticketDone(ticket){
     this.ticket.ticketDone(ticket)
@@ -211,7 +212,17 @@ export class profileDialog {
 
       
 
-    }    
+    }  
+    
+    
+    ticketCountReset(){
+      this.ticket.ticketCountReset()
+      .then(res => {
+        console.log(res)
+      }, err => {
+        console.log(err)
+      })
+    }
  
 
     updateData(value){
@@ -283,6 +294,7 @@ export class uploadProdilePicture {
       });
 
     }    
+
 
     uploadPhoto(event){
       // call this function

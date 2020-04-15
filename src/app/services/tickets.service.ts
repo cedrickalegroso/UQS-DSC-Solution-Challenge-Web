@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Ticket } from './ticket.model';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
+
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
+import * as admin from 'firebase-admin';
 import 'firebase/firestore';
 import { Component, OnInit } from '@angular/core';
 
@@ -23,6 +25,7 @@ export class TicketsService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
+
   )
   { 
 
@@ -87,11 +90,11 @@ export class TicketsService {
           console.log("ERROR: Could not find ticket");
         } else {
           querySnaphot.forEach( async function(doc) {
-         /* ref = doc.data().refNo;
+          ref = doc.data().refNo;
           ticketColl.doc(`${ref}`).update({
           ticketStatus: 0,
           timestampDone: unixTimestamp
-          });   */ 
+          });   
           });
         }
       }
@@ -117,12 +120,13 @@ export class TicketsService {
            targetUid = doc.data().ticketOwnerUid;
            targetRaw = doc.data().ticketRaw; 
            let test = doc.data().ticketNo;
-
-
-        
+     
          let diff = target - ticket.ticketRaw ;
          let notifRef =  targetUid +  unixTimestamp;
          let finalMessage = "There are " + diff   + " person(s) before your turn. Please stay at the vicinity of the area.";
+
+
+         
  
           console.log(test);
           console.log(finalMessage);
@@ -132,9 +136,6 @@ export class TicketsService {
            notifService: service.uid,
            timestamp: unixTimestamp
          });  
- 
-        
-
          });
         }
       }
@@ -144,12 +145,21 @@ export class TicketsService {
    
   }
 
+  // resets the ticket Count 
+  async ticketCountReset(){
+    let service = firebase.auth().currentUser;
+    this.afs.collection('services').doc(`${service.uid}`).update({
+      ticketCount: 0
+    })
+  }
+
+  async sendMessage(){
+    
+  }
 
   async nextTicket(selected){
     let data;
     let service = firebase.auth().currentUser
-
-
     let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).where('teller', '==', 0).orderBy('ticketRaw', 'asc').limit(1))
     ticketColl.get().toPromise().then(
       function(querySnaphot) {
@@ -163,11 +173,24 @@ export class TicketsService {
               teller: selected,
               ticketStatus: 2
             });
+            
+            this.afs.collection('fcmTokens').doc(data.ticketOwnerUid).get().toPromise()
+            .then((doc) => {
+                let Token = doc.data().token 
+
+                var payload = {
+                  notification: {
+                    title: 'Success',
+                    body: 'Your ticket now have a teller'
+                  }
+                }
+
+
+            });
           });
         }
       }
     ) 
-
     this.nextTicket$ = ticketColl.get().pipe(
       switchMap( user => {
         if (user) {

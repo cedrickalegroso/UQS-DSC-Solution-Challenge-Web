@@ -22,8 +22,8 @@ app.use(cors({ origin: true }));
 
 
 // Cancel ticket
-app.post('/api/CancelTicket:refNo',  (req, res) => {
-   
+app.post('/api/CancelTicket:refNo', (req, res) => {
+
    try {
       console.log('============ using updated api [cancel ticket] ================')
       console.log('====================  version APRIL 3   =======================')
@@ -63,9 +63,9 @@ app.get('/api/timeline/:refNo', (req, res) => {
          console.log('====================  version APRIL 5   =======================')
          let refNo = req.params.refNo // returns the service uid
          const document = admin.firestore().collection('tickets').doc(refNo)
-         .collection('timeline')
+            .collection('timeline')
          let timeline = await document.get()
-         let response =  timeline.docs.map(doc => doc.data());
+         let response = timeline.docs.map(doc => doc.data());
 
          console.log(response);
 
@@ -88,7 +88,7 @@ app.get('/api/getUniversity/', (req, res) => {
          console.log('====================  version APRIL 9   =======================')
          const document = admin.firestore().collection('services').where('categoryIndex', '==', 0)
          let timeline = await document.get()
-         let response =  timeline.docs.map(doc => doc.data());
+         let response = timeline.docs.map(doc => doc.data());
 
          console.log(response);
 
@@ -111,7 +111,7 @@ app.get('/api/getBanks/', (req, res) => {
          console.log('====================  version APRIL 9   =======================')
          const document = admin.firestore().collection('services').where('categoryIndex', '==', 2)
          let timeline = await document.get()
-         let response =  timeline.docs.map(doc => doc.data());
+         let response = timeline.docs.map(doc => doc.data());
 
          console.log(response);
 
@@ -135,7 +135,7 @@ app.get('/api/getGovernment/', (req, res) => {
          console.log('====================  version APRIL 9   =======================')
          const document = admin.firestore().collection('services').where('categoryIndex', '==', 1)
          let timeline = await document.get()
-         let response =  timeline.docs.map(doc => doc.data());
+         let response = timeline.docs.map(doc => doc.data());
 
          console.log(response);
 
@@ -150,6 +150,112 @@ app.get('/api/getGovernment/', (req, res) => {
 });
 
 
+// Ticket DOne
+app.post('/api/ticketDone:refNo:sid', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [ticket Done] ================')
+         console.log('====================  version APRIL 5   =======================')
+         let refNo = req.body.refNo
+         let sid = req.body.sid
+
+
+         
+
+         admin.firestore().collection('tickets').doc(refNo).update({
+            ticketStatus: 0
+         })
+ 
+          
+         admin.firestore().collection('tickets').doc(refNo).get()
+            .then((doc) => {
+               return doc.data()
+            }).then((results) => {
+               console.log(results.ticketRaw)
+               let target = results.ticketRaw + 5
+               console.log('Notfying Ticket ' + target)
+               return remindFith(target, sid)
+            })
+            .catch(err => console.log(err))
+
+            admin.firestore().collection('tickets').doc(refNo).get()
+               .then((doc => {
+                  let test = doc.data()
+                  return test
+               })).then((results) => {
+                  return messgeDone(results)
+               })
+               .catch(err => console.log(err))
+
+
+
+      
+
+         return res.status(200).send()
+      }
+      catch (error) {
+         console.log(error);
+         return res.status(500).send(error)
+
+      }
+   })();
+});
+
+
+function messgeDone(results){
+   admin.firestore().collection('fcmTokens').doc(results.ticketOwnerUid).get()
+   .then((doc) => {
+      var payload = {
+         notification: {
+            title: 'Success',
+            body: 'Good ticket is now done'
+         }
+      }
+      admin.messaging().sendToDevice(doc.data().token, payload)
+      return true;
+   })
+   .catch(err => console.log(err))
+   return true;
+}
+
+function remindFith(target, sid) {
+   admin.firestore().collection('tickets').where('ticketRaw', '==', target)
+      .where('serviceUid', '==', sid).get()
+      .then((snapshot) => {
+         snapshot.forEach((doc) => {
+            let fifth = doc.data()
+            return messagefifth(fifth)
+         })
+         return true;
+      })
+      .catch(err => console.log(err))
+}
+
+function messagefifth(fifth) {
+   admin.firestore().collection('fcmTokens').doc(fifth.ticketOwnerUid).get()
+      .then((doc) => {
+         var payload = {
+            notification: {
+               body: 'Your Ticket ' + fifth.ticketNo + ' is fifth in-line'
+            }
+         }
+         admin.messaging().sendToDevice(doc.data().token, payload)
+         return true;
+      })
+      .catch(err => console.log(err))
+}
+
+
+
+
+function getToken() {
+   (async () => {
+
+   })
+}
+
+
+
 
 
 // Create Ticket
@@ -161,6 +267,8 @@ app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
       let serviceUid = req.body.sid // returns the service uid
       let ticketOwnner = req.body.uid // returns the user uid
       let unixTimestamp = Math.floor(Date.now() / 100);
+
+      /*
 
       admin.firestore().collection('tickets')
          .where('serviceUid', '==', serviceUid)
@@ -177,7 +285,10 @@ app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
             }
 
          })
-         .catch(err => console.log(err))
+         .catch(err => console.log(err)) */
+
+
+      test(serviceUid, ticketOwnner, unixTimestamp)
 
 
 
