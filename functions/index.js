@@ -180,6 +180,56 @@ app.get('/api/getGovernment/', (req, res) => {
 });
 
 
+
+// new teller notify
+app.post('/api/updateDisplayName:uid:displayName', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [Update DisplayName] ================')
+         console.log('====================  version APRIL 17   =======================')
+         let displayname = req.body.displayName
+         let uid = req.body.uid
+
+         admin.firestore().collection('userCollection').doc(uid).update({
+            displayName: displayname
+         });
+
+         return res.status(200).send()
+      }
+      catch (error) {
+         console.log(error);
+         return res.status(500).send(error)
+      }
+   })();
+});
+
+
+// new teller notify
+app.post('/api/updatePhoneNumber:uid:phoneNumber', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [Update DisplayName] ================')
+         console.log('====================  version APRIL 17   =======================')
+         let phoneNumber = req.body.phoneNumber
+         let uid = req.body.uid
+
+         admin.firestore().collection('userCollection').doc(uid).update({
+            phoneNumber: phoneNumber
+         });
+
+         return res.status(200).send()
+      }
+      catch (error) {
+         console.log(error);
+         return res.status(500).send(error)
+      }
+   })();
+});
+
+
+
+
+
 // new teller notify
 app.post('/api/newTellerNotify:uid:teller', (req, res) => {
    (async () => {
