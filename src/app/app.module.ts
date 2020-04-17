@@ -12,6 +12,7 @@ import { AsyncPipe } from '../../node_modules/@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { HttpClientModule } from '@angular/common/http';
 
 //Firebase
 import * as firebase from 'firebase/app';
@@ -90,7 +91,8 @@ import { DocsComponent } from './docs/docs.component';
     MatButtonModule,
     MatExpansionModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule
     
   ],
   providers: [AngularFireStorage],

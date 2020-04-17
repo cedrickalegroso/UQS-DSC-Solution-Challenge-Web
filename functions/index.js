@@ -30,6 +30,7 @@ app.post('/api/CancelTicket:refNo', (req, res) => {
 
       let refNo = req.body.refNo // returns ticket refno
       let unixTimestamp = Math.floor(Date.now() / 100); // unixtimestamp
+      let date = admin.firestore.Timestamp.now().toDate();
 
       admin.firestore().collection('tickets')
          .doc(refNo)
@@ -39,7 +40,7 @@ app.post('/api/CancelTicket:refNo', (req, res) => {
          .then(() => {
             admin.firestore().doc(`tickets/${refNo}/timeline/${unixTimestamp}`)
                .set({
-                  message: 'Ticket Canceled'
+                  message: date + ' Ticket Canceled '
                })
             return res.status(200).send();
          })
@@ -68,6 +69,35 @@ app.get('/api/timeline/:refNo', (req, res) => {
          let response = timeline.docs.map(doc => doc.data());
 
          console.log(response);
+
+         return res.status(200).send(response)
+      }
+      catch (error) {
+         console.log(error);
+         return res.status(500).send(error)
+
+      }
+   })();
+});
+
+
+
+// Find latest done ticket
+app.get('/api/latestTicketDone/:sid', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [read timeline] ================')
+         console.log('====================  version APRIL 5   =======================')
+         let sid = req.params.sid // returns the service uid
+         const document = admin.firestore().collection('tickets')
+            .where('serviceUid', '==', sid)
+            .where('ticketStatus', '==', 0)
+            .orderBy('ticketRaw', 'desc')
+            .limit(1)
+         let ticket = await document.get()
+         let response = ticket.docs.map(doc => doc.data().ticketRaw);
+
+
 
          return res.status(200).send(response)
       }
@@ -150,6 +180,38 @@ app.get('/api/getGovernment/', (req, res) => {
 });
 
 
+// new teller notify
+app.post('/api/newTellerNotify:uid:teller', (req, res) => {
+   (async () => {
+      try {
+         console.log('============ using updated api [Notify New teller] ================')
+         console.log('====================  version APRIL 5   =======================')
+         let teller = req.body.teller
+         let uid = req.body.uid
+
+         admin.firestore().collection('fcmTokens').doc(uid)
+         .get().then((doc) => {
+            var payload = {
+               notification: {
+                  body: 'Teller ' + teller + ' is now your teller.'
+               }
+            }
+            admin.messaging().sendToDevice(doc.data().token, payload)
+            return true;
+         })
+         .catch(err => console.log(err))
+
+
+         return res.status(200).send()
+      }
+      catch (error) {
+         console.log(error);
+         return res.status(500).send(error)
+
+      }
+   })();
+});
+
 // Ticket DOne
 app.post('/api/ticketDone:refNo:sid', (req, res) => {
    (async () => {
@@ -159,14 +221,10 @@ app.post('/api/ticketDone:refNo:sid', (req, res) => {
          let refNo = req.body.refNo
          let sid = req.body.sid
 
-
-         
-
          admin.firestore().collection('tickets').doc(refNo).update({
             ticketStatus: 0
          })
- 
-          
+
          admin.firestore().collection('tickets').doc(refNo).get()
             .then((doc) => {
                return doc.data()
@@ -178,18 +236,14 @@ app.post('/api/ticketDone:refNo:sid', (req, res) => {
             })
             .catch(err => console.log(err))
 
-            admin.firestore().collection('tickets').doc(refNo).get()
-               .then((doc => {
-                  let test = doc.data()
-                  return test
-               })).then((results) => {
-                  return messgeDone(results)
-               })
-               .catch(err => console.log(err))
-
-
-
-      
+         admin.firestore().collection('tickets').doc(refNo).get()
+            .then((doc => {
+               let test = doc.data()
+               return test
+            })).then((results) => {
+               return messgeDone(results)
+            })
+            .catch(err => console.log(err))
 
          return res.status(200).send()
       }
@@ -202,19 +256,19 @@ app.post('/api/ticketDone:refNo:sid', (req, res) => {
 });
 
 
-function messgeDone(results){
+function messgeDone(results) {
    admin.firestore().collection('fcmTokens').doc(results.ticketOwnerUid).get()
-   .then((doc) => {
-      var payload = {
-         notification: {
-            title: 'Success',
-            body: 'Good ticket is now done'
+      .then((doc) => {
+         var payload = {
+            notification: {
+               title: 'Success',
+               body: 'Good ticket is now done'
+            }
          }
-      }
-      admin.messaging().sendToDevice(doc.data().token, payload)
-      return true;
-   })
-   .catch(err => console.log(err))
+         admin.messaging().sendToDevice(doc.data().token, payload)
+         return true;
+      })
+      .catch(err => console.log(err))
    return true;
 }
 
@@ -248,15 +302,6 @@ function messagefifth(fifth) {
 
 
 
-function getToken() {
-   (async () => {
-
-   })
-}
-
-
-
-
 
 // Create Ticket
 app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
@@ -267,8 +312,6 @@ app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
       let serviceUid = req.body.sid // returns the service uid
       let ticketOwnner = req.body.uid // returns the user uid
       let unixTimestamp = Math.floor(Date.now() / 100);
-
-      /*
 
       admin.firestore().collection('tickets')
          .where('serviceUid', '==', serviceUid)
@@ -285,12 +328,10 @@ app.post('/api/creaticketNew:sid:uid:abb', (req, res) => {
             }
 
          })
-         .catch(err => console.log(err)) */
+         .catch(err => console.log(err))
 
 
       test(serviceUid, ticketOwnner, unixTimestamp)
-
-
 
       return res.status(200).send();
    }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Ticket } from './ticket.model';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
-
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -15,16 +15,19 @@ import { Component, OnInit } from '@angular/core';
   providedIn: 'root'
 })
 export class TicketsService {
+  readonly ROOT_URL_notifyNewTeller = 'https://us-central1-theuqs-52673.cloudfunctions.net/app/api/newTellerNotify:uid:teller';
   private TicketsCollection: AngularFirestoreCollection<Ticket>;
   tickets$: Observable<Ticket[]>;
   latestTicket$;
   liveTickets$: Observable<Ticket[]>;
   selected;
   nextTicket$: Observable<Ticket[]>;
+  ticketDataFinal;
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
+    private http: HttpClient,
 
   )
   { 
@@ -75,9 +78,6 @@ export class TicketsService {
 
   ngOnInit() {
    
-
-
-
   }
 
   async ticketDone(ticket){
@@ -125,9 +125,6 @@ export class TicketsService {
          let notifRef =  targetUid +  unixTimestamp;
          let finalMessage = "There are " + diff   + " person(s) before your turn. Please stay at the vicinity of the area.";
 
-
-         
- 
           console.log(test);
           console.log(finalMessage);
            notifColl.doc(`${notifRef}`).set({
@@ -153,12 +150,9 @@ export class TicketsService {
     })
   }
 
-  async sendMessage(){
-    
-  }
-
   async nextTicket(selected){
     let data;
+    var ticketData1;
     let service = firebase.auth().currentUser
     let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).where('teller', '==', 0).orderBy('ticketRaw', 'asc').limit(1))
     ticketColl.get().toPromise().then(
@@ -167,30 +161,32 @@ export class TicketsService {
           console.log("EMPTY");   
         } else {
           querySnaphot.forEach( async function(doc) {
-            data = doc.data();
-            console.log(data.ticketNo);
-            ticketColl.doc(`${data.refNo}`).update({
+             let data = doc.data()
+            
+           /* ticketColl.doc(`${data.refNo}`).update({
               teller: selected,
               ticketStatus: 2
-            });
-            
-            this.afs.collection('fcmTokens').doc(data.ticketOwnerUid).get().toPromise()
-            .then((doc) => {
-                let Token = doc.data().token 
-
-                var payload = {
-                  notification: {
-                    title: 'Success',
-                    body: 'Your ticket now have a teller'
-                  }
-                }
-
-
-            });
+            }); */
+           
           });
+
+          
         }
       }
     ) 
+
+    console.log(this.ticketDataFinal)
+
+    /*
+    const ticketData = {
+      teller: selected,
+      uid: ticketData1,
+    }
+    this.http.post(this.ROOT_URL_notifyNewTeller, ticketData).toPromise().then(data => {
+      console.log(data)
+    }); */
+
+
     this.nextTicket$ = ticketColl.get().pipe(
       switchMap( user => {
         if (user) {
@@ -209,8 +205,22 @@ export class TicketsService {
         }
       })
     );
+
+    
   }  
 
+   notifynewTeller(selected, data) {
+    console.log('notiufet')
+    /*
+    const ticketData = {
+      teller: selected,
+      uid: data.ticketOwnerUid,
+    }
+    this.http.post(this.ROOT_URL_notifyNewTeller, ticketData).toPromise().then(data => {
+      console.log(data)
+    }); */
+  }
+  
 
   async autoIdTicket() {
     let data;
