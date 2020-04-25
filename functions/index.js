@@ -17,7 +17,7 @@ const config = functions.config().firebase
 admin.initializeApp({
    credential: admin.credential.cert(serviceAccount),
    databaseURL: "https://theuqs-52673.firebaseio.com",
-   config: config
+   config: functions.config().firebase
 });
 
 
@@ -26,8 +26,8 @@ var transporter = nodemailer.createTransport(smtpTransport({
    service: 'gmail',
    host: 'smtp.gmail.com',
    auth: {
-      user: "theuqs@gmail.com",
-      pass: "solution2019"
+      user: functions.config().gmail.email,
+      pass: functions.config().gmail.pass
    }
 }));
 
@@ -624,7 +624,7 @@ exports.ticketCreated = functions.firestore
                   body: 'Your ticket ' + ticket.refNo + ' has been created'
                }
             }
-            admin.messaging().sendToDevice(doc.token, payload)
+            admin.messaging().sendToDevice(doc.data().token, payload)
             return true;
          } else {
             console.log("No such document!");
