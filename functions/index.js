@@ -621,7 +621,7 @@ exports.ticketCreated = functions.firestore
          if (doc.exists) {
             var payload = {
                notification: {
-                  body: 'Your ticket ' + ticket.refNo + ' has been created'
+                  body: 'Your ticket ' + ticket.ticketNo + ' has been created'
                }
             }
             admin.messaging().sendToDevice(doc.data().token, payload)
