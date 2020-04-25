@@ -151,8 +151,6 @@ export class TicketsService {
   }
 
   async nextTicket(selected){
-    let data;
-    var ticketData1;
     let service = firebase.auth().currentUser
     let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).where('teller', '==', 0).orderBy('ticketRaw', 'asc').limit(1))
     ticketColl.get().toPromise().then(
@@ -163,29 +161,15 @@ export class TicketsService {
           querySnaphot.forEach( async function(doc) {
              let data = doc.data()
             
-           /* ticketColl.doc(`${data.refNo}`).update({
+           ticketColl.doc(`${data.refNo}`).update({
               teller: selected,
               ticketStatus: 2
-            }); */
+            }); 
            
           });
-
-          
         }
       }
     ) 
-
-    console.log(this.ticketDataFinal)
-
-    /*
-    const ticketData = {
-      teller: selected,
-      uid: ticketData1,
-    }
-    this.http.post(this.ROOT_URL_notifyNewTeller, ticketData).toPromise().then(data => {
-      console.log(data)
-    }); */
-
 
     this.nextTicket$ = ticketColl.get().pipe(
       switchMap( user => {
@@ -260,47 +244,7 @@ export class TicketsService {
           }
           )
          }
-        }
-      /*  querySnaphot.forEach( async function(doc) {
-          data = doc.data();
-          console.log(data)
-          if (doc.exists) {
-            data = doc.data();
-            
-            let ticketRaw1 = data.ticketRaw + 1;
-            let unixTimestamp = Math.floor(Date.now() / 1000);
-            let ticketOwnerUid = "15VTijHFqoTgmXowy38BlFjPJJ43"
-            let refNo ='TEST' + ticketRaw1 + unixTimestamp;
-            let ticketFinal = 'TEST' + ticketRaw1;
-
-            if (data.ticketRaw >= 1  ) {    
-              console.log(114)         
-              ticketColl.doc(`${refNo}`).set({
-                  refNo: refNo,
-                  serviceUid: service.uid,
-                  ticketNo: ticketFinal,
-                  ticketRaw: ticketRaw1,  
-                  ticketOwnerUid: ticketOwnerUid,
-                  timestamp:  Math.floor(Date.now() / 1000)
-                });
-            } else {
-              console.log(115)
-              ticketColl.doc(`${refNo}`).set({
-                refNo: refNo,
-                serviceUid: service.uid,
-                ticketNo: 'TEST' + 1,
-                ticketRaw: 1,
-                ticketOwnerUid: ticketOwnerUid,
-                timestamp:  Math.floor(Date.now() / 1000)
-              });
-            }
-
-
-          } else {
-            console.log("Error getting ticket");
-          } 
-        }); */
-     
+        }    
     ) 
   }   
 
@@ -308,25 +252,3 @@ export class TicketsService {
  
 
 }
-
-
-   //  deprecated 
-
- /*
-   async injecTicket(value){
-    let service = firebase.auth().currentUser;
-    let ticketOwnerUid1 = '30I9qlK4OfZbeBGpzljWfHFuFcL2'
-    let unixTimestamp = Math.floor(Date.now() / 1000)
-    let refNo = 'TEST' + value.ticketNo + unixTimestamp
-   
-
-    await this.afs.doc(`tickets/${refNo}`).set({
-      refNo: refNo,
-      serviceUid: service.uid,
-      ticketNo: "TEST" + value.ticketNo,
-      ticketRaw: value.ticketNo,
-      ticketOwnerUid: ticketOwnerUid1,
-      timestamp:  Math.floor(Date.now() / 1000)
-    })
-
-  } */

@@ -1,0 +1,68 @@
+[debug] [2020-04-19T10:29:41.872Z] ----------------------------------------------------------------------
+[debug] [2020-04-19T10:29:41.875Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Cedrick\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2020-04-19T10:29:41.876Z] CLI Version:   8.1.0
+[debug] [2020-04-19T10:29:41.876Z] Platform:      win32
+[debug] [2020-04-19T10:29:41.876Z] Node Version:  v12.16.2
+[debug] [2020-04-19T10:29:41.878Z] Time:          Sun Apr 19 2020 18:29:41 GMT+0800 (China Standard Time)
+[debug] [2020-04-19T10:29:41.878Z] ----------------------------------------------------------------------
+[debug] [2020-04-19T10:29:41.878Z] 
+[debug] [2020-04-19T10:29:41.889Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-19T10:29:41.889Z] > authorizing via signed-in user
+[debug] [2020-04-19T10:29:41.889Z] [iam] checking project theuqs-52673 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-04-19T10:29:41.892Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/theuqs-52673:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-04-19T10:29:43.159Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 19 Apr 2020 10:29:43 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=958","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-19T10:29:43.163Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/theuqs-52673/serviceAccounts/theuqs-52673@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-04-19T10:29:44.755Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 19 Apr 2020 10:29:45 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  functions: package.json indicates an outdated version of firebase-functions.
+Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+[info] 
+[info] === Deploying to 'theuqs-52673'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] +  functions: Finished running predeploy script.
+[debug] [2020-04-19T10:29:50.041Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^6.5.5",
+    "cors": "^2.8.5",
+    "firebase": "^7.11.0",
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0",
+    "hbs": "^4.1.1",
+    "nodemailer": "^6.4.4",
+    "nodemailer-express-handlebars": "^4.0.0",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "twilio": "^3.42.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}
+[debug] [2020-04-19T10:29:50.374Z] Error: ENOENT: no such file or directory, stat 'functions\package.json'
+    at Object.statSync (fs.js:933:3)
+    at Object.load (C:\Users\Cedrick\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\cjson\index.js:200:12)
+    at getRuntimeChoice (C:\Users\Cedrick\AppData\Roaming\npm\node_modules\firebase-tools\lib\parseRuntimeAndValidateSDK.js:55:26)
+    at module.exports (C:\Users\Cedrick\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\functions\prepare.js:26:29)
+    at _chain (C:\Users\Cedrick\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:22:40)
+    at C:\Users\Cedrick\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:63:16
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.

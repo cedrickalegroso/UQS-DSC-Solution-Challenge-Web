@@ -28,8 +28,11 @@
     "express": "^4.17.1",
     "firebase-tools": "^8.0.3",
     "hammerjs": "^2.0.8",
+    "handlebars": "^4.7.6",
+    "nodemailer-express-handlebars": "^4.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "twilio": "^3.42.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
