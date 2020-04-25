@@ -26,7 +26,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/logo.svg",
               "src/firebase-messaging-sw.js",
               "src/manifest.json"
             ],

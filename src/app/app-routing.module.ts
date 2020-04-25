@@ -9,7 +9,6 @@ import { LoginServiceComponent } from './login-service/login-service.component';
 import { ServicedashboardComponent } from './servicedashboard/servicedashboard.component';
 import { ServicequeueComponent } from './servicequeue/servicequeue.component';
 import { TellerAuthComponent } from './teller-auth/teller-auth.component';
-import { DocsComponent } from './docs/docs.component';
 
 const routes: Routes = [
 
@@ -47,13 +46,11 @@ const routes: Routes = [
    path: 'teller/auth',
    component: TellerAuthComponent
   },
+
+
   {
     path: 'service/livequeue',
     component: ServicequeueComponent
-  },
-  {
-    path: 'docs',
-    component: DocsComponent
   }
 ];
 

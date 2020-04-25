@@ -1,202 +1,184 @@
-<html>
 
-<body>
+            <html>
 
-
-  <button class="button-hidden" mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-horizontal-stepper [linear]="isLinear" #stepper style="height: 600px;">
-    <mat-step [stepControl]="firstFormGroup" editable="false">
-      <ng-template matStepLabel>Your login credentials</ng-template>
-
-      <div id="auth-wrapper">
-
-        <mat-drawer-container class="auth-wrapper">
-
-          <mat-drawer mode="side" opened>
-            <img class="male1" src="../../assets/male1.png" />
-          </mat-drawer>
-
-
-          <mat-drawer-content>
-
-            <div class="main-aut-header">
-
-              <h3> Register </h3>
-              <p> already have an account? <a href="/">Login</a> here.</p>
-
-              <form [formGroup]="firstFormGroup" class="loginForm">
-
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Email" type="email" formControlName="email" required>
-                </mat-form-field>
-
-
-                <br />
-
-             
-
-                <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Password" type="password" formControlName="password" required>
-                </mat-form-field>
-
-                <br />
-
-
-             
-
-                <mat-checkbox class="example-margin" style="font-size: 0.9rem;"> I have read and accept the <a
-                    href="/terms" style="text-decoration: underline;"> Terms of Use </a> </mat-checkbox>
-
-                <div class="buttonCenter">
-                  <button mat-flat-button class="loginButton" color="accent" matStepperNext
-                    (click)="tryRegister(firstFormGroup.value)"> Register </button>
-                  <br />
-                  <!--  <p class="text-center"> Supported providers </p>
+                <body>
+            
+            
+            <button class="button-hidden" mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+                {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+              </button>
+              <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="firstFormGroup" editable="false" >
+                  <ng-template matStepLabel>Your login credentials</ng-template>
+            
+                         <div id="auth-wrapper">
+            
+                          <mat-drawer-container class="auth-wrapper">
+                           
+                            <mat-drawer mode="side" opened>
+                                 <img class="male1" src="../../assets/male1.png" />
+                            </mat-drawer>
+            
+            
+                            <mat-drawer-content>
+            
+                              <div class="main-aut-header">
+            
+                                <h3> Register </h3> 
+                                <p> already have an account? <a href="/">Login</a> here.</p>
+            
+                                <form [formGroup]="firstFormGroup" class="loginForm" >
+                                     
+                                  <mat-form-field class="example-full-width" >
+                                      <input matInput placeholder="Email" type="email" formControlName="email" required>
+                                  </mat-form-field>
+              
+              
+                                  <br /> 
+              
+                                  
+                                  <mat-form-field class="example-full-width" >
+                                      <input matInput placeholder="Password" type="password" formControlName="password" required>
+                                  </mat-form-field>
+              
+                                  <br /> 
+            
+                                  <mat-checkbox class="example-margin" style="font-size: 0.9rem;"> I have read and accept the <a href="/terms"  style="text-decoration: underline;"> Terms of Use </a> </mat-checkbox>
+            
+                                  <div class="buttonCenter">
+                                    <button mat-flat-button class="loginButton" color="accent" matStepperNext (click)="tryRegister(firstFormGroup.value)" > Register </button>
+                                    <br />
+                                  <!--  <p class="text-center"> Supported providers </p>
                                     
                                     <button mat-flat-button class="loginButton" color="accent"  (click)="tryFacebookAuth(stepper)" > Facebook Login </button> -->
-                </div>
-
-
-
-              </form>
-
-            </div>
-
-
-          </mat-drawer-content>
-
-        </mat-drawer-container>
-      </div>
-
-
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" editable="false">
-      <ng-template matStepLabel>Customize your Service</ng-template>
-
-      <div id="auth-wrapper">
-
-        <mat-drawer-container class="auth-wrapper">
-
-          <mat-drawer mode="side" opened>
-            <img class="male1" src="../../assets/female1.png" />
-
-          </mat-drawer>
-
-
-          <mat-drawer-content>
-
-            <div *ngIf=" service.service$ | async as service ; else loading">
-
-
-              <div class="main-aut-header">
-
-                <div class="auth-updatePhotoURL" style="text-align: center;">
-
-
-                  <button mat-flat-button color="primary" matStepperNext
-                  (click)="openDialog()"> Upload Service Photo </button>
-
-
-
-
-
-                </div>
-
-                <form [formGroup]="secondFormGroup" class="loginForm mb-3">
-
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Service Name" type="text" formControlName="displayName" required>
-                  </mat-form-field>
-
-
+                                </div> 
                
+                                  
+                        
+                                  </form>
+            
+                              </div>
+                                 
+            
+                            </mat-drawer-content>
+            
+                          </mat-drawer-container>
+                         </div>    
+                  
+            
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup" editable="false">
+                  <ng-template matStepLabel>Customize your Service</ng-template>
+                  
+                  <div id="auth-wrapper">
+            
+                    <mat-drawer-container class="auth-wrapper">
+                     
+                      <mat-drawer mode="side" opened>
+                           <img class="male1" src="../../assets/female1.png" />
+                          
+                      </mat-drawer>
+            
+            
+                      <mat-drawer-content>
+                       
+                        <div  *ngIf=" service.service$ | async as service ; else loading" >
+            
+                        
+                        <div class="main-aut-header" >
+            
+                            <div class="auth-updatePhotoURL" style="text-align: center;">
 
+                              
+                                   <img  (click)="openDialog()" src="../../assets/tempLogo.png" class="img-fluid rounded-circle"  >
+                                   <p> Click the default image to upload a picture </p>
+                              
+                                 
+                      
+                               
+                              
+                            </div>
+            
+                          <form [formGroup]="secondFormGroup" class="loginForm" >
+                               
+                            <mat-form-field class="example-full-width" >
+                                <input matInput placeholder="Full Name" type="text" formControlName="displayName" required>
+                            </mat-form-field>
+            
+            
+                            <br /> 
+            
+            
+                            <mat-form-field class="example-full-width" >
+                              <input matInput placeholder="Phone Number" type="tel" formControlName="phoneNumber" required>
+                            </mat-form-field>
+            
+                           <br /> 
 
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Phone Number" type="tel" formControlName="phoneNumber" required>
-                  </mat-form-field>
-
-             
-
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Service Address" type="text" formControlName="address" required>
-                  </mat-form-field>
-  
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Service Abbreviation" type="text" formControlName="abbreviation" required>
-                  </mat-form-field>
-
+                           
+                           <mat-form-field class="example-full-width" >
+                            <input matInput placeholder="Abbreviation" type="text" formControlName="abbreviation" required>
+                          </mat-form-field>
+          
+                         <br /> 
+            
+            
+                            <div class="buttonCenter">
+                              <button mat-flat-button class="loginButton" color="primary" matStepperNext (click)="tryUpdateService(secondFormGroup.value)" > Register </button>
+                            </div> 
+            
+                            
+                  
+                            </form>
+            
+                        </div>
+                           
+                      </div>
+                      <ng-template #loading>
+                       <p> loading </p>
+                      </ng-template>
+                      </mat-drawer-content>
+            
+                    </mat-drawer-container>
+                   </div>   
+            
+                </mat-step>
+            
+            
+                <mat-step>
+                  <ng-template matStepLabel>Done</ng-template>
                  
-
-                  <mat-form-field>
-                    <mat-label> Service Category</mat-label>
-                    <select formControlName="cat" matNativeControl required>
-                      <option value=0>University</option>
-                      <option value=1>Government</option>
-                      <option value=2>Banks</option>
-                    </select >
-                  </mat-form-field>
-  
-
-
-                  <div class="buttonCenter mb-5">
-                    <button mat-flat-button class="loginButton" color="primary" matStepperNext
-                      (click)="tryUpdateService(secondFormGroup.value)"> Register </button>
-                  </div>
-
-
-
-                </form>
-
-              </div>
-
-            </div>
-            <ng-template #loading>
-              <p> loading </p>
-            </ng-template>
-          </mat-drawer-content>
-
-        </mat-drawer-container>
-      </div>
-
-    </mat-step>
-
-
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-
-
-      <div id="auth-wrapper">
-
-        <mat-drawer-container class="auth-wrapper">
-
-          <mat-drawer mode="side" opened>
-            <img class="male1" src="../../assets/done.png" />
-
-          </mat-drawer>
-
-
-          <mat-drawer-content>
-
-            <div class="step-Success" style="position: relative; top: 95px;">
-
-              <h3> Done! </h3>
-              <p> Verify your email address and start using usap! </p>
-
-              <a mat-flat-button class="loginButton" color="primary" href="/login"> Redirect to login </a>
-            </div>
-
-          </mat-drawer-content>
-
-        </mat-drawer-container>
-      </div>
-
-
-    </mat-step>
-  </mat-horizontal-stepper>
-
-</body>
-
-</html>
+            
+                  <div id="auth-wrapper">
+            
+                    <mat-drawer-container class="auth-wrapper">
+                     
+                      <mat-drawer mode="side" opened>
+                           <img class="male1" src="../../assets/done.png" />
+                          
+                      </mat-drawer>
+            
+            
+                      <mat-drawer-content>
+            
+                        <div class="step-Success" style="position: relative; top: 95px;">
+            
+                          <h3> Done! </h3>
+                          <p> Verify your email address and start using usap! </p>
+                          
+                          <a mat-flat-button class="loginButton" color="primary" href="/login"  > Redirect to login </a>
+                        </div>
+            
+                      </mat-drawer-content>
+            
+                    </mat-drawer-container>
+                   </div>   
+            
+            
+                </mat-step>
+              </mat-horizontal-stepper>
+            
+            </body>
+            
+            </html>
+            

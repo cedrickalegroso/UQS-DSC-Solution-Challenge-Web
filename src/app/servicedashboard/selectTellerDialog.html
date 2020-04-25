@@ -1,72 +1,76 @@
-<mat-card-header>
-  <p>Teller</p>
-  <p class="lead">How to use</p>
-  <ul>
-    <li class="lead" style="font-size: 0.8rem;"> First Select a teller from the dropdown </li>
-    <li class="lead" style="font-size: 0.8rem;"> Click next until you see a ticket </li>
-    <li class="lead" style="font-size: 0.8rem;"> When ticket is done click "Done" </li>
-  </ul>
 
-  <mat-form-field>
-    <select matNativeControl required (change)="selectTeller($event.target.value)">
+
+ <mat-card-header>
+    <p>Select a teller no.</p>
+    <mat-form-field>
+      <select matNativeControl required (change)="selectTeller($event.target.value)">
       [(ngModel)] ="selected">
       <option [value]="teller.id" (click)="close(teller)" *ngFor="let teller of tellers">{{teller.name}}</option>
     </select>
-  </mat-form-field>
-</mat-card-header>
+    </mat-form-field>
+  </mat-card-header>
+ 
+  <mat-card-content>
+   
 
-<mat-card-content>
+    <div *ngIf="selected; else loading">
 
+      <div *ngIf="ticket.nextTicket$; else notix">
+        <div *ngFor="let ticket of ticket.nextTicket$ | async ">
+          <div class="row">
+            <div class="col-md-6">
+           
+              <p style="color: black">  {{ ticket.ticketNo }} </p>
+            </div>
 
-  <div *ngIf="selected; else loading">
-
-    <div *ngIf="ticket.nextTicket$; else notix">
-      <div *ngFor="let ticket of ticket.nextTicket$ | async ">
-        <div class="row">
-          <div class="col-md-6">
-
-            <p style="color: black"> {{ ticket.ticketNo }} </p>
+            <div class="col-md-6">
+              <button (click)="ticketDone(ticket)" class="btn btn-success" > Done </button>
+            </div>
           </div>
-
-          <div class="col-md-6">
-            <button (click)="ticketDone(ticket)" class="btn btn-success"> Done </button>
-          </div>
-        </div>
-
-
+         
+        
+        </div> 
       </div>
 
-
-
+          <ng-template #notix>
+            <p> notix </p>
+          </ng-template>
+        
+        
+          <mat-card-actions>
+            <button mat-button>DONE</button>
+            <button  (click)="nextTicket(selected)">NEXT</button>
+          </mat-card-actions>
+    
     </div>
-
-    <ng-template #notix>
-      <p class="lead text-center" style="font-size: 0.8rem;"> Please Click Next </p>
+    
+    <ng-template #loading>
+        
+        <div class="container text-center loadStyle">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-progress-spinner 
+                class="example-margin "
+                [color]="color"
+                [mode]="mode"
+                [value]="value">
+            </mat-progress-spinner>
+            <p> Please select a Teller number first</p>
+              </div>
+            </div>
+          </div>
+       
+          
+    
     </ng-template>
 
 
-    <mat-card-actions>
-      <button mat-button>DONE</button>
-      <button (click)="nextTicket(selected)">NEXT</button>
-    </mat-card-actions>
-
-  </div>
-
-  <ng-template #loading class="text-center col-sm-12 my-auto">
-
-    <div class="container text-center loadStyle">
-      <div class="row">
-        <div class="col-md-12">
-          <mat-progress-spinner class="example-margin " [color]="color" [mode]="mode" [value]="value">
-          </mat-progress-spinner>
-          <p class="lead text-center" style="font-size: 0.8rem;"> Please select a Teller number first</p>
-        </div>
-      </div>
-    </div>
+  </mat-card-content>
 
 
 
-  </ng-template>
 
 
-</mat-card-content>
+
+
+

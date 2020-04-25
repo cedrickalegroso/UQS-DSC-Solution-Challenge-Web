@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Ticket } from './ticket.model';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
-import * as admin from 'firebase-admin';
 import 'firebase/firestore';
 import { Component, OnInit } from '@angular/core';
 
@@ -15,20 +13,16 @@ import { Component, OnInit } from '@angular/core';
   providedIn: 'root'
 })
 export class TicketsService {
-  readonly ROOT_URL_notifyNewTeller = 'https://us-central1-theuqs-52673.cloudfunctions.net/app/api/newTellerNotify:uid:teller';
   private TicketsCollection: AngularFirestoreCollection<Ticket>;
   tickets$: Observable<Ticket[]>;
   latestTicket$;
   liveTickets$: Observable<Ticket[]>;
   selected;
   nextTicket$: Observable<Ticket[]>;
-  ticketDataFinal;
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
-    private http: HttpClient,
-
   )
   { 
 
@@ -78,6 +72,9 @@ export class TicketsService {
 
   ngOnInit() {
    
+
+
+
   }
 
   async ticketDone(ticket){
@@ -90,11 +87,11 @@ export class TicketsService {
           console.log("ERROR: Could not find ticket");
         } else {
           querySnaphot.forEach( async function(doc) {
-          ref = doc.data().refNo;
+         /* ref = doc.data().refNo;
           ticketColl.doc(`${ref}`).update({
           ticketStatus: 0,
           timestampDone: unixTimestamp
-          });   
+          });   */ 
           });
         }
       }
@@ -120,11 +117,13 @@ export class TicketsService {
            targetUid = doc.data().ticketOwnerUid;
            targetRaw = doc.data().ticketRaw; 
            let test = doc.data().ticketNo;
-     
+
+
+        
          let diff = target - ticket.ticketRaw ;
          let notifRef =  targetUid +  unixTimestamp;
          let finalMessage = "There are " + diff   + " person(s) before your turn. Please stay at the vicinity of the area.";
-
+ 
           console.log(test);
           console.log(finalMessage);
            notifColl.doc(`${notifRef}`).set({
@@ -133,6 +132,9 @@ export class TicketsService {
            notifService: service.uid,
            timestamp: unixTimestamp
          });  
+ 
+        
+
          });
         }
       }
@@ -142,16 +144,12 @@ export class TicketsService {
    
   }
 
-  // resets the ticket Count 
-  async ticketCountReset(){
-    let service = firebase.auth().currentUser;
-    this.afs.collection('services').doc(`${service.uid}`).update({
-      ticketCount: 0
-    })
-  }
 
   async nextTicket(selected){
+    let data;
     let service = firebase.auth().currentUser
+
+
     let ticketColl = this.afs.collection('tickets', ref => ref.where('ticketStatus', '==', 1).where('serviceUid', '==', service.uid).where('teller', '==', 0).orderBy('ticketRaw', 'asc').limit(1))
     ticketColl.get().toPromise().then(
       function(querySnaphot) {
@@ -159,13 +157,12 @@ export class TicketsService {
           console.log("EMPTY");   
         } else {
           querySnaphot.forEach( async function(doc) {
-             let data = doc.data()
-            
-           ticketColl.doc(`${data.refNo}`).update({
+            data = doc.data();
+            console.log(data.ticketNo);
+            ticketColl.doc(`${data.refNo}`).update({
               teller: selected,
               ticketStatus: 2
-            }); 
-           
+            });
           });
         }
       }
@@ -189,22 +186,8 @@ export class TicketsService {
         }
       })
     );
-
-    
   }  
 
-   notifynewTeller(selected, data) {
-    console.log('notiufet')
-    /*
-    const ticketData = {
-      teller: selected,
-      uid: data.ticketOwnerUid,
-    }
-    this.http.post(this.ROOT_URL_notifyNewTeller, ticketData).toPromise().then(data => {
-      console.log(data)
-    }); */
-  }
-  
 
   async autoIdTicket() {
     let data;
@@ -244,7 +227,47 @@ export class TicketsService {
           }
           )
          }
-        }    
+        }
+      /*  querySnaphot.forEach( async function(doc) {
+          data = doc.data();
+          console.log(data)
+          if (doc.exists) {
+            data = doc.data();
+            
+            let ticketRaw1 = data.ticketRaw + 1;
+            let unixTimestamp = Math.floor(Date.now() / 1000);
+            let ticketOwnerUid = "15VTijHFqoTgmXowy38BlFjPJJ43"
+            let refNo ='TEST' + ticketRaw1 + unixTimestamp;
+            let ticketFinal = 'TEST' + ticketRaw1;
+
+            if (data.ticketRaw >= 1  ) {    
+              console.log(114)         
+              ticketColl.doc(`${refNo}`).set({
+                  refNo: refNo,
+                  serviceUid: service.uid,
+                  ticketNo: ticketFinal,
+                  ticketRaw: ticketRaw1,  
+                  ticketOwnerUid: ticketOwnerUid,
+                  timestamp:  Math.floor(Date.now() / 1000)
+                });
+            } else {
+              console.log(115)
+              ticketColl.doc(`${refNo}`).set({
+                refNo: refNo,
+                serviceUid: service.uid,
+                ticketNo: 'TEST' + 1,
+                ticketRaw: 1,
+                ticketOwnerUid: ticketOwnerUid,
+                timestamp:  Math.floor(Date.now() / 1000)
+              });
+            }
+
+
+          } else {
+            console.log("Error getting ticket");
+          } 
+        }); */
+     
     ) 
   }   
 
@@ -252,3 +275,25 @@ export class TicketsService {
  
 
 }
+
+
+   //  deprecated 
+
+ /*
+   async injecTicket(value){
+    let service = firebase.auth().currentUser;
+    let ticketOwnerUid1 = '30I9qlK4OfZbeBGpzljWfHFuFcL2'
+    let unixTimestamp = Math.floor(Date.now() / 1000)
+    let refNo = 'TEST' + value.ticketNo + unixTimestamp
+   
+
+    await this.afs.doc(`tickets/${refNo}`).set({
+      refNo: refNo,
+      serviceUid: service.uid,
+      ticketNo: "TEST" + value.ticketNo,
+      ticketRaw: value.ticketNo,
+      ticketOwnerUid: ticketOwnerUid1,
+      timestamp:  Math.floor(Date.now() / 1000)
+    })
+
+  } */
