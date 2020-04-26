@@ -5,11 +5,11 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ServiceService } from '../services/service.service';
 import * as firebase from 'firebase/app';
+import { Ticket } from '../services/ticket.model';
 import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import { TicketsService } from '../services/tickets.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component'
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-servicedashboard',
@@ -17,8 +17,6 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./servicedashboard.component.scss']
 })
 export class ServicedashboardComponent implements OnInit {
-
-  readonly ROOT_URL_notifyNewTeller = 'https://us-central1-theuqs-52673.cloudfunctions.net/app/api/CancelTicket:refNo';
 
   mode: ProgressSpinnerMode = 'indeterminate';
   TicketInjectForm: FormGroup; // for testing tickets only!
@@ -83,7 +81,6 @@ export class ServicedashboardComponent implements OnInit {
  
   }
 
- 
   
   ticketDone(ticket){
     this.ticket.ticketDone(ticket)
@@ -206,17 +203,7 @@ export class profileDialog {
 
       
 
-    }  
-    
-    
-    ticketCountReset(){
-      this.ticket.ticketCountReset()
-      .then(res => {
-        console.log(res)
-      }, err => {
-        console.log(err)
-      })
-    }
+    }    
  
 
     updateData(value){
@@ -288,7 +275,6 @@ export class uploadProdilePicture {
       });
 
     }    
-
 
     uploadPhoto(event){
       // call this function

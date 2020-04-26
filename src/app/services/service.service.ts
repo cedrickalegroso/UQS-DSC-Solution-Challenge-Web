@@ -151,8 +151,6 @@ export class ServiceService {
         displayName: value.displayName,
         phoneNumber: value.phoneNumber,
         abbreviation: value.abbreviation,
-        categoryIndex: parseInt(value.cat),
-        address: value.address,
         ticketCount: 0
       })
     };

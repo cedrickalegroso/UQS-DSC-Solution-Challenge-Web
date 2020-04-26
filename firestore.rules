@@ -2,11 +2,6 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-     /* fcmTokens */
-    match /fcmTokens/{document} {
-     allow write, read: if request.auth != null;
-    }
-
     /* Services */
     match /services/{document} {
      allow write, read;

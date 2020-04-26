@@ -4,5 +4,4 @@ export interface Service {
     displayName?: string;
     photoUrl?: string;
     phoneNumber?: string;
-    categoryIndex?: number;
 }
