@@ -1,6 +1,17 @@
 <div mat-dialog-content style="text-align: center; height: 100%;">
-    <div  *ngIf=" service.service$ | async as service " > 
+    <div  class="p-3" *ngIf=" service.service$ | async as service; else load" > 
        
+      <h3> Upload service photo</h3>
+
+      <br>
+      <br>
+      <br>
+          
+      <img [src]="service.photoUrl" style="width: 124px; height: 124px;"/>
+
+      <br>
+      <br>
+      <br>
         
      <form [formGroup]="uploadPhotoForm" style="height: 100%; position: relative; top: 30px;">
         <input type="file" (change)="uploadPhoto($event)" accept=".png,.jpg" />
@@ -8,4 +19,7 @@
         </form>
   
      </div>
+     <ng-template #load>
+      <p> Loading Account Details </p>
+    </ng-template>
 </div>

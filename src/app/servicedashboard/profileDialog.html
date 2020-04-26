@@ -45,9 +45,6 @@
                 <mat-label>Display Name</mat-label>
                 <input matInput formControlName="displayName" type="text" placeholder="{{ service.displayName }}" >
               </mat-form-field>
-
-   
-      
       
               <mat-form-field class="example-full-width">
                   <mat-label>Email</mat-label>
@@ -59,7 +56,7 @@
                   <mat-label>Phone Number</mat-label>
                   <input matInput formControlName="phoneNumber" type="text"  placeholder="{{ service.email }}" >
                 </mat-form-field>
-                  <a  (click)="updateData(dataUpdate.value)" > test </a>
+
                 <button mat-raised-button (click)="updateData(dataUpdate.value)" color="accent">Submit</button>
             </form>
         </mat-expansion-panel>      
@@ -71,34 +68,37 @@
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                      Security
+                     Testing
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <form [formGroup]="securityUpdateform">
 
                 <mat-form-field class="example-full-width">
+                <form [formGroup]="TicketCount" class="loginForm" >
+                    <mat-label>Ticket Count</mat-label>
+                    <input matInput formControlName="count" type="text" placeholder="Enter number" > <br>
+                    <button mat-raised-button (click)="updateTicketCount(TicketCount.value)" color="accent">Submit</button>
+                </form>
+            </mat-form-field>
 
-                    <mat-label>Current Password</mat-label>
-                    <input matInput formControlName="currentPassword" type="password" matInput placeholder="Current password" >
-                  </mat-form-field>
+            <mat-form-field class="example-full-width">
+        
+                <form [formGroup]="TicketCountDone" class="loginForm" >
+                    <mat-label>Ticket Count Done</mat-label>
+                    <input matInput formControlName="count" type="text" placeholder="Enter number" > <br>
+                    <button mat-raised-button (click)="updateTicketCountDone(TicketCountDone.value)" color="accent">Submit</button>
+                </form>
+            </mat-form-field>
 
-                  <mat-form-field class="example-full-width">
 
-                    <mat-label>New Password</mat-label>
-                    <input matInput formControlName="newPassword" type="password" matInput placeholder="A verry Secure password" >
-                  </mat-form-field>
-
-                  <mat-form-field class="example-full-width">
-                  <mat-label>Re-type new Password</mat-label>
-                  <input  matInput formControlName="confirmPassword" type="password" matInput placeholder="A verry Secure password" >
-                </mat-form-field>
-  
-                <button mat-raised-button  (click)="securityUpdate(securityUpdateform.value)" color="accent">Submit</button>
-                 </form>
+            <p> Reset's the ticket count </p>
+    
+            <button mat-raised-button  (click)="ticketCountReset()" color="accent">Reset Ticket Count</button>
+    
             </mat-expansion-panel>      
         </mat-accordion>
-    
-  
+
+   
+      
 
 
 

@@ -1,316 +1,68 @@
+<div *ngIf="service.service$ | async as service; else load ">
 
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened>
 
-  <div *ngIf="service.service$ | async as service; else load " >
-    
-  <body id="page-top">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{service.abbreviation}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-divider></mat-divider>
+          <mat-list-item (click)="serviceSignOut()">Log out</mat-list-item>
+        </mat-expansion-panel>
+      </mat-accordion>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-  
-      <!-- Sidebar -->
-      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-  
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+      <mat-list>
+        <mat-list-item><a class="tabActive1"> Dashboard </a> </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item > <a href="/service/livequeue " class="text-white" target="_blank" >Live Queue</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)="openDialog()" >Teller</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)="openProfileDialog()">Account</mat-list-item>
+      </mat-list>
+
+      <mat-list class="bottom-ver">
+        <mat-list-item>UQS BETA 1.0.5</mat-list-item>
+      </mat-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+      <main role="main">
+        <!-- Active Tickets -->
+        <div id="activeTickets" [hidden]="isHiddenTickets">
+          <div class="jumbotron">
+            <div class="container">
+              <h1 class="display-4 text-white">Dashboard <span style="font-size: 24px;">  Ticket Count:  {{service.ticketCount}}  | Ticket Count:  {{service.ticketCountDone}}  </span></h1>
+            </div>
           </div>
-          <div class="sidebar-brand-text mx-3"> <img  src="../../assets/logo.svg" width="20"> <span> UQS </span> </div>
-        </a>
-  
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-  
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-        </li>
-  
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-  
-        <!-- Heading -->
-        <div class="sidebar-heading">
-          Options
-        </div>
-  
-        <!-- Nav Item - Pages Collapse Menu -->
-        <br/>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/service/livequeue " target="_blank" style="cursor: pointer;"  >          
-            <span>Live Tickets</span>        
-          </a>
+          <div class="container test">
 
-
-               
-          <a class="nav-link collapsed" (click)="openProfileDialog()"  target="_blank" style="cursor: pointer;"  >          
-            <span>Account</span>        
-          </a>
-          
-
-          <a class="nav-link collapsed" (click)="openDialog()"  target="_blank" style="cursor: pointer;"  >          
-            <span>Teller</span>        
-          </a>
-
-
+            <br>
      
-          <a class="nav-link collapsed" (click)="serviceSignOut()"   style="cursor: pointer;" >          
-            <span>Sign out</span>        
-          </a>
-
-        </li>
-
-     
-     
-          
-  
-      </ul>
-      <!-- End of Sidebar -->
-  
-      <!-- Content Wrapper -->
-      <div id="content-wrapper" class="d-flex flex-column">
-  
-        <!-- Main Content -->
-        <div id="content">
-  
-          <!-- Topbar -->
-          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-  
-            <!-- Sidebar Toggle (Topbar) -->
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-              <i class="fa fa-bars"></i>
-            </button>
-  
-  
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
-
-  
-              <div class="topbar-divider d-none d-sm-block"></div>
-  
-              <!-- Nav Item - User Information -->
-
-              <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ service.displayName }}</span>
-                   
-                  <img class="img-profile rounded-circle" [src]="service.photoUrl">
-           
-                </a>
-              
-              </li>
-  
-            </ul>
-  
-          </nav>
-          <!-- End of Topbar -->
-  
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
-  
-            <!-- Page Heading -->
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-       
+            <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+              <ng-container *ngFor="let ticket of ticket.tickets$ | async">
+                <div class="card text-center" fxFlex="0 1 calc(33.3% - 32px)" style="width: 18rem;">
+                  <div class="card-body">
+                    <h3 class="card-title text-center" style="color:#3336CA">{{ ticket.ticketNo }}</h3>
+                    
+                  </div>
+                </div>
+              </ng-container>
             </div>
-  
-            <!-- Content Row -->
-            <div class="row">
-  
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Active Tickets</div>
-                       
-                       
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-success shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Tellers online</div>
-                      
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-info shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tickets today</div>
-                        <div class="row no-gutters align-items-center">
-                                        
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <!-- Pending Requests Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">EDPT</div>
-                       
-                      </div>
-                      <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <!-- Content Row -->
-  
-            <div class="row">
-  
-              <!-- Area Chart -->
-              <div class="col-xl-8 col-lg-7">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Active Tickets</h6>
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <div class="chart-area">
-                      <div *ngIf="ticket.tickets$; else noticket">
-                      <div *ngFor="let ticket of ticket.tickets$ | async ">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <p style="color: black">  {{ ticket.ticketNo }} </p>
-                          </div>
 
-                          <div class="col-md-6">
-                            <button (click)="ticketDone(ticket)" class="btn btn-success" > Done </button>
-                          </div>
-                        </div>
-                       
-                      
-                      </div> 
-                    </div>
-                      <ng-template #noticket>
-                        <p> no tix </p>
-                      </ng-template>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <!-- Pie Chart -->
-              <div class="col-xl-4 col-lg-5">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">System Control</h6>
-                    <div class="dropdown no-arrow">
-                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body text-center">
-                    <div class="chart-pie pt-4 pb-2">
-                       
-                      <button mat-raised-button  (click)="ticketReset" color="accent">Reset Ticket </button>
 
-                    </div>
-                    <div class="mt-4 text-center small">
-                     
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-           
-  
-          </div>
-          <!-- /.container-fluid -->
-  
-        </div>
-        <!-- End of Main Content -->
-  
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; The UQS Team 2019 </span>
-            </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-  
-      </div>
-      <!-- End of Content Wrapper -->
-  
-    </div>
-    <!-- End of Page Wrapper -->
-  
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-  
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
           </div>
         </div>
-      </div>
-    </div>
-    </body>
+      </main>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
 
 
 </div>
@@ -320,17 +72,13 @@
   <div class="container text-center loadStyle">
     <div class="row">
       <div class="col-md-12">
-        <mat-progress-spinner 
-        class="example-margin "
-        [color]="color"
-        [mode]="mode"
-        [value]="value">
-    </mat-progress-spinner>
-    <p> Please wait while we load some data.</p>
+        <mat-progress-spinner class="example-margin " [color]="color" [mode]="mode" [value]="value">
+        </mat-progress-spinner>
+        <p> Please wait while we load some data.</p>
       </div>
     </div>
   </div>
- 
-    
+
+
 
 </ng-template>

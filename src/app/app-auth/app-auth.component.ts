@@ -4,7 +4,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { AngularFireStorage } from '@angular/fire/storage';
 import { SuperadminService } from '../services/superadmin.service';
 import * as firebase from 'firebase/app';
-import { from } from 'rxjs';
+import { from } from 'rxjs'
 
 
 @Component({

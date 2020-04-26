@@ -48,6 +48,8 @@ export class RegisterServiceComponent implements OnInit {
       displayName: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       abbreviation: ['', Validators.required],
+      address: ['', Validators.required],
+      cat: ['', Validators.required],
     });
 
     this.checkifAuth();

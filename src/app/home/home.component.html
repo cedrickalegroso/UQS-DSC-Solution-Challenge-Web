@@ -1,314 +1,296 @@
-<app-homenavbar></app-homenavbar>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Unified Queueing System</title>
 
 
 
-<div id="jumbo" class="position-relative overflow-hidden p-3 my-auto   text-center bg-dark">
-  <div class="col-md-6 p-lg-5 mx-auto my-auto mt-5">
-    <h1 class="display-4 mt-5 font-weight-normal text-white">Unified Queuing System</h1>
-    <p class="lead font-weight-normal text-white">A Multi platform application to make long waiting time a thing in the
-      past</p>
-    <a class="btn  btn-primary" href="#">Coming soon</a>
-  </div>
-  <div class="product-device box-shadow d-none d-md-block"></div>
-  <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
-</div>
+  <!-- Custom fonts for this template -->
 
-<div class="container">
-
-    <h1 class="text-center display-4 text-dark mt-5">
-        How it works?
-    </h1>
-
-    <hr class="featurette-divider">
-
-   
-
-    <div class="row featurette">
-      <div class="col-md-7 my-auto ">
-        <h2 class="featurette-heading">Register your service. </h2>
-        <p class="lead">
-            By registering and setting up your service out of the box you will have a queue system already. If you already have an existing queue system
-            and still want to use UQS dont worry we got you covered! you can use our <strong>API </strong>. Read more about this in our <a href="#"> documentation </a>.
-        </p>
-      </div>
-      <div class="col-md-5">
-        <img class="featurette-image img-fluid mx-auto" src="../../assets/setup.png" alt="Generic placeholder image">
-      </div>
-    </div>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
 
+  <link rel="stylesheet"
+    href="https://blackrockdigital.github.io/startbootstrap-new-age/device-mockups/device-mockups.min.css">
 
-    <hr class="featurette-divider">
-   
-    
+</head>
 
+<body id="page-top">
 
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2 my-auto">
-        <h2 class="featurette-heading">Start using UQS. </h2>
-        <p class="lead">
-          Start your UQS service it will handle the rest for you. you can now go to specific cashier in your service then click start accepting queue.
- 
-        </p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <img class="featurette-image img-fluid mx-auto" src="../../assets/startusing.png" alt="Generic placeholder image">
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 my-auto">
-        <h2 class="featurette-heading">Tada! Hassless Queue!</h2>
-        <p class="lead">
-            Customers will see your Queue status online using the UQS mobile app and they can create a ticket for them selves. dont worry just focus on your thing UQS will handle the rest.
-        </p>
-      </div>
-      <div class="col-md-5">
-        <img class="featurette-image img-fluid mx-auto" src="../../assets/tada.png" alt="Generic placeholder image">
-      </div>
-    </div>
-
-
-    <div class="row featurette mt-5">
-      <div class="col-md-12 text-center">
-        <h2 class="featurette-heading">Try it out now!</h2>
-        <p class="lead">
-           Already convinced in using the UQS App? Click the CTA below!
-   
-           <br />
-         <a href="/login"><button class="btn btn-primary rounded"> Try Beta </button></a> 
-        </p>
-      </div>
-    </div>
-
-
-    <hr class="featurette-divider ">
-
-
-
-
-    <h1 class="text-center display-3 text-dark mt-5">
-      Documentation
-    </h1>
-
-    <p class="lead text-center">
-         Sorry Documentation is not available yet.
-    </p>
-
-
-    
-
-    <div *ngFor="let ver of system.Version$ | async ">
-      <p style="color: black">  {{ ver.description }} </p>
-    </div> 
-
-<ng-template #none>
- <p> oppse </p>
-</ng-template>
-  
-    <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-     
-
-      <div class="media text-muted pt-3">
-        <img src="../../assets/tempLogo.png" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
-         ADDED REST API + Mobile App Works normally | March 5, 2020 
-        </p>
-      </div>
-
-      
-      <div class="media text-muted pt-3">
-        <img src="../../assets/tempLogo.png" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
-         App now works normally and how we want it but needs more work | February 19, 2020 
-        </p>
-      </div>
-
-
-  
-      <div class="media text-muted pt-3">
-        <img src="../../assets/tempLogo.png" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
-          Added Database Functions for the web and mobile app | January 29, 2020 
-        </p>
-      </div>
-
-
-      <div class="media text-muted pt-3">
-        <img src="../../assets/tempLogo.png" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
-        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
-          First release of UQS on the web | January 28, 2020
-        </p>
-      </div>
-
- 
-
-    </div>
-
-    <hr class="featurette-divider">
-
-
-    <!-- /END THE FEATURETTES -->
-
-</div>
-
-<div class="container developers">
-
-    <h1 class="text-center display-3 text-dark mt-5">
-        Developers
-    </h1>
-
-    <br />
-    <br />
-
-     <!-- Three columns of text below the carousel -->
-     <div class="row">
-        <div class="col-lg-4 mx-auto ">
-            <img class="rounded-circle img-dev" src="../../assets/ced.png"  >
-            <h2>Dancedrick Alegroso</h2>
-            <p class="lead"> Lead Developer | Full Stack </p>
-            <ul > 
-                <li> 
-              <a href="https://www.facebook.com/cedrickAlegroso" target="_blank" > <img class="m-1" src="../../assets/messenger.svg" width="20" /> </a>
-                </li>
-                <li> 
-                  <a href="https://github.com/cedrickalegroso" target="_blank" > <img class="m-1" src="../../assets/github.svg" width="20" /> </a>
-                </li>
-            </ul>
-          </div><!-- /.col-lg-4 -->
-     </div>
-     <br />
-     <div class="row">
-       
-
-        <div class="col-lg-4 ">
-            <img class="rounded-circle img-dev" src="../../assets/steve.png" >
-            <h2>Steven Felizardo</h2>
-            <p class="lead"> Flutter | Firebase dev </p>
-            <ul > 
-              <li> 
-            <a href="https://www.facebook.com/steve.felizardo.1" target="_blank" > <img class="m-1" src="../../assets/messenger.svg" width="20" /> </a>
-              </li>
-              <li> 
-                <a href="https://github.com/ZerpStvn" target="_blank" > <img class="m-1" src="../../assets/github.svg" width="20" /> </a>
-              </li>
-          </ul>
-          </div><!-- /.col-lg-4 -->
-
-          <div class="col-lg-4">
-            <img class="rounded-circle img-dev" src="../../assets/gaille.png" >
-            <h2>Gaille Cabanggay</h2>
-            <p class="lead"> Flutter | Firebase dev </p>
-            <ul > 
-              <li> 
-            <a href="" target="_blank" > <img class="m-1" src="../../assets/messenger.svg" width="20" /> </a>
-              </li>
-              <li> 
-                <a href="https://github.com/gailleleo1975" target="_blank" > <img class="m-1" src="../../assets/github.svg" width="20" /> </a>
-              </li>
-          </ul>
-          </div><!-- /.col-lg-4 -->
-
-
-        <div class="col-lg-4">
-          <img class="rounded-circle img-dev" src="../../assets/carl.png">
-          <h2>Carl Palisan</h2>
-          <p class="lead"> Flutter Lead dev </p>
-          <ul > 
-            <li> 
-          <a href="https://www.facebook.com/carl.pasilan.10" target="_blank" > <img class="m-1" src="../../assets/messenger.svg" width="20" /> </a>
-            </li>
-            <li> 
-              <a href="https://github.com/unor12" target="_blank" > <img class="m-1" src="../../assets/github.svg" width="20" /> </a>
-            </li>
-        </ul>
-        </div><!-- /.col-lg-4 -->
-       
-       
-        <div class="container">
-          <p class="text-center lead "> Techonology used </p>
-          <ul >
-            <li> <img src="../../assets/firebase.png" class="img-tech" /> </li>
-            <li> <img src="../../assets/flutter.png" class="img-tech" /> </li>
-            <li> <img src="../../assets/angular.png" class="img-tech" /> </li>
-            <li> <img src="../../assets/dart.png" class="img-tech" /> </li>
-            <li> <img src="../../assets/material.png" class="img-tech" /> </li>
-          </ul>
-         </div>
-
-      </div><!-- /.row -->
-   
-</div>
-
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-    
-
-<!-- Footer -->
-<footer class="footer text-center p-5">
-  <div class="container">
-    <div class="row">
-
-      <!-- Footer Location -->
-      <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4 text-white">Resources</h4>
-        <div class="row text-white">
-          <div class="col-sm-6">
-            <ul> 
-              <li> <a href="https://firebase.google.com/" target="_blank" > Firebase </a>  </li>
-              <li> <a href="https://flutter.dev/" target="_blank" > Flutter </a>  </li>
-              <li> <a href="https://angular.io/" target="_blank" > Angular </a>  </li>
-              <li> <a href="https://dart.dev/" target="_blank" > Dart </a>  </li>
-            </ul>
-          </div>
-
-          <div class="col-sm-6">
-            <ul> 
-              <li> <a href="https://getbootstrap.com/" target="_blank" > Bootrap </a>   </li>
-              <li> <a href="https://github.com/BlackrockDigital" target="_blank" > blackrockdigital </a>   </li>
-              <li> <a href="https://events.withgoogle.com/dsc-solution-challenge/" target="_blank" > DSC Challenge </a>  </li>
-            </ul>
-          </div>
-
-        </div>
-      
-      </div>
-
-      <!-- Footer Social Icons -->
-      <div class="col-lg-4 mb-5 mb-lg-0">
-        <h4 class="text-uppercase mb-4 text-white">Socials</h4>
-        <a class="text-white" href="https://github.com/cedrickalegroso/UQS-DSC-Solution-Challenge" target="_blank" > <img class="m-1 text-white" src="../../assets/github.svg" width="50" /> </a>
-      </div>
-
-      <!-- Footer About Text -->
-      <div class="col-lg-4 text-white ">
-        <h4 class="text-uppercase mb-4 ">Contact</h4>
-        <p class="lead mb-0"> You can contact us via email. </p>
-        <p> theuqsteam@gmail.com </p>
-      </div>
-
-    </div>
-  </div>
-</footer>
-  <!-- Copyright Section -->
-  <section class="copyright py-4 text-center text-white">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <small>Copyright &copy; THEUQSTEAM</small>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">UQS</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#download">Download</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#features">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Updates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/docs">Documentation</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100">
+        <div class="col-lg-7 my-auto">
+          <div class="header-content mx-auto">
+            <h1 class="mb-5">Unified queueing system is an app that will make you forget about "waiting-inline" </h1>
+          </div>
+        </div>
+        <div class="col-lg-5 my-auto">
+          <div class="device-container">
+            <div class="device-mockup iphone6_plus portrait white">
+              <div class="device">
+                <div class="screen">
+                  <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                  <img src="../../assets/screen.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="button">
+                  <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+
+  <section class="features" id="features">
+    <div class="container"> 
+      <div class="section-heading text-center">
+        <h2>Simple yet efficient.</h2>
+
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 my-auto">
+          <div class="device-container">
+            <div class="device-mockup iphone6_plus portrait white">
+              <div class="device">
+                <div class="screen">
+                  <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                  <img src="../../assets/screen.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="button">
+                  <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 my-auto">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="feature-item">
+                  <i class="icon-screen-smartphone text-primary"></i>
+                  <h3>Create Ticket</h3>
+                  <p class="text-muted">Create ticket anytime, anywhere!</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="feature-item">
+                  <i class="icon-camera text-primary"></i>
+                  <h3>No waiting-inline</h3>
+                  <p class="text-muted">Yes! we will notify you if your turn is near!</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="feature-item">
+                  <i class="icon-present text-primary"></i>
+                  <h3>Services</h3>
+                  <p class="text-muted">Lots of Universities, Government Agencies and Banks are now partnered with UQS!
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="feature-item">
+                  <i class="icon-lock-open text-primary"></i>
+                  <h3>Paperless</h3>
+                  <p class="text-muted">By using UQS, there will be no paper needed for you to get a ticket!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-  
+
   
 
+  <section class="contact bg-primary" id="contact">
+    <div class="container">
+      <h2 class="text-white">Documentation</h2>
+
+      <div class="my-3 p-3 text-white rounded shadow-sm text-left text-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+       
+  
+        <div class="media text-white pt-3">
+          <img src="../../assets/logo.svg" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
+           ADDED REST API + Mobile App Works normally | March 5, 2020 
+          </p>
+        </div>
+  
+        
+        <div class="media text-white pt-3">
+          <img src="../../assets/logo.svg" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
+           App now works normally and how we want it but needs more work | February 19, 2020 
+          </p>
+        </div>
+  
+  
+    
+        <div class="media text-white pt-3">
+          <img src="../../assets/logo.svg" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
+            Added Database Functions for the web and mobile app | January 29, 2020 
+          </p>
+        </div>
+  
+  
+        <div class="media text-white pt-3">
+          <img src="../../assets/logo.svg" alt=""  width="32" height="32" class="img-fluid mr-2 rounded">
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <strong class="d-block text-gray-dark">@THEUQSTEAM</strong>
+            First release of UQS on the web | January 28, 2020
+          </p>
+        </div>
+  
+   
+  
+      </div>
+   
+
+    </div>
+  </section>
+
+  <section class="download bg-primary text-center" id="download">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <h2 class="section-heading text-white">Be a beta tester</h2>
+          <p class="text-white">Our app beta is available on Windows and Android</p>
+          <div class="badges">
+            <a class="badge-link" target="_blank" href="https://drive.google.com/open?id=1crLvFfFH5p2f_DIsXlRHr77LdZ1SWp59"
+              target="_blank"><img src="../../assets/dandroid.svg" alt=""></a>
+            <a class="badge-link" target="_blank" href="https://drive.google.com/open?id=1TZsLJ8ruRSl10ci4J-a_sGQ-fFLIvhIX"
+              target="_blank"><img src="../../assets/dwindows.svg" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container text-white">
+      <div class="row">
+        <div class="col-md-4">
+          <h4> Resources </h4>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="text-left" style="list-style: none;">
+                <li> Firebase </li>
+                <li> Flutter </li>
+                <li> Angular </li>
+                <li> ElectronJs </li>
+                <li> Dart </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="text-left" style="list-style: none;">
+                <li> Material </li>
+                <li> Bootstrap </li>
+                <li> blackrockdigital </li>
+                <li> DSC Challenge </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 ">
+          <h4> Be part of the team </h4>
+          <ul class="text-left" style="list-style: none;">
+            <li> Become a beta tester </li>
+            <li> Register your service </li>
+            <li> Download now </li>
+          </ul>
+        </div>
+        <div class="col-md-2 ">
+          <h4> Contact </h4>
+          <p> Shoot us a message!</p>
+
+          <h5> theuqs@gmail.com</h5>
+        </div>
+      </div>
+      <br>
+      <p>&copy; THE UQSTEAM 2020. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+
+</body>
+
+</html>
+
+<!-- 
+
+  <section class="cta">
+    <div class="cta-content">
+      <div class="container">
+        <h3 class="text-white" style="font-size: 3.5rem;">Stop worrying.<br>Enjoy your time.</h3>
+        <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Let's Get Started!</a>
+      </div>
+    </div>
+    <div class="overlay"></div>
+  </section>
+
+  <section class="cta1">
+    <div class="cta-content">
+      <div class="container">
+        <h3 class="text-white" style="font-size: 3.5rem;">Want your service in?</h3>
+        <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Regsiter Now!</a>
+      </div>
+    </div>
+    <div class="overlay"></div>
+  </section>
+
+-->

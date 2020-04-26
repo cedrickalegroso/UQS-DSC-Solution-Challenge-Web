@@ -151,6 +151,8 @@ export class ServiceService {
         displayName: value.displayName,
         phoneNumber: value.phoneNumber,
         abbreviation: value.abbreviation,
+        categoryIndex: parseInt(value.cat),
+        address: value.address,
         ticketCount: 0
       })
     };
@@ -207,7 +209,7 @@ export class ServiceService {
               };
               return serviceRef.set(data, { merge: true });
             });    
-
+          
           });     
           
         }
