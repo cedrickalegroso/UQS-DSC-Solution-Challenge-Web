@@ -34,11 +34,13 @@ export class TicketsService {
   ) {
 
     /* Tickets Status meanings 
-      0 - Done
+      0 - cancelled
       1 - active but not shown in live queues since it doesnt have any teller
       2 - shown on live queues with a teller
+      3 - done
     */
 
+    // this will listen for the live tickets
     this.tickets$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -48,7 +50,6 @@ export class TicketsService {
               .where('ticketStatus', '==', 1)
               .limit(5)
           });
-
           return this.tickets$ = this.TicketsCollection.valueChanges();
         } else {
           return of(null);
@@ -65,7 +66,6 @@ export class TicketsService {
               .where('ticketStatus', '==', 2)
               .limit(5)
           });
-
           return this.liveTickets$ = this.TicketsCollection.valueChanges();
         } else {
           return of(null);
@@ -136,7 +136,6 @@ export class TicketsService {
         } else {
           querySnaphot.forEach(async function (doc) {
             let data = doc.data()
-
             ticketColl.doc(`${data.refNo}`).update({
               teller: parseInt(selected),
               ticketStatus: 2
@@ -168,6 +167,5 @@ export class TicketsService {
 
 
   }
-
 
 }

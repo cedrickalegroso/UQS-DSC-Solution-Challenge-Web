@@ -1,3 +1,4 @@
+
 <div *ngIf="service.service$ | async as service; else load ">
 
   <mat-sidenav-container class="example-container">
@@ -37,8 +38,30 @@
         <div id="activeTickets" [hidden]="isHiddenTickets">
           <div class="jumbotron">
             <div class="container">
+
               <h1 class="display-4 text-white">Dashboard <span style="font-size: 24px;">  Ticket Count:  {{service.ticketCount}}  | Ticket Count:  {{service.ticketCountDone}}  </span></h1>
             </div>
+
+              <h1 class="display-4 text-white">Dashboard</h1>
+            </div>
+
+
+
+  <div *ngIf="service.service$ | async as service; else load " >
+    
+  <body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+  
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+
           </div>
           <div class="container test">
 
