@@ -40,7 +40,7 @@ Installing/Running Locally
   
  
  ----------------------------------------------------------
-Using the WEb app
+Using the Web app
 ---------------------------------------------------------- 
   <ul>
   <li> 1. Register and verify email address then login. </li>
