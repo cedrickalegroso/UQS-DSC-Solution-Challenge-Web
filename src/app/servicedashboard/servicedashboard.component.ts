@@ -95,14 +95,6 @@ export class ServicedashboardComponent implements OnInit {
   }
 
 
-  injectwithAutoId(){
-    this.ticket.autoIdTicket()
-    .then(res => {
-      console.log(res)
-    }, err => {
-      console.log(err)
-    })
-  }
 
    serviceSignOut() {
      // call the function to sign out the service

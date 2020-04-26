@@ -54,7 +54,7 @@
 
 
           <mat-list class="bottom-ver">
-            <mat-list-item>UQS BETA 2.0.1 Stable </mat-list-item>
+            <mat-list-item>UQS BETA 1.0.5 Stable </mat-list-item>
           </mat-list>
     
 
@@ -73,7 +73,7 @@
             </h1>
 
 
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/NH5G-xNn-7Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/RbV66SaMcv8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
             <h3> The problem and how we solved it </h3>
             <p> Here in the Philippines, queues in banks, schools, and government agencies could consume a lot of time and energy from people. People complain about waiting in long line. In certain cases, there are some who stay in a queue, while wanting to run some errands. But they can’t do them simultaneously. This is a type of a problem that almost every one of us encounter daily. Hence, we created a solution.
@@ -208,9 +208,10 @@
 
             <br />
 
-            <h4> 1.1 Services | Web App [Made with Angular] </h4>
+            <h4>  Services | Web App [Made with Angular] </h4>
+            <p class="lead" style="font-size: 0.9rem;">   Note: Web app is for the services, companies that will be using the queue. </p>
 
-            <br />
+       
              
             <h6> Requirements </h6>
             <ol>
@@ -222,8 +223,8 @@
 
             <h6> Installing/Running Locally </h6>
             <p>
-                The app is availble to use online, and you can also run it
-                locally you can skip this step.
+                The app is availble to use <a href="/login" target="_blank"> online</a>, and you can also run it
+                locally you can skip this step. 
             </p>
 
 
@@ -232,13 +233,14 @@
                 <li> Git clone  </li>
                 <li> Npm install  </li>
                 <li> ng serve  </li>
+                <li> on your browser open localhost:4200  </li>
             </ol>
 
             <hr>
 
             <br />
 
-            <h4> 1.2 Users | Android & Windows App [Flutter and Elecron Js] </h4>
+            <h4>  Users | Android & Windows App [Flutter and Elecron Js] </h4>
 
             <br />
              
@@ -253,21 +255,23 @@
 
             <h6> Installing/Running Locally </h6>
             <p>
-                The app is availble to for download Android or Windows, and you can also run it
+                The app is availble to for download Android or Windows <a class="text-primary" (click)="showAppDownload()">here</a>, and you can also run it
                 locally you can skip this step
             </p>
 
             <h6> For Flutter </h6>
+            <p class="lead" style="font-size: 0.9rem;">   Note: Android App is for the users. </p>
             <ol>
-                <li> Get the source code <a href="" target="_blank"> here </a> </li>
+                <li> Get the source code <a href="https://github.com/cedrickalegroso/UQS-DSC-Solution-Challenge" target="_blank"> here </a> </li>
                 <li> git clone </li>
                 <li> install the dependencies by running pub get </li>
                 <li> flutter run </li>
             </ol>
 
-            <h6> 1.3 For ElectronJs </h6>
+            <h6> For ElectronJs </h6>
+            <p class="lead" style="font-size: 0.9rem;">   Note: Windows App is also for users this is just an extra. Will still notify you trough your phone. </p>
             <ol>
-                <li> Get the source code <a href="" target="_blank"> here </a> </li>
+                <li> Get the source code <a href="https://github.com/cedrickalegroso/UQS-Electron" target="_blank"> here </a> </li>
                 <li> git clone </li>
                 <li> npm install </li>
                 <li> npm run electron-build </li>
@@ -331,17 +335,25 @@
 
 
             <ol>
-                <li> Firstly, create an account then log in. </li>
+                <li> Register and verify email address then login. </li>
 
                 <li> Using the service Dashboard </li>
                 <ol>
-                    <li> The tickets you see in the dasboard are tickets without a teller. From here you either delete it or just let it queue. <span style="cursor: pointer; color: lightskyblue;"> See figure. </span></li>
-                    <li> Click on the Live Queue on the side navigation. This will open a new tab where the tickets with teller are shown. <span style="cursor: pointer; color: lightskyblue;"> See figure. </span></li>
-                    <li> Click the teller in the side navigation and choose a teller number. Then click next, this will find the next ticket without a teller. <span style="cursor: pointer; color: lightskyblue;"> See figure. </span></li>
-                    <li> Click "Done" if the transaction is done.  <span style="cursor: pointer; color: lightskyblue;"> See figure. </span></li>
+                    <li> The tickets you see in the dashboard are tickets without a teller. From here you either delete it or just let it queue. </li>
+                    <li> Click on the Live Queue on the side navigation. This will open a new tab where the tickets with teller are shown. </li>
+                      <ul>
+                        <li> Tickets that don't have a teller will not show in the live queue </li>
+                        <li> Every service live queue can be viewed by every user of uqs </li>
+                      </ul>
+                    <li> Click the teller in the side navigation and choose a teller number. Then click next, this will find the next ticket without a teller.</li>
+                    <ul>
+                      <li> By clicking next it will query a ticket ascending order where the next ticket should have no teller and pending. </li>
+                      <li> After transaction is done you can click "done" </li>
+                    </ul>
                    
                 </ol>
             </ol>
+            <p class="lead" style="font-size: 0.9rem;">   Note: Some parts of the web app is not yet mobile friendly. </p>
             <p class="lead" style="font-size: 0.9rem;">   Note: The moment that the ticket has a registered teller, it will automatically show up in the live queue. </p>
             <p class="lead" style="font-size: 0.9rem;">   Note: Some functions/fetaures may take a while. We are using Cloud Functions and it has a cold start sometimes. </p>
 
@@ -359,20 +371,31 @@
             </h1>
             
             <ol>
-                <li> Firstly, create an account, then log in. </li>
+                <li> Register and verify email address then login. </li>
 
                 <li> Creating the ticket </li>
                 <ol>
-                    <li> Go the the service tab and choose a service you want to queue <span style="cursor: pointer; color: lightskyblue;"> See figure. </span></li>
-                    <li> Click on it. This will show more details about the service. Tap on 'create ticket', a snackbar notifying you 'ticket is created' will show <span style="cursor: pointer; color: lightskyblue;"> See figure. </span></li>
-                    <li> Go to the Tickets tab and you will see all the tickets that you susbcribed with information about when will be your turn. <span style="cursor: pointer; color: lightskyblue;"> See figure. </span></li>
-                    <li> You can click on the ticket. It will show more details and information. From here, you can cancel or just view the ticket information. <span style="cursor: pointer; color: lightskyblue;"> See figure. </span></li>
+                    <li> In the navigation bar click on services then find your service of choice.</li>
+                    <li> Tap on it you will be navigated to the service information from here you can see the live queue or queue. </li>
+                      <ul>
+                        <li> Live queue is where you can see what teller is online. </li>
+                        <li> Queue is where you can subscribe to this service. </li>
+                      </ul>
+                    <li> Tap on queue then select a trigger</li>
+                    <ul>
+                      <li> A trigger is a number where if that is the difference from your ticket number it will notify you. </li>
+                      <li> You may see some service's that the trigger is not available this is because there should be atleast 5 tickets pending on the service. </li>
+                    </ul>
+                    <li> You can enable email notification where you will recieve notification about your ticket through email. An FCM notification will still notify you by default.</li>
+                    <li> After creating a ticket you will see the ticket in Home(Active tickets) from here you can see infrmation's such how many peron's before you, your ticket timeline, and you can also cancel your ticket. </li>
+                    <li> You will be notified if next in the queue. </li>
                    
                 </ol>
             </ol>
 
 
-            <p class="lead" style="font-size: 0.9rem;">   Note: It may take a little bit while to create the ticket. We are using Cloud Functions and it has a cold start sometimes </p>
+            <p class="lead" style="font-size: 0.9rem;">   Note: Some functions/fetaures may take a while. We are using Cloud Functions and it has a cold start sometimes. </p>
+
 
             <hr>
 
